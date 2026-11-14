@@ -297,6 +297,35 @@
       margin: 18px auto 0;
     }
 
+    .analysis-results {
+      margin-top: 18px;
+    }
+
+    .analysis-summary {
+      margin: 0;
+      color: #566176;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .analysis-subheading {
+      margin: 18px 0 8px;
+      color: #30394b;
+      font-size: 14px;
+    }
+
+    .analysis-list {
+      margin: 0;
+      padding-left: 20px;
+      color: #68748a;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .analysis-list li + li {
+      margin-top: 6px;
+    }
+
     [hidden] {
       display: none !important;
     }
@@ -344,6 +373,24 @@
       </p>
       <div id="chartContainer" class="chart-container" hidden>
         <canvas id="expenseChart" role="img" aria-label="各消费分类支出占比饼图"></canvas>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="analysisTitle">
+      <div class="section-heading">
+        <h2 id="analysisTitle">AI账单分析</h2>
+        <span class="section-hint">本地分析，不上传数据</span>
+      </div>
+      <button id="analyzeBillsButton" class="chart-button" type="button">开始分析账单</button>
+      <p id="analysisMessage" class="chart-message" role="status" aria-live="polite">
+        分析全部已保存账单，获取消费概况和省钱建议。
+      </p>
+      <div id="analysisResults" class="analysis-results" hidden>
+        <p id="analysisSummary" class="analysis-summary"></p>
+        <h3 class="analysis-subheading">分类支出</h3>
+        <ul id="analysisBreakdown" class="analysis-list"></ul>
+        <h3 class="analysis-subheading">省钱建议</h3>
+        <ul id="analysisTips" class="analysis-list"></ul>
       </div>
     </section>
 
@@ -405,6 +452,12 @@
     const chartMessage = document.querySelector("#chartMessage");
     const chartContainer = document.querySelector("#chartContainer");
     const expenseChartCanvas = document.querySelector("#expenseChart");
+    const analyzeBillsButton = document.querySelector("#analyzeBillsButton");
+    const analysisMessage = document.querySelector("#analysisMessage");
+    const analysisResults = document.querySelector("#analysisResults");
+    const analysisSummary = document.querySelector("#analysisSummary");
+    const analysisBreakdown = document.querySelector("#analysisBreakdown");
+    const analysisTips = document.querySelector("#analysisTips");
     let expenseChart = null;
 
     // 从本地存储读取账单；数据损坏时明确提示，并使用空列表继续使用。
@@ -623,6 +676,100 @@
       });
 
       chartMessage.textContent = `共统计 ¥${grandTotal.toFixed(2)}，图例显示各分类支出占比。`;
+    });
+
+    // 每次点击都读取完整本地账单，使用简单规则生成消费概况与建议。
+    analyzeBillsButton.addEventListener("click", () => {
+      analysisMessage.textContent = "";
+      analysisResults.hidden = true;
+      analysisBreakdown.replaceChildren();
+      analysisTips.replaceChildren();
+
+      let savedBills;
+      try {
+        const storedData = localStorage.getItem(STORAGE_KEY);
+        savedBills = storedData ? JSON.parse(storedData) : [];
+        if (!Array.isArray(savedBills)) throw new Error("账单数据格式不正确");
+      } catch (error) {
+        console.error("读取分析账单失败：", error);
+        analysisMessage.textContent = "读取账单失败，请检查浏览器存储数据后重试。";
+        return;
+      }
+
+      const validBills = savedBills.filter((bill) =>
+        bill &&
+        Number.isFinite(bill.amount) &&
+        bill.amount > 0 &&
+        categories.includes(bill.category)
+      );
+      if (validBills.length === 0) {
+        analysisMessage.textContent = "暂无有效账单，添加账单后即可开始分析。";
+        return;
+      }
+
+      const categoryTotals = Object.fromEntries(
+        categories.map((category) => [
+          category,
+          validBills.reduce(
+            (sum, bill) => sum + (bill.category === category ? bill.amount : 0),
+            0
+          )
+        ])
+      );
+      const grandTotal = Object.values(categoryTotals).reduce((sum, amount) => sum + amount, 0);
+      const averageAmount = grandTotal / validBills.length;
+      const topCategory = Object.entries(categoryTotals)
+        .filter(([, amount]) => amount > 0)
+        .sort((a, b) => b[1] - a[1])[0];
+      const topPercentage = topCategory[1] / grandTotal * 100;
+
+      // 用户内容只通过 textContent 呈现，避免备注被解析为 HTML。
+      analysisSummary.textContent =
+        `共记录 ${validBills.length} 笔消费，累计支出 ¥${grandTotal.toFixed(2)}，` +
+        `平均每笔 ¥${averageAmount.toFixed(2)}。支出最多的是“${topCategory[0]}”，` +
+        `占总支出的 ${topPercentage.toFixed(1)}%。`;
+
+      for (const category of categories) {
+        const amount = categoryTotals[category];
+        const percentage = amount / grandTotal * 100;
+        const item = document.createElement("li");
+        item.textContent = `${category}：¥${amount.toFixed(2)}（${percentage.toFixed(1)}%）`;
+        analysisBreakdown.append(item);
+      }
+
+      const tips = [
+        "可以先设定每周生活费预算，定期回看账单，再按实际情况微调。"
+      ];
+      if (categoryTotals["外卖"] > 0) {
+        tips.push(
+          `外卖累计 ¥${categoryTotals["外卖"].toFixed(2)}；可尝试提前规划用餐，` +
+          "适当减少临时点单，不必为了省钱影响正常饮食。"
+        );
+      }
+      if (categoryTotals["网购"] > 0) {
+        tips.push(
+          `网购累计 ¥${categoryTotals["网购"].toFixed(2)}；下单前先列清单，` +
+          "对非必需品可以隔一天再决定。"
+        );
+      }
+      if (categoryTotals["其他"] > 0) {
+        tips.push(
+          `“其他”分类累计 ¥${categoryTotals["其他"].toFixed(2)}；补充备注有助于发现` +
+          "容易忽略的小额开销。"
+        );
+      }
+      if (topCategory[0] === "食堂") {
+        tips.push("食堂是主要支出时，保持规律饮食即可；可留意饮料、零食等额外花销。");
+      }
+
+      for (const tip of tips) {
+        const item = document.createElement("li");
+        item.textContent = tip;
+        analysisTips.append(item);
+      }
+
+      analysisResults.hidden = false;
+      analysisMessage.textContent = "分析完成。结果仅根据本地账单生成，不会上传数据。";
     });
 
     renderBills();
