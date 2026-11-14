@@ -4,6 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f5f7fb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="校园记账">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
+  <link rel="apple-touch-icon" href="./icons/icon-192.png">
   <title>校园生活记账</title>
   <style>
     :root {
@@ -51,6 +56,32 @@
       margin: 9px 0 0;
       color: #7b8496;
       font-size: 14px;
+    }
+
+    .install-button {
+      min-height: 40px;
+      margin-top: 16px;
+      padding: 0 14px;
+      border: 1px solid #dce5fc;
+      border-radius: 11px;
+      background: #eef3ff;
+      color: #315ed5;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .install-button:focus-visible {
+      outline: 3px solid #aebff5;
+      outline-offset: 3px;
+    }
+
+    .pwa-message {
+      margin: 10px 0 0;
+      color: #7b8496;
+      font-size: 12px;
+      line-height: 1.5;
     }
 
     .card {
@@ -352,6 +383,8 @@
       <p class="eyebrow">CAMPUS LIFE · DAILY NOTES</p>
       <h1>校园生活记账</h1>
       <p class="subtitle">记下每一笔日常，让生活费花得更明白。</p>
+      <button id="installAppButton" class="install-button" type="button" hidden>安装到桌面</button>
+      <p id="pwaMessage" class="pwa-message" role="status" aria-live="polite" hidden></p>
     </header>
 
     <section class="card summary" aria-label="消费总额">
@@ -773,6 +806,63 @@
     });
 
     renderBills();
+
+    // 浏览器满足安装条件时提供安装按钮，未支持的浏览器仍可从菜单安装。
+    let deferredInstallPrompt = null;
+    const installAppButton = document.querySelector("#installAppButton");
+    const pwaMessage = document.querySelector("#pwaMessage");
+
+    window.addEventListener("beforeinstallprompt", (event) => {
+      event.preventDefault();
+      deferredInstallPrompt = event;
+      installAppButton.hidden = false;
+    });
+
+    installAppButton.addEventListener("click", async () => {
+      if (!deferredInstallPrompt) return;
+
+      try {
+        await deferredInstallPrompt.prompt();
+        const { outcome } = await deferredInstallPrompt.userChoice;
+        pwaMessage.textContent = outcome === "accepted"
+          ? "应用已开始安装。"
+          : "安装已取消；之后仍可从浏览器菜单安装。";
+        pwaMessage.hidden = false;
+      } catch (error) {
+        console.error("启动应用安装失败：", error);
+        pwaMessage.textContent = "无法启动安装，请尝试使用浏览器菜单安装。";
+        pwaMessage.hidden = false;
+      }
+
+      deferredInstallPrompt = null;
+      installAppButton.hidden = true;
+    });
+
+    window.addEventListener("appinstalled", () => {
+      deferredInstallPrompt = null;
+      installAppButton.hidden = true;
+      pwaMessage.textContent = "校园生活记账已安装。";
+      pwaMessage.hidden = false;
+    });
+
+    // 注册同目录 Service Worker；PWA 需通过 HTTPS 或 localhost 访问。
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./service-worker.js")
+          .then(() => {
+            pwaMessage.textContent = "Service Worker 已注册；首次打开需要联网完成离线资源缓存。";
+            pwaMessage.hidden = false;
+          })
+          .catch((error) => {
+            console.error("Service Worker 注册失败：", error);
+            pwaMessage.textContent = "离线功能不可用，请通过 HTTPS 或 localhost 打开页面。";
+            pwaMessage.hidden = false;
+          });
+      });
+    } else {
+      pwaMessage.textContent = "当前浏览器不支持离线功能，请使用现代浏览器并通过 HTTPS 或 localhost 打开。";
+      pwaMessage.hidden = false;
+    }
   </script>
 </body>
 </html>
