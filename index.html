@@ -257,6 +257,46 @@
       text-align: center;
     }
 
+    .chart-button {
+      width: 100%;
+      min-height: 46px;
+      border: 0;
+      border-radius: 12px;
+      background: #315ed5;
+      color: #fff;
+      font: inherit;
+      font-size: 15px;
+      font-weight: 650;
+      cursor: pointer;
+      transition: background 150ms, transform 150ms;
+    }
+
+    .chart-button:hover {
+      background: #274fc0;
+    }
+
+    .chart-button:active {
+      transform: scale(0.99);
+    }
+
+    .chart-button:focus-visible {
+      outline: 3px solid #aebff5;
+      outline-offset: 3px;
+    }
+
+    .chart-message {
+      margin: 14px 0 0;
+      color: #7b8496;
+      font-size: 13px;
+      text-align: center;
+    }
+
+    .chart-container {
+      position: relative;
+      width: min(100%, 380px);
+      margin: 18px auto 0;
+    }
+
     [hidden] {
       display: none !important;
     }
@@ -291,6 +331,20 @@
         <div class="summary-amount">¥<span id="totalAmount">0.00</span></div>
       </div>
       <div class="summary-icon" aria-hidden="true">￥</div>
+    </section>
+
+    <section class="card" aria-labelledby="chartTitle">
+      <div class="section-heading">
+        <h2 id="chartTitle">分类消费占比</h2>
+        <span class="section-hint">按消费分类汇总</span>
+      </div>
+      <button id="generateChartButton" class="chart-button" type="button">生成消费饼图</button>
+      <p id="chartMessage" class="chart-message" role="status" aria-live="polite">
+        点击按钮，根据已保存的账单生成分类占比。
+      </p>
+      <div id="chartContainer" class="chart-container" hidden>
+        <canvas id="expenseChart" role="img" aria-label="各消费分类支出占比饼图"></canvas>
+      </div>
     </section>
 
     <section class="card" aria-labelledby="formTitle">
@@ -333,6 +387,8 @@
     </section>
   </main>
 
+  <!-- 使用项目内的 Chart.js，避免外部 CDN 不可用导致图表无法加载。 -->
+  <script src="./vendor/chart.umd.js"></script>
   <script>
     const STORAGE_KEY = "campus-life-bills";
     const categories = ["食堂", "外卖", "网购", "其他"];
@@ -345,6 +401,11 @@
     const emptyState = document.querySelector("#emptyState");
     const totalAmount = document.querySelector("#totalAmount");
     const billCount = document.querySelector("#billCount");
+    const generateChartButton = document.querySelector("#generateChartButton");
+    const chartMessage = document.querySelector("#chartMessage");
+    const chartContainer = document.querySelector("#chartContainer");
+    const expenseChartCanvas = document.querySelector("#expenseChart");
+    let expenseChart = null;
 
     // 从本地存储读取账单；数据损坏时明确提示，并使用空列表继续使用。
     function loadBills() {
@@ -467,6 +528,101 @@
       form.reset();
       formMessage.textContent = "账单已添加。";
       amountInput.focus();
+    });
+
+    // 每次点击时重新读取本地存储，确保饼图使用当前保存的账单。
+    generateChartButton.addEventListener("click", () => {
+      chartMessage.textContent = "";
+
+      if (typeof Chart === "undefined") {
+        chartMessage.textContent = "图表组件加载失败，请确认本地 Chart.js 文件存在后刷新页面。";
+        console.error("Chart.js 未加载，无法生成消费饼图。");
+        return;
+      }
+
+      let savedBills;
+      try {
+        const storedData = localStorage.getItem(STORAGE_KEY);
+        savedBills = storedData ? JSON.parse(storedData) : [];
+        if (!Array.isArray(savedBills)) throw new Error("账单数据格式不正确");
+      } catch (error) {
+        console.error("读取饼图账单失败：", error);
+        chartMessage.textContent = "读取账单失败，请检查浏览器存储数据后重试。";
+        return;
+      }
+
+      const validBills = savedBills.filter((bill) =>
+        bill &&
+        Number.isFinite(bill.amount) &&
+        bill.amount > 0 &&
+        categories.includes(bill.category)
+      );
+      const categoryTotals = categories.map((category) =>
+        validBills.reduce(
+          (sum, bill) => sum + (bill.category === category ? bill.amount : 0),
+          0
+        )
+      );
+      const grandTotal = categoryTotals.reduce((sum, amount) => sum + amount, 0);
+
+      if (grandTotal <= 0) {
+        if (expenseChart) {
+          expenseChart.destroy();
+          expenseChart = null;
+        }
+        chartContainer.hidden = true;
+        chartMessage.textContent = "暂无可统计的账单，添加账单后再生成饼图。";
+        return;
+      }
+
+      if (expenseChart) expenseChart.destroy();
+
+      const chartColors = ["#5b7cde", "#f2a65a", "#63b995", "#b18ad8"];
+      chartContainer.hidden = false;
+      expenseChart = new Chart(expenseChartCanvas, {
+        type: "pie",
+        data: {
+          labels: categories,
+          datasets: [{
+            data: categoryTotals,
+            backgroundColor: chartColors,
+            borderColor: "#ffffff",
+            borderWidth: 3
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: "bottom",
+              labels: {
+                padding: 18,
+                generateLabels(chart) {
+                  // 在图例中直接显示占比，避免必须悬停才能查看。
+                  return Chart.defaults.plugins.legend.labels.generateLabels(chart).map((label) => {
+                    const percentage = (categoryTotals[label.index] / grandTotal * 100).toFixed(1);
+                    return {
+                      ...label,
+                      text: `${label.text} ${percentage}%`
+                    };
+                  });
+                }
+              }
+            },
+            tooltip: {
+              callbacks: {
+                label(context) {
+                  const amount = context.raw;
+                  const percentage = (amount / grandTotal * 100).toFixed(1);
+                  return ` ${context.label}：¥${amount.toFixed(2)}（${percentage}%）`;
+                }
+              }
+            }
+          }
+        }
+      });
+
+      chartMessage.textContent = `共统计 ¥${grandTotal.toFixed(2)}，图例显示各分类支出占比。`;
     });
 
     renderBills();
