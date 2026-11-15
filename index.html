@@ -1578,10 +1578,11 @@
     }
 
     .calendar-day.has-bills::after {
+      position: absolute;
+      top: 4px;
+      right: 4px;
       width: 5px;
       height: 5px;
-      align-self: end;
-      margin-top: -7px;
       border-radius: 50%;
       background: #5b9b8e;
       content: "";
@@ -1603,10 +1604,50 @@
 
     .calendar-day {
       display: flex;
-      min-height: 44px;
+      position: relative;
+      min-height: 52px;
       flex-direction: column;
       justify-content: center;
-      gap: 2px;
+      gap: 3px;
+    }
+
+    /* 日期数字与当日净收支分两行显示，金额过长时在格内收敛。 */
+    .calendar-day-number {
+      line-height: 1.15;
+    }
+
+    .calendar-day-total {
+      display: block;
+      max-width: 100%;
+      overflow: hidden;
+      color: #d66f70;
+      font-size: clamp(7px, 2.35vw, 9px);
+      font-weight: 650;
+      line-height: 1.1;
+      font-variant-numeric: tabular-nums;
+      text-overflow: clip;
+      white-space: nowrap;
+    }
+
+    .calendar-day-total.positive {
+      color: #4a9a7c;
+    }
+
+    .calendar-day.today,
+    .calendar-day.today.selected {
+      border-color: transparent;
+      background: #5b9b8e;
+      color: #fff;
+    }
+
+    .calendar-day.today.has-bills::after {
+      background: #fff;
+    }
+
+    .calendar-day.selected:not(.today) {
+      border-color: #5b9b8e;
+      background: rgb(91 155 142 / 12%);
+      color: #397c70;
     }
 
     .calendar-weekdays {
@@ -1817,6 +1858,28 @@
     body:has(#themeToggle:checked) .calendar-day.selected {
       background: #5b9b8e;
       color: white;
+    }
+
+    body:has(#themeToggle:checked) .calendar-day.selected:not(.today) {
+      border-color: #75b9a7;
+      background: rgb(91 155 142 / 20%);
+      color: #d8f1e8;
+    }
+
+    body:has(#themeToggle:checked) .calendar-day-total:not(.positive) {
+      color: #efa1a3;
+    }
+
+    body:has(#themeToggle:checked) .calendar-day-total.positive {
+      color: #93dfb8;
+    }
+
+    .calendar-day-total.zero {
+      color: #81908e;
+    }
+
+    body:has(#themeToggle:checked) .calendar-day-total.zero {
+      color: #b0bdca;
     }
 
     @media (min-width: 640px) {
@@ -2881,18 +2944,46 @@
         grid.append(placeholder);
       }
 
-      const recordDates = new Set(allRecords().map((record) => localDateKey(record.date)));
+      // 按本地日期汇总净收支；收入为正、支出为负，同时记录是否有账单。
+      const dailyTotals = new Map();
+      for (const record of allRecords()) {
+        const key = localDateKey(record.date);
+        const current = dailyTotals.get(key) || { amount: 0, count: 0 };
+        current.amount += record.kind === "income" ? record.amount : -record.amount;
+        current.count += 1;
+        dailyTotals.set(key, current);
+      }
+      const todayKey = localDateKey(new Date());
       for (let day = 1; day <= daysInMonth; day += 1) {
         const date = new Date(year, month, day);
         const key = localDateKey(date);
         const button = document.createElement("button");
         button.type = "button";
         button.className = "calendar-day";
-        button.textContent = String(day);
         button.dataset.date = key;
-        button.setAttribute("aria-label", `${year}年${month + 1}月${day}日`);
-        if (recordDates.has(key)) button.classList.add("has-bills");
+        const dayNumber = document.createElement("span");
+        dayNumber.className = "calendar-day-number";
+        dayNumber.textContent = String(day);
+        button.append(dayNumber);
+        const dailyTotal = dailyTotals.get(key);
+        if (dailyTotal) {
+          button.classList.add("has-bills");
+          const amount = document.createElement("span");
+          amount.className = `calendar-day-total${
+            dailyTotal.amount > 0 ? " positive" : dailyTotal.amount === 0 ? " zero" : ""
+          }`;
+          const sign = dailyTotal.amount > 0 ? "+" : dailyTotal.amount < 0 ? "-" : "";
+          amount.textContent = `${sign}${Math.abs(dailyTotal.amount).toFixed(2)}`;
+          button.append(amount);
+        }
+        if (key === todayKey) button.classList.add("today");
         if (key === localDateKey(calendarSelectedDate)) button.classList.add("selected");
+        button.setAttribute(
+          "aria-label",
+          `${year}年${month + 1}月${day}日${dailyTotal
+            ? `，当日净收支${dailyTotal.amount.toFixed(2)}元，${dailyTotal.count}笔账单`
+            : "，无账单"}`
+        );
         button.addEventListener("click", () => {
           calendarSelectedDate = date;
           renderCalendar();
