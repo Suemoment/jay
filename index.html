@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="glass" data-mode="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -2765,6 +2765,1207 @@
         transition: none;
       }
     }
+
+    /* 六套外观共用的主题接口；新增皮肤时只需扩展这些变量。 */
+    html[data-mode="light"] {
+      color-scheme: light;
+    }
+
+    html[data-mode="dark"] {
+      color-scheme: dark;
+    }
+
+    html[data-theme="glass"][data-mode="light"] body {
+      --page-bg: #f0f2f6;
+      --surface: rgb(255 255 255 / 72%);
+      --surface-soft: rgb(255 255 255 / 54%);
+      --line: rgb(255 255 255 / 66%);
+      --ink: #2c3038;
+      --muted: #6b7280;
+      --accent: #479c82;
+      --income: #56b886;
+      --expense: #d96464;
+      --warm: #e6a249;
+      --blue: #4a7cff;
+      --hard-shadow: none;
+      --chart-text: #6b7280;
+      --chart-grid: rgb(100 120 130 / 12%);
+      --chart-expense: #d96464;
+      --chart-income: #56b886;
+      --chart-expense-fill: rgb(217 100 100 / 78%);
+      --chart-income-fill: rgb(86 184 134 / 78%);
+      --chart-category-1: #479c82;
+      --chart-category-2: #4a7cff;
+      --chart-category-3: #b18ad8;
+      --chart-category-4: #e6a249;
+      --chart-category-fill-1: rgb(71 156 130 / 18%);
+      --chart-category-fill-2: rgb(74 124 255 / 18%);
+      --chart-category-fill-3: rgb(177 138 216 / 18%);
+      --chart-category-fill-4: rgb(230 162 73 / 18%);
+      --chart-asset-line: #479c82;
+      --chart-pie-border: rgb(255 255 255 / 88%);
+      --chart-pie-border-width: 2;
+      --chart-bar-border: transparent;
+      --chart-bar-border-width: 0;
+      --chart-bar-radius: 5;
+      --chart-line-width: 2;
+      color: var(--ink);
+      background:
+        repeating-linear-gradient(0deg, rgb(255 255 255 / 7%) 0 1px, transparent 1px 3px),
+        repeating-linear-gradient(90deg, rgb(78 91 110 / 3%) 0 1px, transparent 1px 4px),
+        linear-gradient(145deg, #f0f2f6 0%, #f7f8fa 100%);
+    }
+
+    html[data-theme="glass"][data-mode="dark"] body {
+      --page-bg: #171920;
+      --surface: rgb(30 34 42 / 68%);
+      --surface-soft: rgb(30 34 42 / 58%);
+      --line: rgb(255 255 255 / 10%);
+      --ink: #e9ebf0;
+      --muted: #9ca3af;
+      --accent: #78b9a2;
+      --income: #86d3a8;
+      --expense: #e99a9a;
+      --warm: #e6b66f;
+      --blue: #88aaff;
+      --hard-shadow: none;
+      --chart-text: #9ca3af;
+      --chart-grid: rgb(220 230 245 / 10%);
+      --chart-expense: #e99a9a;
+      --chart-income: #86d3a8;
+      --chart-expense-fill: rgb(217 100 100 / 72%);
+      --chart-income-fill: rgb(86 184 134 / 72%);
+      --chart-category-1: #78b9a2;
+      --chart-category-2: #88aaff;
+      --chart-category-3: #c5a5e5;
+      --chart-category-4: #e6b66f;
+      --chart-category-fill-1: rgb(120 185 162 / 20%);
+      --chart-category-fill-2: rgb(136 170 255 / 20%);
+      --chart-category-fill-3: rgb(197 165 229 / 20%);
+      --chart-category-fill-4: rgb(230 182 111 / 20%);
+      --chart-asset-line: #78b9a2;
+      --chart-pie-border: rgb(255 255 255 / 16%);
+      --chart-pie-border-width: 2;
+      --chart-bar-border: transparent;
+      --chart-bar-border-width: 0;
+      --chart-bar-radius: 5;
+      --chart-line-width: 2;
+      color: var(--ink);
+      background:
+        repeating-linear-gradient(0deg, rgb(255 255 255 / 2.5%) 0 1px, transparent 1px 3px),
+        repeating-linear-gradient(90deg, rgb(0 0 0 / 4%) 0 1px, transparent 1px 4px),
+        linear-gradient(145deg, #171920 0%, #20242d 100%);
+    }
+
+    html[data-theme="notion"][data-mode="light"] body {
+      --page-bg: #fff;
+      --surface: #fff;
+      --surface-soft: #f7f7f5;
+      --line: #e9e9e7;
+      --ink: #37352f;
+      --muted: #787774;
+      --accent: #0f7b6c;
+      --income: #0f7b6c;
+      --expense: #d96464;
+      --warm: #e6b33f;
+      --blue: #2383e2;
+      --hard-shadow: none;
+      --chart-text: #787774;
+      --chart-grid: #e9e9e7;
+      --chart-expense: #d96464;
+      --chart-income: #0f7b6c;
+      --chart-expense-fill: rgb(217 100 100 / 72%);
+      --chart-income-fill: rgb(15 123 108 / 72%);
+      --chart-category-1: #0f7b6c;
+      --chart-category-2: #2383e2;
+      --chart-category-3: #9a7fd1;
+      --chart-category-4: #c99231;
+      --chart-category-fill-1: rgb(15 123 108 / 8%);
+      --chart-category-fill-2: rgb(35 131 226 / 8%);
+      --chart-category-fill-3: rgb(154 127 209 / 8%);
+      --chart-category-fill-4: rgb(201 146 49 / 8%);
+      --chart-asset-line: #0f7b6c;
+      --chart-pie-border: #fff;
+      --chart-pie-border-width: 1;
+      --chart-bar-border: transparent;
+      --chart-bar-border-width: 0;
+      --chart-bar-radius: 2;
+      --chart-line-width: 1.5;
+      --chart-grid-dash: 3 3;
+      color: var(--ink);
+      background: var(--page-bg);
+      line-height: 1.6;
+      letter-spacing: normal;
+    }
+
+    html[data-theme="notion"][data-mode="dark"] body {
+      --page-bg: #191919;
+      --surface: #191919;
+      --surface-soft: #202020;
+      --line: #2f2f2f;
+      --ink: #d4d4d4;
+      --muted: #9b9b9b;
+      --accent: #53b6a4;
+      --income: #53b6a4;
+      --expense: #e27d76;
+      --warm: #e6b33f;
+      --blue: #69aef2;
+      --hard-shadow: none;
+      --chart-text: #9b9b9b;
+      --chart-grid: #2f2f2f;
+      --chart-expense: #e27d76;
+      --chart-income: #53b6a4;
+      --chart-expense-fill: rgb(226 125 118 / 72%);
+      --chart-income-fill: rgb(83 182 164 / 72%);
+      --chart-category-1: #53b6a4;
+      --chart-category-2: #69aef2;
+      --chart-category-3: #b69be3;
+      --chart-category-4: #d9ad55;
+      --chart-category-fill-1: rgb(83 182 164 / 8%);
+      --chart-category-fill-2: rgb(105 174 242 / 8%);
+      --chart-category-fill-3: rgb(182 155 227 / 8%);
+      --chart-category-fill-4: rgb(217 173 85 / 8%);
+      --chart-asset-line: #53b6a4;
+      --chart-pie-border: #191919;
+      --chart-pie-border-width: 1;
+      --chart-bar-border: transparent;
+      --chart-bar-border-width: 0;
+      --chart-bar-radius: 2;
+      --chart-line-width: 1.5;
+      --chart-grid-dash: 3 3;
+      color: var(--ink);
+      background: var(--page-bg);
+      line-height: 1.6;
+      letter-spacing: normal;
+    }
+
+    html[data-theme="neo"][data-mode="light"] body {
+      --page-bg: #f7f4e9;
+      --surface: #fffdf5;
+      --surface-soft: #fffdf5;
+      --line: #000;
+      --ink: #0d0d0d;
+      --muted: #39352d;
+      --accent: #4a9e8f;
+      --income: #4a9e8f;
+      --expense: #e8524a;
+      --warm: #e6b33f;
+      --blue: #4a7cff;
+      --hard-shadow: 6px 6px 0 #000;
+      --chart-text: #0d0d0d;
+      --chart-grid: rgb(0 0 0 / 55%);
+      --chart-expense: #e8524a;
+      --chart-income: #4a9e8f;
+      --chart-expense-fill: #e8524a;
+      --chart-income-fill: #4a9e8f;
+      --chart-category-1: #4a9e8f;
+      --chart-category-2: #4a7cff;
+      --chart-category-3: #e6b33f;
+      --chart-category-4: #e8524a;
+      --chart-category-fill-1: rgb(74 158 143 / 32%);
+      --chart-category-fill-2: rgb(74 124 255 / 32%);
+      --chart-category-fill-3: rgb(230 179 63 / 32%);
+      --chart-category-fill-4: rgb(232 82 74 / 32%);
+      --chart-asset-line: #000;
+      --chart-pie-border: #000;
+      --chart-pie-border-width: 3;
+      --chart-bar-border: #000;
+      --chart-bar-border-width: 2;
+      --chart-bar-radius: 0;
+      --chart-line-width: 3;
+      color: var(--ink);
+      background-color: var(--page-bg);
+      background-image:
+        repeating-linear-gradient(0deg, rgb(0 0 0 / 7%) 0 1px, transparent 1px 24px),
+        repeating-linear-gradient(90deg, rgb(0 0 0 / 7%) 0 1px, transparent 1px 24px);
+      line-height: 1.45;
+      letter-spacing: normal;
+    }
+
+    html[data-theme="neo"][data-mode="dark"] body {
+      --page-bg: #1a1a1a;
+      --surface: #262626;
+      --surface-soft: #262626;
+      --line: #e8e8e8;
+      --ink: #f5f5f5;
+      --muted: #d0d0d0;
+      --accent: #65c0ad;
+      --income: #65c0ad;
+      --expense: #ff746a;
+      --warm: #e6b33f;
+      --blue: #7397ff;
+      --hard-shadow: 6px 6px 0 #e8e8e8;
+      --chart-text: #f5f5f5;
+      --chart-grid: rgb(255 255 255 / 60%);
+      --chart-expense: #ff746a;
+      --chart-income: #65c0ad;
+      --chart-expense-fill: #ff746a;
+      --chart-income-fill: #65c0ad;
+      --chart-category-1: #65c0ad;
+      --chart-category-2: #7397ff;
+      --chart-category-3: #e6b33f;
+      --chart-category-4: #ff746a;
+      --chart-category-fill-1: rgb(101 192 173 / 32%);
+      --chart-category-fill-2: rgb(115 151 255 / 32%);
+      --chart-category-fill-3: rgb(230 179 63 / 32%);
+      --chart-category-fill-4: rgb(255 116 106 / 32%);
+      --chart-asset-line: #f5f5f5;
+      --chart-pie-border: #e8e8e8;
+      --chart-pie-border-width: 3;
+      --chart-bar-border: #e8e8e8;
+      --chart-bar-border-width: 2;
+      --chart-bar-radius: 0;
+      --chart-line-width: 3;
+      color: var(--ink);
+      background-color: var(--page-bg);
+      background-image:
+        repeating-linear-gradient(0deg, rgb(255 255 255 / 7%) 0 1px, transparent 1px 24px),
+        repeating-linear-gradient(90deg, rgb(255 255 255 / 7%) 0 1px, transparent 1px 24px);
+      line-height: 1.45;
+      letter-spacing: normal;
+    }
+
+    /* 皮肤切换时只渐变颜色、底色、边框与阴影，不干扰布局和交互。 */
+    body,
+    body :is(.card, .metric-card, .stats-metric, .savings-goal-card,
+      .feature-link, .bottom-nav, .bottom-nav button, button, input, select,
+      textarea, .bill-item, .day-bill-item, .calendar-detail-item,
+      .calendar-day, .month-chip, .category-option, .category-tag,
+      .record-switch, .period-tabs, .view-switch) {
+      transition:
+        color 200ms ease,
+        background-color 200ms ease,
+        border-color 200ms ease,
+        box-shadow 200ms ease;
+    }
+
+    body .app {
+      color: var(--ink);
+    }
+
+    body h1,
+    body h2,
+    body h3,
+    body label,
+    body .bill-title,
+    body .day-bill-title,
+    body .bill-day-heading,
+    body .calendar-controls strong,
+    body .savings-goal-title,
+    body .analysis-subheading,
+    body .analysis-summary {
+      color: var(--ink);
+    }
+
+    body .metric-value,
+    body .summary-amount {
+      color: var(--accent);
+    }
+
+    body .metric-value.expense,
+    body .metric-value.balance-negative {
+      color: var(--expense);
+    }
+
+    body .metric-value.income,
+    body .metric-value.balance-positive {
+      color: var(--income);
+    }
+
+    body .stats-metric .metric-value.expense {
+      color: var(--expense);
+    }
+
+    body .stats-metric .metric-value.income {
+      color: var(--income);
+    }
+
+    body .category-tag {
+      color: var(--accent);
+    }
+
+    body .bottom-nav button {
+      color: var(--muted);
+    }
+
+    body .bottom-nav button[aria-current="page"] {
+      background: color-mix(in srgb, var(--accent) 14%, transparent);
+      color: var(--accent);
+    }
+
+    body input::placeholder,
+    body textarea::placeholder {
+      color: var(--muted);
+    }
+
+    body .eyebrow,
+    body .subtitle,
+    body .pwa-message,
+    body .summary-label,
+    body .section-hint,
+    body .bill-count,
+    body .bill-meta,
+    body .empty-state,
+    body .chart-message,
+    body .chart-empty-message,
+    body .calendar-note,
+    body .metric-label,
+    body .day-bill-meta,
+    body .bill-day-total,
+    body .legend-item,
+    body .savings-goal-values,
+    body .savings-goal-footer,
+    body .category-hint,
+    body .category-picker-heading,
+    body .analysis-list {
+      color: var(--muted);
+    }
+
+    /* Notion：纯色文档页面，分隔线和留白负责建立信息层级。 */
+    html[data-theme="notion"] body .card,
+    html[data-theme="notion"] body .metric-card,
+    html[data-theme="notion"] body .stats-metric,
+    html[data-theme="notion"] body .savings-goal-card,
+    html[data-theme="notion"] body .feature-link,
+    html[data-theme="notion"] body .bill-item,
+    html[data-theme="notion"] body .bill-item:first-child,
+    html[data-theme="notion"] body .day-bill-item,
+    html[data-theme="notion"] body .calendar-detail-item,
+    html[data-theme="notion"] body .bottom-nav,
+    html[data-theme="notion"] body .calendar-day,
+    html[data-theme="notion"] body .month-chip,
+    html[data-theme="notion"] body .calendar-controls button {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--surface);
+      box-shadow: none;
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
+
+    html[data-theme="notion"] body .metric-card,
+    html[data-theme="notion"] body .stats-metric,
+    html[data-theme="notion"] body .savings-goal-card,
+    html[data-theme="notion"] body .bill-item,
+    html[data-theme="notion"] body .day-bill-item {
+      background: var(--surface);
+    }
+
+    html[data-theme="notion"] body button,
+    html[data-theme="notion"] body .view-switch label,
+    html[data-theme="notion"] body .install-button,
+    html[data-theme="notion"] body .theme-control,
+    html[data-theme="notion"] body .appearance-choice,
+    html[data-theme="notion"] body .category-option,
+    html[data-theme="notion"] body .month-chip,
+    html[data-theme="notion"] body .calendar-controls button,
+    html[data-theme="notion"] body #closeRecordButton {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #f1f1ef;
+      box-shadow: none;
+      color: var(--ink);
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
+
+    html[data-theme="notion"][data-mode="dark"] body button,
+    html[data-theme="notion"][data-mode="dark"] body .install-button,
+    html[data-theme="notion"][data-mode="dark"] body .theme-control,
+    html[data-theme="notion"][data-mode="dark"] body .appearance-choice,
+    html[data-theme="notion"][data-mode="dark"] body .category-option,
+    html[data-theme="notion"][data-mode="dark"] body .month-chip,
+    html[data-theme="notion"][data-mode="dark"] body .calendar-controls button,
+    html[data-theme="notion"][data-mode="dark"] body #closeRecordButton {
+      background: #202020;
+      color: var(--ink);
+    }
+
+    html[data-theme="notion"] body button:hover,
+    html[data-theme="notion"] body .install-button:hover,
+    html[data-theme="notion"] body .theme-control:hover,
+    html[data-theme="notion"] body .appearance-choice:hover {
+      background: #e9e9e7;
+      transform: none;
+      filter: none;
+    }
+
+    html[data-theme="notion"][data-mode="dark"] body button:hover,
+    html[data-theme="notion"][data-mode="dark"] body .install-button:hover,
+    html[data-theme="notion"][data-mode="dark"] body .theme-control:hover,
+    html[data-theme="notion"][data-mode="dark"] body .appearance-choice:hover {
+      background: #2f2f2f;
+    }
+
+    html[data-theme="notion"] body button:active,
+    html[data-theme="notion"] body .theme-control:active {
+      transform: none;
+    }
+
+    html[data-theme="notion"] body .submit-button,
+    html[data-theme="notion"] body .chart-button,
+    html[data-theme="notion"] body .primary-add-button,
+    html[data-theme="notion"] body .savings-goal-form button {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #f1f1ef;
+      box-shadow: none;
+      color: var(--accent);
+    }
+
+    html[data-theme="notion"] body .submit-button:hover,
+    html[data-theme="notion"] body .chart-button:hover,
+    html[data-theme="notion"] body .primary-add-button:hover,
+    html[data-theme="notion"] body .savings-goal-form button:hover {
+      background: #e9e9e7;
+    }
+
+    html[data-theme="notion"][data-mode="dark"] body .submit-button,
+    html[data-theme="notion"][data-mode="dark"] body .chart-button,
+    html[data-theme="notion"][data-mode="dark"] body .primary-add-button,
+    html[data-theme="notion"][data-mode="dark"] body .savings-goal-form button {
+      background: #202020;
+      color: #53b6a4;
+    }
+
+    html[data-theme="notion"] body input,
+    html[data-theme="notion"] body select,
+    html[data-theme="notion"] body textarea {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--surface);
+      box-shadow: none;
+      color: var(--ink);
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
+
+    html[data-theme="notion"] body .record-switch,
+    html[data-theme="notion"] body .period-tabs,
+    html[data-theme="notion"] body .view-switch {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--surface-soft);
+      box-shadow: none;
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
+
+    html[data-theme="notion"] body :is(
+      .summary-icon, .feature-icon, .category-tag, .savings-goal-status,
+      .savings-progress, .chart-container, .chart-frame, .view-switch label
+    ) {
+      border-radius: 6px;
+      box-shadow: none;
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
+
+    html[data-theme="notion"] body .record-switch button[aria-pressed="true"],
+    html[data-theme="notion"] body .period-tabs button[aria-pressed="true"],
+    html[data-theme="notion"] body #viewList:checked + label,
+    html[data-theme="notion"] body #viewCalendar:checked + label,
+    html[data-theme="notion"] body .month-chip[aria-pressed="true"],
+    html[data-theme="notion"] body .bottom-nav button[aria-current="page"] {
+      border-radius: 6px;
+      background: #e9e9e7;
+      box-shadow: none;
+      color: var(--accent);
+    }
+
+    html[data-theme="notion"][data-mode="dark"] body .record-switch button[aria-pressed="true"],
+    html[data-theme="notion"][data-mode="dark"] body .period-tabs button[aria-pressed="true"],
+    html[data-theme="notion"][data-mode="dark"] body #viewList:checked + label,
+    html[data-theme="notion"][data-mode="dark"] body #viewCalendar:checked + label,
+    html[data-theme="notion"][data-mode="dark"] body .month-chip[aria-pressed="true"],
+    html[data-theme="notion"][data-mode="dark"] body .bottom-nav button[aria-current="page"] {
+      background: #2f2f2f;
+      color: #53b6a4;
+    }
+
+    html[data-theme="notion"] body .stats-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--surface);
+    }
+
+    html[data-theme="notion"] body .stats-metric {
+      min-width: 0;
+      padding: 18px;
+      border: 0;
+      border-right: 1px solid var(--line);
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    html[data-theme="notion"] body .stats-metric:last-child {
+      border-right: 0;
+    }
+
+    html[data-theme="notion"] body .metric-value,
+    html[data-theme="notion"] body .summary-amount {
+      font-size: clamp(20px, 4vw, 28px);
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    html[data-theme="notion"] body .metric-value.expense,
+    html[data-theme="notion"] body .metric-value.income,
+    html[data-theme="notion"] body .metric-value.balance-negative,
+    html[data-theme="notion"] body .metric-value.balance-positive {
+      color: var(--ink);
+    }
+
+    html[data-theme="notion"] body .metric-label {
+      font-size: 12px;
+      font-weight: 400;
+    }
+
+    html[data-theme="notion"] body h1 {
+      font-weight: 600;
+    }
+
+    html[data-theme="notion"] body .eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.04em;
+    }
+
+    html[data-theme="notion"] body .bill-item,
+    html[data-theme="notion"] body .day-bill-item,
+    html[data-theme="notion"] body .calendar-detail-item {
+      padding: 16px;
+    }
+
+    html[data-theme="notion"] body .calendar-day.selected,
+    html[data-theme="notion"] body .calendar-day.today,
+    html[data-theme="notion"] body .calendar-day.today.selected {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: #fff;
+      box-shadow: none;
+    }
+
+    html[data-theme="notion"] body .calendar-day.selected:not(.today) {
+      background: rgb(15 123 108 / 10%);
+      color: var(--accent);
+    }
+
+    html[data-theme="notion"] body .category-option[aria-pressed="true"] {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    html[data-theme="notion"] body .summary-icon,
+    html[data-theme="notion"] body .feature-icon {
+      background: transparent;
+      color: var(--accent);
+    }
+
+    html[data-theme="notion"] body .category-tag {
+      border: 0;
+      background: transparent;
+      color: var(--accent);
+    }
+
+    html[data-theme="notion"] body .savings-progress-fill {
+      background: var(--accent);
+    }
+
+    html[data-theme="notion"] body .appearance-choice[aria-pressed="true"] {
+      border-color: var(--accent);
+      background: rgb(15 123 108 / 10%);
+      color: var(--accent);
+    }
+
+    html[data-theme="notion"][data-mode="dark"] body .appearance-choice[aria-pressed="true"] {
+      background: rgb(83 182 164 / 14%);
+      color: #53b6a4;
+    }
+
+    html[data-theme="notion"] body .chart-frame,
+    html[data-theme="notion"] body .chart-container {
+      border-radius: 6px;
+    }
+
+    html[data-theme="notion"] body .chart-frame canvas {
+      filter: none;
+    }
+
+    /* 新粗野主义：网格纸、粗边框和无模糊硬投影。 */
+    html[data-theme="neo"] body :is(
+      .card, .metric-card, .stats-metric, .savings-goal-card, .feature-link,
+      .bottom-nav, .bottom-nav button, button, input, select, textarea,
+      .bill-item, .day-bill-item, .calendar-detail-item, .calendar-day,
+      .month-chip, .category-option, .category-tag, .record-switch,
+      .period-tabs, .view-switch, .theme-control, .appearance-choice,
+      .savings-progress, .chart-container, .feature-icon, .summary-icon,
+      .bill-count, .savings-goal-status, .view-switch label
+    ) {
+      border: 3px solid var(--line);
+      border-radius: 4px;
+      background: var(--surface);
+      box-shadow: var(--hard-shadow);
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
+
+    html[data-theme="neo"] body :is(button, .theme-control, .appearance-choice,
+      .category-option, .month-chip, .calendar-controls button) {
+      border-radius: 2px;
+    }
+
+    html[data-theme="neo"] body .card,
+    html[data-theme="neo"] body .metric-card,
+    html[data-theme="neo"] body .stats-metric,
+    html[data-theme="neo"] body .savings-goal-card,
+    html[data-theme="neo"] body .bill-item,
+    html[data-theme="neo"] body .day-bill-item,
+    html[data-theme="neo"] body .calendar-detail-item {
+      background: var(--surface);
+    }
+
+    html[data-theme="neo"] body :is(.submit-button, .chart-button,
+      .primary-add-button, .savings-goal-form button) {
+      border: 3px solid var(--line);
+      border-radius: 2px;
+      background: var(--accent);
+      box-shadow: var(--hard-shadow);
+      color: #fff;
+    }
+
+    html[data-theme="neo"] body .category-option[aria-pressed="true"] {
+      border: 3px solid var(--line);
+      background: var(--warm);
+      box-shadow: var(--hard-shadow);
+      color: var(--ink);
+    }
+
+    html[data-theme="neo"] body :is(.install-button, .theme-control,
+      .appearance-choice, .category-option, .month-chip,
+      .calendar-controls button, #closeRecordButton) {
+      color: var(--ink);
+    }
+
+    html[data-theme="neo"] body button:hover,
+    html[data-theme="neo"] body .install-button:hover,
+    html[data-theme="neo"] body .theme-control:hover,
+    html[data-theme="neo"] body .appearance-choice:hover,
+    html[data-theme="neo"] body .category-option:hover,
+    html[data-theme="neo"] body .month-chip:hover,
+    html[data-theme="neo"] body .calendar-controls button:hover {
+      box-shadow: 4px 4px 0 var(--line);
+      transform: translate(2px, 2px);
+      filter: none;
+    }
+
+    html[data-theme="neo"] body button:active,
+    html[data-theme="neo"] body .install-button:active,
+    html[data-theme="neo"] body .theme-control:active,
+    html[data-theme="neo"] body .appearance-choice:active,
+    html[data-theme="neo"] body .category-option:active,
+    html[data-theme="neo"] body .month-chip:active,
+    html[data-theme="neo"] body .calendar-controls button:active {
+      box-shadow: none;
+      transform: translate(6px, 6px);
+    }
+
+    html[data-theme="neo"] body input,
+    html[data-theme="neo"] body select,
+    html[data-theme="neo"] body textarea {
+      color: var(--ink);
+    }
+
+    html[data-theme="neo"] body .stats-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0;
+      overflow: visible;
+      border: 3px solid var(--line);
+      background: var(--surface);
+      box-shadow: var(--hard-shadow);
+    }
+
+    html[data-theme="neo"] body .stats-metric {
+      min-width: 0;
+      border: 0;
+      border-right: 3px solid var(--line);
+      border-radius: 0;
+      background: var(--surface);
+      box-shadow: none;
+    }
+
+    html[data-theme="neo"] body .stats-metric:last-child {
+      border-right: 0;
+      background: var(--warm);
+    }
+
+    html[data-theme="neo"] body .dashboard-metrics .metric-card:nth-child(1) {
+      background: var(--income);
+    }
+
+    html[data-theme="neo"] body .dashboard-metrics .metric-card:nth-child(2) {
+      background: var(--warm);
+    }
+
+    html[data-theme="neo"] body .dashboard-metrics .metric-card:nth-child(3) {
+      background: var(--warm);
+    }
+
+    html[data-theme="neo"] body .dashboard-metrics .metric-card:nth-child(4) {
+      background: var(--expense);
+    }
+
+    html[data-theme="neo"] body .metric-value,
+    html[data-theme="neo"] body .summary-amount {
+      font-size: clamp(22px, 5vw, 32px);
+      font-weight: 800;
+      color: var(--ink);
+    }
+
+    html[data-theme="neo"] body .metric-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    html[data-theme="neo"] body .header {
+      padding: 12px;
+    }
+
+    html[data-theme="neo"] body .eyebrow {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    html[data-theme="neo"] body .eyebrow::before {
+      content: "— NEO / EXPENSE DESK";
+    }
+
+    html[data-theme="neo"] body .eyebrow {
+      font-size: 0;
+    }
+
+    html[data-theme="neo"] body .eyebrow::before {
+      font-size: 11px;
+    }
+
+    html[data-theme="neo"] body h1 {
+      font-size: clamp(34px, 9vw, 56px);
+      font-weight: 800;
+      letter-spacing: -0.045em;
+      line-height: 1.05;
+    }
+
+    html[data-theme="neo"] body .app {
+      padding: 12px 10px 24px;
+    }
+
+    html[data-theme="neo"] body .card,
+    html[data-theme="neo"] body .feature-nav,
+    html[data-theme="neo"] body .dashboard-metrics,
+    html[data-theme="neo"] body .savings-goals {
+      margin: 12px;
+    }
+
+    html[data-theme="neo"] body .bottom-nav {
+      background: var(--surface);
+    }
+
+    html[data-theme="neo"] body .bottom-nav button {
+      background: transparent;
+      box-shadow: none;
+    }
+
+    html[data-theme="neo"] body .bottom-nav button[aria-current="page"] {
+      position: relative;
+      border: 3px solid var(--line);
+      background: var(--warm);
+      color: var(--ink);
+      box-shadow: var(--hard-shadow);
+    }
+
+    html[data-theme="neo"] body .bottom-nav button[aria-current="page"]::before {
+      width: 7px;
+      height: 7px;
+      background: var(--line);
+      content: "";
+      position: absolute;
+      top: 5px;
+      left: 5px;
+    }
+
+    html[data-theme="neo"] body .record-switch,
+    html[data-theme="neo"] body .period-tabs,
+    html[data-theme="neo"] body .view-switch {
+      background: var(--surface-soft);
+    }
+
+    html[data-theme="neo"] body .record-switch button[aria-pressed="true"],
+    html[data-theme="neo"] body .period-tabs button[aria-pressed="true"],
+    html[data-theme="neo"] body #viewList:checked + label,
+    html[data-theme="neo"] body #viewCalendar:checked + label,
+    html[data-theme="neo"] body .month-chip[aria-pressed="true"] {
+      border: 3px solid var(--line);
+      background: var(--warm);
+      box-shadow: 3px 3px 0 var(--line);
+      color: var(--ink);
+    }
+
+    html[data-theme="neo"] body .calendar-day.selected,
+    html[data-theme="neo"] body .calendar-day.today,
+    html[data-theme="neo"] body .calendar-day.today.selected {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: var(--hard-shadow);
+    }
+
+    html[data-theme="neo"] body .savings-progress {
+      background: var(--surface);
+    }
+
+    html[data-theme="neo"] body .savings-progress-fill {
+      background: var(--warm);
+    }
+
+    html[data-theme="neo"] body .chart-frame {
+      padding: 8px;
+    }
+
+    html[data-theme="neo"] body canvas {
+      filter: contrast(1.05);
+    }
+
+    html[data-theme="neo"] body .category-tag {
+      color: var(--ink);
+    }
+
+    @media (max-width: 639px) {
+      html[data-theme="neo"] body .app {
+        padding-right: 12px;
+        padding-left: 12px;
+      }
+
+      html[data-theme="neo"] body .stats-metric {
+        padding: 10px 7px;
+      }
+
+      html[data-theme="neo"] body .stats-metric .metric-value {
+        font-size: clamp(16px, 4.5vw, 23px);
+      }
+
+      html[data-theme="notion"] body .stats-metric {
+        padding: 10px 7px;
+      }
+
+      html[data-theme="notion"] body .stats-metric .metric-value {
+        font-size: clamp(13px, 3.8vw, 20px);
+      }
+    }
+
+    /* 外观设置与顶栏明暗按钮。 */
+    .appearance-options {
+      min-width: 0;
+      margin: 0 0 16px;
+      padding: 0;
+      border: 0;
+    }
+
+    .appearance-options legend {
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .appearance-choice-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .appearance-choice {
+      min-height: 42px;
+      padding: 0 13px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--surface-soft);
+      color: var(--ink);
+      font: inherit;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .appearance-choice[aria-pressed="true"] {
+      border-color: var(--accent);
+      background: color-mix(in srgb, var(--accent) 12%, var(--surface));
+      color: var(--accent);
+      font-weight: 650;
+    }
+
+    .theme-control {
+      min-width: 44px;
+      justify-content: center;
+      padding: 0 10px;
+      font-size: 20px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .theme-icon {
+      display: inline-block;
+      transition: transform 200ms ease;
+    }
+
+    .theme-control:active .theme-icon {
+      transform: scale(0.9);
+    }
+
+    /* 轻量 emoji 只用于标题、汇总识别、账单分类与空状态。 */
+    #homePage > .feature-nav + .dashboard-metrics .metric-card:nth-child(1) .metric-label::before {
+      content: "💰 ";
+    }
+
+    #homePage > .feature-nav + .dashboard-metrics .metric-card:nth-child(2) .metric-label::before {
+      content: "🧮 ";
+    }
+
+    #homePage > .feature-nav + .dashboard-metrics .metric-card:nth-child(3) .metric-label::before {
+      content: "🎯 ";
+    }
+
+    #homePage > .feature-nav + .dashboard-metrics .metric-card:nth-child(4) .metric-label::before {
+      content: "💸 ";
+    }
+
+    #savingsGoalsTitle::before { content: "🎯 "; }
+    #homeBillsTitle::before { content: "🧾 "; }
+    #listTitle::before { content: "📅 "; }
+    #statsTitle::before { content: "📊 "; }
+    #comparisonTitle::before { content: "📊 "; }
+    #chartTitle::before { content: "📊 "; }
+    #assetsTitle::before { content: "🏦 "; }
+    #budgetTitle::before { content: "🎯 "; }
+    #analysisTitle::before { content: "💡 "; }
+    #appearanceTitle::before { content: "🎨 "; }
+    #homePage > .feature-nav button[data-action="add"] .feature-name::before { content: "⚡ "; }
+    #homePage > .feature-nav button[data-page="calendar"] .feature-name::before { content: "📅 "; }
+    #homePage > .feature-nav button[data-page="stats"] .feature-name::before { content: "📊 "; }
+    .header h1::before { content: "🏠 "; }
+    #statsExpenseLabel::after { content: " 💸"; }
+    #statsIncomeLabel::after { content: " 💰"; }
+    #statsBalanceLabel::after { content: " 🧮"; }
+
+    .bottom-nav button[data-page="home"] .bottom-nav-icon::before { content: "🏠"; }
+    .bottom-nav button[data-page="calendar"] .bottom-nav-icon::before { content: "📅"; }
+    .bottom-nav button[data-page="assets"] .bottom-nav-icon::before { content: "🏦"; }
+    .bottom-nav button[data-page="stats"] .bottom-nav-icon::before { content: "📊"; }
+    .bottom-nav button[data-page="profile"] .bottom-nav-icon::before { content: "👤"; }
+
+    .bottom-nav-icon {
+      font-size: 0;
+    }
+
+    .bottom-nav-icon::before {
+      font-size: 18px;
+    }
+
+    .category-tag[data-category="食堂"]::after,
+    .category-tag[data-category="外卖"]::after { content: " 🍜"; }
+    .category-tag[data-category="网购"]::after { content: " 🛍️"; }
+    .category-tag[data-category="其他"]::after { content: " ✨"; }
+    .empty-state::before {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 32px;
+      content: "📭";
+    }
+
+    .calendar-details .calendar-note:nth-child(2)::before {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 28px;
+      content: "📭";
+    }
+
+    #homeEmptyState {
+      font-size: 0;
+    }
+
+    #homeEmptyState::after {
+      font-size: 14px;
+      content: "还没有记账，点下面按钮记第一笔 ✍️";
+    }
+
+    .savings-goal-status[data-status="进行中"]::before { content: "🔥 "; }
+    .savings-goal-status[data-status="快要达成"]::before { content: "⏳ "; }
+    .savings-goal-status[data-status="已完成"]::before { content: "✅ "; }
+
+    .category-option[data-category="餐饮"]::after,
+    .category-option[data-category="食堂"]::after,
+    .category-option[data-category="外卖"]::after { content: " 🍜"; }
+    .category-option[data-category="交通"]::after,
+    .category-option[data-category="交通出行"]::after,
+    .category-option[data-category="加油充电"]::after,
+    .category-option[data-category="车辆保养"]::after,
+    .category-option[data-category="停车过路"]::after,
+    .category-option[data-category="车相关"]::after { content: " 🚌"; }
+    .category-option[data-category="购物"]::after,
+    .category-option[data-category="网购"]::after,
+    .category-option[data-category="家居用品"]::after,
+    .category-option[data-category="家电数码"]::after { content: " 🛍️"; }
+    .category-option[data-category="娱乐"]::after,
+    .category-option[data-category="游戏娱乐"]::after { content: " 🎮"; }
+    .category-option[data-category="学习"]::after,
+    .category-option[data-category="教育学习"]::after { content: " 📚"; }
+    .category-option[data-category="住房"]::after,
+    .category-option[data-category="住房租房"]::after,
+    .category-option[data-category="住房升级"]::after,
+    .category-option[data-category="房屋维护"]::after { content: " 🏠"; }
+    .category-option[data-category="医疗"]::after,
+    .category-option[data-category="健康医疗"]::after { content: " 💊"; }
+    .category-option[data-category="人情"]::after,
+    .category-option[data-category="教育等人情往来"]::after { content: " 🎁"; }
+    .category-option[data-category="宠物"]::after { content: " 🐱"; }
+    .category-option[data-category="放松计划"]::after,
+    .category-option[data-category="娱乐休闲"]::after,
+    .category-option[data-category="兴趣爱好"]::after { content: " 🎮"; }
+    .category-option[data-category="美好生活"]::after,
+    .category-option[data-category="生活开销"]::after,
+    .category-option[data-category="美容"]::after { content: " ✨"; }
+    .category-option[data-category="工资"]::after,
+    .category-option[data-category="兼职收入"]::after { content: " 💼"; }
+    .category-option[data-category="其他"]::after { content: " ✨"; }
+
+    html[data-theme="glass"][data-mode="dark"] body :is(
+      .card, .metric-card, .stats-metric, .savings-goal-card,
+      .feature-link, .bill-item, .bill-item:first-child, .day-bill-item,
+      .calendar-detail-item, .bottom-nav
+    ) {
+      border-color: var(--line);
+      background: linear-gradient(145deg, rgb(255 255 255 / 4%), transparent 58%), var(--surface);
+      box-shadow: inset 0 1px 0 rgb(255 255 255 / 8%), 0 8px 26px rgb(0 0 0 / 14%);
+      -webkit-backdrop-filter: blur(24px) saturate(120%);
+      backdrop-filter: blur(24px) saturate(120%);
+    }
+
+    html[data-theme="glass"][data-mode="dark"] body :is(
+      .record-switch, .period-tabs, .view-switch
+    ) {
+      border-color: var(--line);
+      background: rgb(23 25 32 / 48%);
+    }
+
+    html[data-theme="glass"][data-mode="dark"] body :is(
+      input, select, textarea, .calendar-day
+    ) {
+      border-color: var(--line);
+      background: rgb(23 25 32 / 54%);
+      color: var(--ink);
+    }
+
+    html[data-theme="glass"][data-mode="dark"] body :is(
+      .theme-control, .install-button, .appearance-choice, .category-option,
+      .month-chip, .calendar-controls button, #closeRecordButton
+    ) {
+      border-color: var(--line);
+      background: var(--surface);
+      color: var(--ink);
+    }
+
+    html[data-theme="glass"][data-mode="dark"] body :is(
+      .record-switch button[aria-pressed="true"],
+      .period-tabs button[aria-pressed="true"],
+      #viewList:checked + label,
+      #viewCalendar:checked + label,
+      .month-chip[aria-pressed="true"]
+    ) {
+      background: rgb(71 156 130 / 24%);
+      color: #b6e2d3;
+    }
+
+    html[data-theme="glass"][data-mode="dark"] body .calendar-day.selected:not(.today) {
+      background: rgb(71 156 130 / 24%);
+      color: #c8ecdf;
+    }
+
+    html[data-theme="glass"][data-mode="dark"] body .bottom-nav button[aria-current="page"],
+    html[data-theme="glass"][data-mode="dark"] body .appearance-choice[aria-pressed="true"] {
+      background: rgb(71 156 130 / 22%);
+      color: #b6e2d3;
+    }
+
+    html[data-theme="notion"] body .bill-count {
+      padding: 3px 7px;
+      border-radius: 3px;
+      background: #f1f1ef;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    html[data-theme="notion"][data-mode="dark"] body .bill-count {
+      background: #202020;
+    }
+
+    html[data-theme="notion"] body .legend-dot:nth-child(1) { background: var(--chart-category-1); }
+    html[data-theme="notion"] body .legend-dot:nth-child(2) { background: var(--chart-category-2); }
+    html[data-theme="notion"] body .legend-dot:nth-child(3) { background: var(--chart-category-3); }
+    html[data-theme="notion"] body .legend-dot:nth-child(4) { background: var(--chart-category-4); }
+
+    html[data-theme="neo"] body .stats-metric:nth-child(1) { background: var(--expense); }
+    html[data-theme="neo"] body .stats-metric:nth-child(2) { background: var(--income); }
+    html[data-theme="neo"] body .stats-metric:nth-child(3) { background: var(--warm); }
+
+    html[data-theme="neo"] body .metric-value.expense,
+    html[data-theme="neo"] body .metric-value.income,
+    html[data-theme="neo"] body .metric-value.balance-negative,
+    html[data-theme="neo"] body .metric-value.balance-positive {
+      color: var(--ink);
+    }
+
+    html[data-theme="neo"] body .bottom-nav button:not([aria-current="page"]) {
+      border-width: 1px;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    html[data-theme="neo"] body .appearance-choice[aria-pressed="true"] {
+      background: var(--warm);
+      color: var(--ink);
+    }
+
+    html[data-theme="neo"] body .bill-count,
+    html[data-theme="neo"] body .savings-goal-status {
+      border: 3px solid var(--line);
+      border-radius: 2px;
+      background: var(--warm);
+      box-shadow: var(--hard-shadow);
+      color: var(--ink);
+    }
+
+    html[data-theme="neo"] body .theme-icon {
+      transition: transform 200ms ease;
+    }
+
+    html[data-mode="dark"] body .theme-icon {
+      transform: rotate(180deg);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      body,
+      body :is(.card, .metric-card, .stats-metric, .savings-goal-card,
+        .feature-link, .bottom-nav, .bottom-nav button, button, input,
+        select, textarea, .bill-item, .day-bill-item, .calendar-detail-item,
+        .calendar-day, .month-chip, .category-option, .category-tag,
+        .record-switch, .period-tabs, .view-switch, .theme-icon) {
+        transition: none;
+      }
+    }
   </style>
 </head>
 <body>
@@ -2778,11 +3979,10 @@
         <p id="pwaMessage" class="pwa-message" role="status" aria-live="polite" hidden></p>
       </div>
       <div class="header-actions">
-        <input id="themeToggle" type="checkbox" aria-label="切换深色模式">
-        <label class="theme-control" for="themeToggle">
-          <span class="theme-icon" aria-hidden="true">◐</span>
-          <span class="theme-label">深色模式</span>
-        </label>
+        <button id="quickThemeToggle" class="theme-control" type="button"
+          aria-label="切换深色模式" title="切换深色模式">
+          <span class="theme-icon" aria-hidden="true">🌙</span>
+        </button>
       </div>
     </header>
 
@@ -2893,7 +4093,7 @@
           <h2 id="homeBillsTitle">最近账单</h2>
           <span id="homeBillCount" class="bill-count">0 笔</span>
         </div>
-        <div id="homeEmptyState" class="empty-state">还没有账单，添加第一笔记录吧。</div>
+        <div id="homeEmptyState" class="empty-state">还没有记账，点下面按钮记第一笔 ✍️</div>
         <div id="billGroups" class="day-groups"></div>
       </section>
 
@@ -3106,10 +4306,10 @@
             <canvas id="categoryAreaChart" role="img" aria-label="各分类支出面积图"></canvas>
           </div>
           <ul id="categoryLegend" class="category-legend" aria-label="分类图例">
-            <li class="legend-item"><span class="legend-dot" style="--legend-color:#75b9a7"></span>食品餐饮</li>
-            <li class="legend-item"><span class="legend-dot" style="--legend-color:#88aeda"></span>健康医疗</li>
-            <li class="legend-item"><span class="legend-dot" style="--legend-color:#b7a5d5"></span>居家生活</li>
-            <li class="legend-item"><span class="legend-dot" style="--legend-color:#e4b889"></span>其他</li>
+            <li class="legend-item"><span class="legend-dot" style="--legend-color:var(--chart-category-1)"></span>食品餐饮</li>
+            <li class="legend-item"><span class="legend-dot" style="--legend-color:var(--chart-category-2)"></span>健康医疗</li>
+            <li class="legend-item"><span class="legend-dot" style="--legend-color:var(--chart-category-3)"></span>居家生活</li>
+            <li class="legend-item"><span class="legend-dot" style="--legend-color:var(--chart-category-4)"></span>其他</li>
           </ul>
         </div>
       </section>
@@ -3154,6 +4354,31 @@
     </section>
 
     <section id="profilePage" class="page-view" data-page-panel="profile" hidden>
+      <section id="appearanceCard" class="card" aria-labelledby="appearanceTitle">
+        <div class="section-heading">
+          <h2 id="appearanceTitle">外观设置</h2>
+        </div>
+        <fieldset class="appearance-options">
+          <legend>界面皮肤</legend>
+          <div class="appearance-choice-row">
+            <button type="button" class="appearance-choice" data-theme-choice="glass"
+              aria-pressed="true">🫧 液态玻璃</button>
+            <button type="button" class="appearance-choice" data-theme-choice="notion"
+              aria-pressed="false">📄 Notion 极简</button>
+            <button type="button" class="appearance-choice" data-theme-choice="neo"
+              aria-pressed="false">🟥 新粗野主义</button>
+          </div>
+        </fieldset>
+        <fieldset class="appearance-options">
+          <legend>显示模式</legend>
+          <div class="appearance-choice-row">
+            <button type="button" class="appearance-choice" data-mode-choice="light"
+              aria-pressed="true">浅色</button>
+            <button type="button" class="appearance-choice" data-mode-choice="dark"
+              aria-pressed="false">深色</button>
+          </div>
+        </fieldset>
+      </section>
       <section class="card" aria-labelledby="budgetTitle">
         <div class="section-heading">
           <h2 id="budgetTitle">月预算</h2>
@@ -3192,7 +4417,7 @@
     <!-- 旧账单列表留在日历页作为兼容输出，首页由同一份本地数据分组呈现。 -->
     <div class="legacy-ledger" hidden>
       <ul id="billList" class="bill-list"></ul>
-      <div id="emptyState" class="empty-state">还没有账单，记下今天的第一笔吧。</div>
+      <div id="emptyState" class="empty-state">还没有记账，点下面按钮记第一笔 ✍️</div>
     </div>
 
     <nav class="bottom-nav" aria-label="主导航">
@@ -3301,6 +4526,7 @@
 
         const category = document.createElement("span");
         category.className = "category-tag";
+        category.dataset.category = bill.category;
         category.textContent = bill.category;
 
         const date = document.createElement("time");
@@ -3410,7 +4636,7 @@
 
       if (expenseChart) expenseChart.destroy();
 
-      const chartColors = ["#5b7cde", "#f2a65a", "#63b995", "#b18ad8"];
+      const chartColors = chartTheme().categories;
       chartContainer.hidden = false;
       expenseChart = new Chart(expenseChartCanvas, {
         type: "pie",
@@ -3419,8 +4645,8 @@
           datasets: [{
             data: categoryTotals,
             backgroundColor: chartColors,
-            borderColor: "#ffffff",
-            borderWidth: 3
+            borderColor: chartTheme().pieBorder,
+            borderWidth: chartTheme().pieBorderWidth
           }]
         },
         options: {
@@ -3622,7 +4848,6 @@
     const budgetForm = document.querySelector("#budgetForm");
     const budgetInput = document.querySelector("#monthlyBudget");
     const budgetMessage = document.querySelector("#budgetMessage");
-    const themeToggle = document.querySelector("#themeToggle");
     let incomes = [];
     let monthlyBudgets = {};
     let statsPeriod = "month";
@@ -3815,7 +5040,7 @@
       if (recordsAll.length === 0) {
         const empty = document.createElement("p");
         empty.className = "empty-state";
-        empty.textContent = "还没有本地账单记录。";
+        empty.textContent = "还没有记账，点下面按钮记第一笔 ✍️";
         calendarList.append(empty);
       }
       document.querySelector("#assetsIncome").textContent =
@@ -3907,7 +5132,7 @@
       if (selectedRecords.length === 0) {
         const empty = document.createElement("p");
         empty.className = "calendar-note";
-        empty.textContent = "这一天没有本地账单记录。";
+        empty.textContent = "还没有记账，点下面按钮记第一笔 ✍️";
         details.append(empty);
         return;
       }
@@ -4060,10 +5285,36 @@
     }
 
     function chartTheme() {
-      const dark = themeToggle.checked;
+      const style = getComputedStyle(document.body);
+      const value = (name) => style.getPropertyValue(name).trim();
+      const gridDash = value("--chart-grid-dash");
       return {
-        text: dark ? "#c1ccd9" : "#71808a",
-        grid: dark ? "rgba(220,230,245,.10)" : "rgba(100,120,130,.12)"
+        text: value("--chart-text"),
+        grid: value("--chart-grid"),
+        expense: value("--chart-expense"),
+        income: value("--chart-income"),
+        expenseFill: value("--chart-expense-fill"),
+        incomeFill: value("--chart-income-fill"),
+        categories: [
+          value("--chart-category-1"),
+          value("--chart-category-2"),
+          value("--chart-category-3"),
+          value("--chart-category-4")
+        ],
+        categoryFills: [
+          value("--chart-category-fill-1"),
+          value("--chart-category-fill-2"),
+          value("--chart-category-fill-3"),
+          value("--chart-category-fill-4")
+        ],
+        assetLine: value("--chart-asset-line"),
+        pieBorder: value("--chart-pie-border"),
+        pieBorderWidth: Number(value("--chart-pie-border-width")) || 1,
+        barBorder: value("--chart-bar-border"),
+        barBorderWidth: Number(value("--chart-bar-border-width")) || 0,
+        barRadius: Number(value("--chart-bar-radius")) || 0,
+        lineWidth: Number(value("--chart-line-width")) || 2,
+        gridDash: gridDash ? gridDash.split(/\s+/).map(Number) : []
       };
     }
 
@@ -4140,15 +5391,19 @@
               {
                 label: "支出",
                 data: expenseValues,
-                backgroundColor: "rgba(215, 117, 119, .78)",
-                borderRadius: 5,
+                backgroundColor: colors.expenseFill,
+                borderColor: colors.barBorder,
+                borderWidth: colors.barBorderWidth,
+                borderRadius: colors.barRadius,
                 maxBarThickness: 18
               },
               {
                 label: "收入",
                 data: incomeValues,
-                backgroundColor: "rgba(91, 166, 133, .78)",
-                borderRadius: 5,
+                backgroundColor: colors.incomeFill,
+                borderColor: colors.barBorder,
+                borderWidth: colors.barBorderWidth,
+                borderRadius: colors.barRadius,
                 maxBarThickness: 18
               }
             ]
@@ -4167,7 +5422,7 @@
               },
               y: {
                 beginAtZero: true,
-                grid: { color: colors.grid },
+                grid: { color: colors.grid, borderDash: colors.gridDash },
                 ticks: { color: colors.text }
               }
             }
@@ -4184,12 +5439,12 @@
 
     function renderCategoryArea(records, labels, colors) {
       const groups = [
-        { label: "食品餐饮", categories: ["食堂", "外卖"], color: "#75b9a7" },
-        { label: "健康医疗", categories: [], color: "#88aeda" },
-        { label: "居家生活", categories: ["网购"], color: "#b7a5d5" },
-        { label: "其他", categories: ["其他"], color: "#e4b889" }
+        { label: "食品餐饮", categories: ["食堂", "外卖"] },
+        { label: "健康医疗", categories: [] },
+        { label: "居家生活", categories: ["网购"] },
+        { label: "其他", categories: ["其他"] }
       ];
-      const dataSets = groups.map((group) => {
+      const dataSets = groups.map((group, index) => {
         const values = Array(labels.length).fill(0);
         for (const record of records) {
           if (record.kind !== "expense" || !group.categories.includes(record.category)) continue;
@@ -4215,10 +5470,13 @@
         return {
           label: group.label,
           data: values,
-          borderColor: group.color,
-          backgroundColor: `${group.color}40`,
+          borderColor: ["neo", "notion"].includes(document.documentElement.dataset.theme)
+            ? colors.assetLine
+            : colors.categories[index],
+          backgroundColor: colors.categoryFills[index],
           fill: true,
-          tension: 0.35,
+          borderWidth: colors.lineWidth,
+          tension: document.documentElement.dataset.theme === "neo" ? 0 : 0.35,
           pointRadius: 2
         };
       });
@@ -4238,7 +5496,11 @@
             },
             scales: {
               x: { grid: { display: false }, ticks: { color: colors.text, maxTicksLimit: 12 } },
-              y: { beginAtZero: true, grid: { color: colors.grid }, ticks: { color: colors.text } }
+              y: {
+                beginAtZero: true,
+                grid: { color: colors.grid, borderDash: colors.gridDash },
+                ticks: { color: colors.text }
+              }
             }
           }
         }
@@ -4272,10 +5534,13 @@
           datasets: [{
             label: "累计结余",
             data: values,
-            borderColor: "#69aa96",
-            backgroundColor: "rgba(105, 170, 150, .18)",
+            borderColor: colors.assetLine,
+            backgroundColor: document.documentElement.dataset.theme === "neo"
+              ? "transparent"
+              : colors.categoryFills[0],
             fill: true,
-            tension: 0.3,
+            borderWidth: colors.lineWidth,
+            tension: document.documentElement.dataset.theme === "neo" ? 0 : 0.3,
             pointRadius: 2
           }]
         },
@@ -4285,7 +5550,10 @@
           plugins: { legend: { display: false } },
           scales: {
             x: { grid: { display: false }, ticks: { color: colors.text } },
-            y: { grid: { color: colors.grid }, ticks: { color: colors.text } }
+            y: {
+              grid: { color: colors.grid, borderDash: colors.gridDash },
+              ticks: { color: colors.text }
+            }
           }
         }
       });
@@ -4466,6 +5734,7 @@
           document.querySelector(`#${prefix}ProgressFill`).style.width = `${progress}%`;
           const statusElement = document.querySelector(`#${prefix}Status`);
           statusElement.textContent = status;
+          statusElement.dataset.status = status;
           statusElement.classList.toggle("complete", status === "已完成");
           statusElement.classList.toggle("near", status === "快要达成");
         }
@@ -4531,6 +5800,7 @@
             const button = document.createElement("button");
             button.type = "button";
             button.className = "category-option";
+            button.dataset.category = group.name;
             button.textContent = group.name;
             button.setAttribute(
               "aria-pressed",
@@ -4576,6 +5846,7 @@
             const button = document.createElement("button");
             button.type = "button";
             button.className = "category-option";
+            button.dataset.category = detail;
             button.textContent = detail;
             button.setAttribute(
               "aria-pressed",
@@ -4744,22 +6015,70 @@
       }
     });
 
-    // 主题沿用原 CSS 开关，并补上本地记忆，刷新后仍使用上次选择。
-    try {
-      themeToggle.checked = localStorage.getItem(THEME_STORAGE_KEY) === "dark";
-    } catch (error) {
-      console.error("读取主题偏好失败：", error);
-    }
-    themeToggle.addEventListener("change", () => {
-      try {
-        localStorage.setItem(THEME_STORAGE_KEY, themeToggle.checked ? "dark" : "light");
-      } catch (error) {
-        console.error("保存主题偏好失败：", error);
+    const quickThemeToggle = document.querySelector("#quickThemeToggle");
+    const appearanceChoices = document.querySelectorAll("[data-theme-choice], [data-mode-choice]");
+
+    function setAppearance(style, mode, persist = true) {
+      const root = document.documentElement;
+      root.dataset.theme = style;
+      root.dataset.mode = mode;
+      const nextMode = mode === "light" ? "dark" : "light";
+      const modeIcon = mode === "light" ? "🌙" : "☀️";
+      quickThemeToggle.querySelector(".theme-icon").textContent = modeIcon;
+      quickThemeToggle.setAttribute(
+        "aria-label",
+        `切换到${nextMode === "dark" ? "深色" : "浅色"}模式`
+      );
+      quickThemeToggle.title = `切换到${nextMode === "dark" ? "深色" : "浅色"}模式`;
+      for (const choice of appearanceChoices) {
+        const selected = choice.dataset.themeChoice
+          ? choice.dataset.themeChoice === style
+          : choice.dataset.modeChoice === mode;
+        choice.setAttribute("aria-pressed", String(selected));
+      }
+
+      if (persist) {
+        try {
+          localStorage.setItem("themeStyle", style);
+          localStorage.setItem("themeMode", mode);
+          localStorage.setItem(THEME_STORAGE_KEY, mode);
+        } catch (error) {
+          console.error("保存外观偏好失败：", error);
+        }
       }
       if (!document.querySelector("#statsPage").hidden) renderStats();
       if (!document.querySelector("#assetsPage").hidden) renderAssetsPage();
-    });
+      if (expenseChart) generateChartButton.click();
+    }
 
+    let initialTheme = "glass";
+    let initialMode = "light";
+    try {
+      const savedTheme = localStorage.getItem("themeStyle");
+      const savedMode = localStorage.getItem("themeMode");
+      if (["glass", "notion", "neo"].includes(savedTheme)) initialTheme = savedTheme;
+      if (savedMode === "light" || savedMode === "dark") {
+        initialMode = savedMode;
+      } else if (localStorage.getItem(THEME_STORAGE_KEY) === "dark") {
+        initialMode = "dark";
+      }
+    } catch (error) {
+      console.error("读取外观偏好失败：", error);
+    }
+    setAppearance(initialTheme, initialMode, false);
+
+    quickThemeToggle.addEventListener("click", () => {
+      const nextMode = document.documentElement.dataset.mode === "light" ? "dark" : "light";
+      setAppearance(document.documentElement.dataset.theme, nextMode);
+    });
+    for (const choice of appearanceChoices) {
+      choice.addEventListener("click", () => {
+        setAppearance(
+          choice.dataset.themeChoice || document.documentElement.dataset.theme,
+          choice.dataset.modeChoice || document.documentElement.dataset.mode
+        );
+      });
+    }
     const todayForCustomRange = new Date();
     document.querySelector("#customStartDate").value =
       `${todayForCustomRange.getFullYear()}-${String(todayForCustomRange.getMonth() + 1).padStart(2, "0")}-01`;
