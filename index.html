@@ -1211,19 +1211,19 @@
     }
 
     .metric-value.expense {
-      color: #d66f70;
+      color: var(--expense);
     }
 
     .metric-value.income {
-      color: #4a9a7c;
+      color: var(--income);
     }
 
     .metric-value.balance-negative {
-      color: #d66f70;
+      color: var(--expense);
     }
 
     .metric-value.balance-positive {
-      color: #4a9a7c;
+      color: var(--income);
     }
 
     /* 存钱目标看板：目标金额由用户设置，已存金额来自现有收入与支出记录。 */
@@ -2222,6 +2222,546 @@
       .metric-card,
       .day-bill-item {
         scroll-behavior: auto;
+        transition: none;
+      }
+    }
+
+    /* 液态玻璃主题令牌：仅覆盖外观，不改变页面结构与业务交互。 */
+    :root {
+      color-scheme: light;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        "PingFang SC", "Microsoft YaHei", sans-serif;
+      color: #2c3038;
+      background: #f0f2f6;
+      --glass-surface: rgb(255 255 255 / 72%);
+      --glass-surface-soft: rgb(255 255 255 / 54%);
+      --glass-border: rgb(255 255 255 / 74%);
+      --glass-edge: rgb(255 255 255 / 62%);
+      --glass-shadow: 0 8px 26px rgb(40 50 62 / 5%);
+      --ink: #2c3038;
+      --muted: #6b7280;
+      --accent: #479c82;
+      --income: #56b886;
+      --expense: #d96464;
+      --warm: #e6a249;
+      --glass-blur: 24px;
+    }
+
+    /* 柔和渐变与纯 CSS 细纹构成底层，不使用图片或插画。 */
+    body {
+      color: var(--ink);
+      background:
+        repeating-linear-gradient(0deg, rgb(255 255 255 / 7%) 0 1px, transparent 1px 3px),
+        repeating-linear-gradient(90deg, rgb(78 91 110 / 3%) 0 1px, transparent 1px 4px),
+        linear-gradient(145deg, #f0f2f6 0%, #f7f8fa 100%);
+      background-attachment: fixed;
+      padding-bottom: max(112px, calc(96px + env(safe-area-inset-bottom)));
+      font-weight: 400;
+      letter-spacing: 0.01em;
+    }
+
+    body:has(#themeToggle:checked) {
+      color-scheme: dark;
+      color: #e9ebf0;
+      background:
+        repeating-linear-gradient(0deg, rgb(255 255 255 / 2.5%) 0 1px, transparent 1px 3px),
+        repeating-linear-gradient(90deg, rgb(0 0 0 / 4%) 0 1px, transparent 1px 4px),
+        linear-gradient(145deg, #171920 0%, #20242d 100%);
+      background-attachment: fixed;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: var(--ink);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .eyebrow,
+    .subtitle,
+    .pwa-message,
+    .summary-label,
+    .section-hint,
+    .bill-count,
+    .bill-meta,
+    .empty-state,
+    .chart-message,
+    .chart-empty-message,
+    .calendar-note,
+    .metric-label,
+    .day-bill-meta,
+    .bill-day-total,
+    .legend-item,
+    .savings-goal-values,
+    .savings-goal-footer,
+    .category-hint {
+      color: var(--muted);
+    }
+
+    /* 主卡片、指标卡与目标卡共享通透基底和轻柔折射边缘。 */
+    .card,
+    .metric-card,
+    .stats-metric,
+    .savings-goal-card {
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      background: var(--glass-surface);
+      box-shadow: inset 0 1px 0 var(--glass-edge), var(--glass-shadow);
+      -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(135%);
+      backdrop-filter: blur(var(--glass-blur)) saturate(135%);
+    }
+
+    .card {
+      border-color: rgb(255 255 255 / 66%);
+      background:
+        linear-gradient(145deg, rgb(255 255 255 / 34%), transparent 58%),
+        var(--glass-surface);
+      box-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 72%),
+        0 8px 26px rgb(40 50 62 / 5%);
+    }
+
+    .summary-amount,
+    .metric-value,
+    .savings-goal-values strong {
+      color: var(--accent);
+    }
+
+    .summary-icon,
+    .feature-icon {
+      background: rgb(71 156 130 / 12%);
+      color: var(--accent);
+    }
+
+    /* 表单与按钮沿用统一的大圆角玻璃控件和轻量按压反馈。 */
+    button,
+    input,
+    select,
+    textarea,
+    .install-button,
+    .theme-control,
+    .feature-link,
+    .month-chip,
+    .calendar-controls button,
+    .category-option,
+    #closeRecordButton {
+      border-radius: 20px;
+      font-family: inherit;
+      transition:
+        background-color 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease,
+        filter 180ms ease,
+        transform 140ms ease;
+    }
+
+    button,
+    .install-button,
+    .theme-control,
+    .feature-link,
+    .month-chip,
+    .calendar-controls button,
+    .category-option,
+    #closeRecordButton {
+      -webkit-backdrop-filter: blur(16px) saturate(125%);
+      backdrop-filter: blur(16px) saturate(125%);
+    }
+
+    button:hover,
+    .install-button:hover,
+    .theme-control:hover,
+    .feature-link:hover,
+    .month-chip:hover,
+    .calendar-controls button:hover,
+    .category-option:hover,
+    #closeRecordButton:hover {
+      filter: brightness(1.025);
+      -webkit-backdrop-filter: blur(19px) saturate(135%);
+      backdrop-filter: blur(19px) saturate(135%);
+    }
+
+    button:active,
+    .install-button:active,
+    .theme-control:active,
+    .feature-link:active,
+    .month-chip:active,
+    .calendar-controls button:active,
+    .category-option:active,
+    #closeRecordButton:active {
+      transform: scale(0.98);
+    }
+
+    input,
+    select,
+    textarea {
+      border-color: rgb(116 133 145 / 18%);
+      background: rgb(255 255 255 / 58%);
+      color: var(--ink);
+      -webkit-backdrop-filter: blur(14px);
+      backdrop-filter: blur(14px);
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: rgb(71 156 130 / 55%);
+      box-shadow: 0 0 0 3px rgb(71 156 130 / 12%);
+    }
+
+    .install-button,
+    .chart-button,
+    .submit-button,
+    .primary-add-button {
+      border: 1px solid rgb(255 255 255 / 48%);
+      background: linear-gradient(135deg, #55a48c, #479c82);
+      box-shadow: inset 0 1px 0 rgb(255 255 255 / 26%), 0 5px 16px rgb(71 156 130 / 14%);
+      color: #fff;
+    }
+
+    .install-button:hover,
+    .chart-button:hover,
+    .submit-button:hover,
+    .primary-add-button:hover {
+      background: linear-gradient(135deg, #5bab93, #4b9f86);
+    }
+
+    .record-switch,
+    .period-tabs,
+    .view-switch {
+      border: 1px solid rgb(255 255 255 / 62%);
+      border-radius: 20px;
+      background: rgb(215 224 224 / 38%);
+      -webkit-backdrop-filter: blur(18px);
+      backdrop-filter: blur(18px);
+    }
+
+    .record-switch button,
+    .period-tabs button,
+    .view-switch label {
+      border-radius: 16px;
+      color: var(--muted);
+    }
+
+    .record-switch button[aria-pressed="true"],
+    .period-tabs button[aria-pressed="true"],
+    #viewList:checked + label,
+    #viewCalendar:checked + label,
+    .month-chip[aria-pressed="true"] {
+      background: rgb(255 255 255 / 78%);
+      box-shadow: inset 0 1px 0 rgb(255 255 255 / 80%), 0 2px 8px rgb(49 69 83 / 6%);
+      color: var(--accent);
+    }
+
+    /* 单条账单、日历明细与日历日期均作为轻量玻璃层呈现。 */
+    .bill-item,
+    .bill-item:first-child,
+    .day-bill-item,
+    .calendar-detail-item {
+      border: 1px solid rgb(255 255 255 / 68%);
+      border-radius: 20px;
+      background: var(--glass-surface-soft);
+      box-shadow: inset 0 1px 0 rgb(255 255 255 / 54%), 0 3px 12px rgb(40 50 62 / 3%);
+      -webkit-backdrop-filter: blur(18px) saturate(125%);
+      backdrop-filter: blur(18px) saturate(125%);
+    }
+
+    .bill-title,
+    .bill-amount,
+    .day-bill-title,
+    .bill-day-heading,
+    .calendar-controls strong,
+    .savings-goal-title,
+    .analysis-subheading,
+    .analysis-summary {
+      color: var(--ink);
+    }
+
+    .bill-amount,
+    .day-bill-amount,
+    .calendar-detail-item strong {
+      color: var(--expense);
+    }
+
+    .bill-amount.income,
+    .day-bill-amount.income,
+    .calendar-detail-item strong.income {
+      color: var(--income);
+    }
+
+    .calendar-day {
+      border: 1px solid rgb(255 255 255 / 56%);
+      border-radius: 14px;
+      background: rgb(255 255 255 / 40%);
+      box-shadow: inset 0 1px 0 rgb(255 255 255 / 44%);
+      color: var(--ink);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+    }
+
+    .calendar-day.selected,
+    .calendar-day.today,
+    .calendar-day.today.selected {
+      border-color: rgb(71 156 130 / 38%);
+      background: linear-gradient(145deg, #61ad96, #479c82);
+      box-shadow: inset 0 1px 0 rgb(255 255 255 / 30%), 0 4px 12px rgb(71 156 130 / 15%);
+      color: #fff;
+    }
+
+    .calendar-day.selected:not(.today) {
+      border-color: rgb(71 156 130 / 36%);
+      background: rgb(71 156 130 / 15%);
+      color: #317b67;
+    }
+
+    .calendar-weekdays,
+    .calendar-day-total,
+    .calendar-day-total.zero {
+      color: var(--muted);
+    }
+
+    .calendar-day-total:not(.positive) {
+      color: var(--expense);
+    }
+
+    .calendar-day-total.positive {
+      color: var(--income);
+    }
+
+    .calendar-day.selected .calendar-day-total,
+    .calendar-day.today .calendar-day-total {
+      color: rgb(255 255 255 / 90%);
+    }
+
+    .savings-progress {
+      border: 1px solid rgb(255 255 255 / 55%);
+      background: rgb(230 162 73 / 13%);
+      box-shadow: inset 0 1px 2px rgb(54 60 65 / 6%);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+    }
+
+    .savings-progress-fill {
+      background: linear-gradient(90deg, #edbd70, var(--warm));
+    }
+
+    .bottom-nav {
+      border: 1px solid rgb(255 255 255 / 68%);
+      border-radius: 20px;
+      background: rgb(255 255 255 / 72%);
+      box-shadow: inset 0 1px 0 rgb(255 255 255 / 70%), 0 7px 24px rgb(40 50 62 / 9%);
+      -webkit-backdrop-filter: blur(24px) saturate(145%);
+      backdrop-filter: blur(24px) saturate(145%);
+    }
+
+    .bottom-nav button {
+      border-radius: 16px;
+      color: var(--muted);
+    }
+
+    .bottom-nav button[aria-current="page"] {
+      background: rgb(71 156 130 / 13%);
+      color: var(--accent);
+    }
+
+    .chart-frame,
+    .chart-container {
+      border-radius: 18px;
+    }
+
+    /* 深色模式使用指定石墨玻璃底色，并统一文字、卡片和控件对比度。 */
+    body:has(#themeToggle:checked) {
+      --glass-surface: rgb(30 34 42 / 68%);
+      --glass-surface-soft: rgb(30 34 42 / 58%);
+      --glass-border: rgb(255 255 255 / 10%);
+      --glass-edge: rgb(255 255 255 / 8%);
+      --glass-shadow: 0 8px 26px rgb(0 0 0 / 14%);
+      --ink: #e9ebf0;
+      --muted: #9ca3af;
+    }
+
+    body:has(#themeToggle:checked) .card,
+    body:has(#themeToggle:checked) .metric-card,
+    body:has(#themeToggle:checked) .stats-metric,
+    body:has(#themeToggle:checked) .savings-goal-card,
+    body:has(#themeToggle:checked) .feature-link,
+    body:has(#themeToggle:checked) .theme-control,
+    body:has(#themeToggle:checked) .install-button,
+    body:has(#themeToggle:checked) .bill-item,
+    body:has(#themeToggle:checked) .bill-item:first-child,
+    body:has(#themeToggle:checked) .day-bill-item,
+    body:has(#themeToggle:checked) .calendar-detail-item {
+      border-color: var(--glass-border);
+      background:
+        linear-gradient(145deg, rgb(255 255 255 / 4%), transparent 58%),
+        var(--glass-surface);
+      box-shadow: inset 0 1px 0 var(--glass-edge), var(--glass-shadow);
+      -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(120%);
+      backdrop-filter: blur(var(--glass-blur)) saturate(120%);
+    }
+
+    body:has(#themeToggle:checked) .bottom-nav {
+      border-color: var(--glass-border);
+      background: rgb(30 34 42 / 78%);
+      box-shadow: inset 0 1px 0 var(--glass-edge), 0 7px 24px rgb(0 0 0 / 24%);
+    }
+
+    body:has(#themeToggle:checked) input,
+    body:has(#themeToggle:checked) select,
+    body:has(#themeToggle:checked) textarea,
+    body:has(#themeToggle:checked) .calendar-day {
+      border-color: rgb(255 255 255 / 12%);
+      background: rgb(23 25 32 / 54%);
+      color: var(--ink);
+    }
+
+    body:has(#themeToggle:checked) .record-switch,
+    body:has(#themeToggle:checked) .period-tabs,
+    body:has(#themeToggle:checked) .view-switch {
+      border-color: var(--glass-border);
+      background: rgb(23 25 32 / 48%);
+    }
+
+    body:has(#themeToggle:checked) .record-switch button,
+    body:has(#themeToggle:checked) .period-tabs button,
+    body:has(#themeToggle:checked) .view-switch label,
+    body:has(#themeToggle:checked) .month-chip,
+    body:has(#themeToggle:checked) .calendar-weekdays,
+    body:has(#themeToggle:checked) .calendar-day-total.zero {
+      color: var(--muted);
+    }
+
+    body:has(#themeToggle:checked) .record-switch button[aria-pressed="true"],
+    body:has(#themeToggle:checked) .period-tabs button[aria-pressed="true"],
+    body:has(#themeToggle:checked) #viewList:checked + label,
+    body:has(#themeToggle:checked) #viewCalendar:checked + label,
+    body:has(#themeToggle:checked) .month-chip[aria-pressed="true"] {
+      background: rgb(71 156 130 / 24%);
+      color: #b6e2d3;
+    }
+
+    body:has(#themeToggle:checked) .feature-icon,
+    body:has(#themeToggle:checked) .summary-icon {
+      background: rgb(71 156 130 / 18%);
+      color: #a4d5c4;
+    }
+
+    body:has(#themeToggle:checked) .eyebrow,
+    body:has(#themeToggle:checked) .subtitle,
+    body:has(#themeToggle:checked) .summary-label,
+    body:has(#themeToggle:checked) .section-hint,
+    body:has(#themeToggle:checked) .bill-count,
+    body:has(#themeToggle:checked) .bill-meta,
+    body:has(#themeToggle:checked) .empty-state,
+    body:has(#themeToggle:checked) .chart-message,
+    body:has(#themeToggle:checked) .chart-empty-message,
+    body:has(#themeToggle:checked) .pwa-message,
+    body:has(#themeToggle:checked) .calendar-note,
+    body:has(#themeToggle:checked) .metric-label,
+    body:has(#themeToggle:checked) .day-bill-meta,
+    body:has(#themeToggle:checked) .bill-day-total,
+    body:has(#themeToggle:checked) .legend-item,
+    body:has(#themeToggle:checked) .savings-goal-values,
+    body:has(#themeToggle:checked) .savings-goal-footer,
+    body:has(#themeToggle:checked) .category-hint,
+    body:has(#themeToggle:checked) .category-picker-heading,
+    body:has(#themeToggle:checked) .savings-goal-form label,
+    body:has(#themeToggle:checked) .analysis-list {
+      color: var(--muted);
+    }
+
+    body:has(#themeToggle:checked) .calendar-day.selected,
+    body:has(#themeToggle:checked) .calendar-day.today,
+    body:has(#themeToggle:checked) .calendar-day.today.selected {
+      border-color: rgb(126 195 171 / 48%);
+      background: linear-gradient(145deg, #579c84, #397e6b);
+      color: #fff;
+    }
+
+    body:has(#themeToggle:checked) .calendar-day.selected:not(.today) {
+      background: rgb(71 156 130 / 24%);
+      color: #c8ecdf;
+    }
+
+    body:has(#themeToggle:checked) .calendar-day-total:not(.positive) {
+      color: #e99a9a;
+    }
+
+    body:has(#themeToggle:checked) .calendar-day-total.positive {
+      color: #86d3a8;
+    }
+
+    body:has(#themeToggle:checked) .bottom-nav button {
+      color: var(--muted);
+    }
+
+    body:has(#themeToggle:checked) .bottom-nav button[aria-current="page"] {
+      background: rgb(71 156 130 / 22%);
+      color: #b6e2d3;
+    }
+
+    body:has(#themeToggle:checked) .bill-title,
+    body:has(#themeToggle:checked) .bill-amount,
+    body:has(#themeToggle:checked) .day-bill-title,
+    body:has(#themeToggle:checked) .bill-day-heading,
+    body:has(#themeToggle:checked) .calendar-controls strong,
+    body:has(#themeToggle:checked) .metric-value,
+    body:has(#themeToggle:checked) .savings-goal-title,
+    body:has(#themeToggle:checked) .analysis-subheading,
+    body:has(#themeToggle:checked) .analysis-summary,
+    body:has(#themeToggle:checked) label {
+      color: var(--ink);
+    }
+
+    body:has(#themeToggle:checked) .bill-amount,
+    body:has(#themeToggle:checked) .day-bill-amount,
+    body:has(#themeToggle:checked) .calendar-detail-item strong {
+      color: #e99a9a;
+    }
+
+    body:has(#themeToggle:checked) .bill-amount.income,
+    body:has(#themeToggle:checked) .day-bill-amount.income,
+    body:has(#themeToggle:checked) .calendar-detail-item strong.income {
+      color: #86d3a8;
+    }
+
+    body:has(#themeToggle:checked) .summary-amount {
+      color: #8bc8b1;
+    }
+
+    body:has(#themeToggle:checked) .metric-value.expense,
+    body:has(#themeToggle:checked) .metric-value.balance-negative {
+      color: #e99a9a;
+    }
+
+    body:has(#themeToggle:checked) .metric-value.income,
+    body:has(#themeToggle:checked) .metric-value.balance-positive {
+      color: #86d3a8;
+    }
+
+    @media (max-width: 639px) {
+      .card {
+        padding: 18px;
+      }
+
+      .bottom-nav {
+        right: 10px;
+        left: 10px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      button,
+      input,
+      select,
+      textarea,
+      .install-button,
+      .theme-control,
+      .feature-link,
+      .month-chip,
+      .calendar-controls button,
+      .category-option,
+      #closeRecordButton {
         transition: none;
       }
     }
@@ -4229,4 +4769,4 @@
     renderCalendar();
   </script>
 </body>
-</html>
+</html> 
