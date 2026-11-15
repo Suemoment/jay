@@ -1226,6 +1226,297 @@
       color: #4a9a7c;
     }
 
+    /* 存钱目标看板：目标金额由用户设置，已存金额来自现有收入与支出记录。 */
+    .savings-goals {
+      display: grid;
+      gap: 12px;
+      margin: 0 0 18px;
+    }
+
+    body {
+      background:
+        radial-gradient(ellipse at 12% 0%, rgb(222 235 220 / 42%), transparent 40%),
+        linear-gradient(155deg, #f7f6f2 0%, #fbfaf6 56%, #fefefb 100%);
+      background-attachment: fixed;
+    }
+
+    .savings-goal-card {
+      padding: 18px;
+      border: 1px solid rgb(255 255 255 / 76%);
+      border-radius: 21px;
+      background: rgb(255 255 255 / 62%);
+      box-shadow: 0 5px 18px rgb(49 69 83 / 5%);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .savings-goal-heading,
+    .savings-goal-values,
+    .savings-goal-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .savings-goal-heading {
+      margin-bottom: 12px;
+    }
+
+    .savings-goal-title {
+      margin: 0;
+      color: #40524e;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .savings-goal-status {
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: rgb(91 155 142 / 12%);
+      color: #4a897b;
+      font-size: 11px;
+      font-weight: 650;
+      white-space: nowrap;
+    }
+
+    .savings-goal-values {
+      align-items: baseline;
+      margin-bottom: 9px;
+      color: #7b8985;
+      font-size: 12px;
+    }
+
+    .savings-goal-values > span {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .savings-goal-values > span:last-child {
+      text-align: right;
+    }
+
+    .savings-goal-values strong {
+      display: block;
+      overflow: hidden;
+      color: #3d655b;
+      font-size: 15px;
+      font-variant-numeric: tabular-nums;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .savings-progress {
+      width: 100%;
+      height: 9px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: rgb(123 137 129 / 13%);
+    }
+
+    .savings-progress-fill {
+      width: 0;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #edc878, #eaa45f);
+      transition: width 180ms ease;
+    }
+
+    .savings-goal-footer {
+      margin-top: 9px;
+      color: #7b8985;
+      font-size: 11px;
+    }
+
+    .savings-goal-footer strong {
+      color: #5d716b;
+      font-size: 12px;
+    }
+
+    .savings-goal-status.complete {
+      background: rgb(91 155 142 / 18%);
+      color: #377d6e;
+    }
+
+    .savings-goal-status.near {
+      background: rgb(234 180 104 / 18%);
+      color: #9c7131;
+    }
+
+    .savings-goal-form {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 14px;
+      padding-top: 13px;
+      border-top: 1px solid rgb(111 135 145 / 12%);
+    }
+
+    .savings-goal-form label {
+      min-width: 0;
+      margin: 0;
+      color: #71807a;
+      font-size: 11px;
+    }
+
+    .savings-goal-form input {
+      min-height: 40px;
+      margin-top: 5px;
+      font-size: 13px;
+    }
+
+    .savings-goal-form button {
+      grid-column: 1 / -1;
+      min-height: 42px;
+      border: 0;
+      border-radius: 13px;
+      background: #5b9b8e;
+      color: #fff;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 650;
+      cursor: pointer;
+    }
+
+    /* 一级大类、二级明细采用可横向滑动的大触控标签。 */
+    .category-picker {
+      margin: 0 0 15px;
+    }
+
+    .canonical-category-select {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    .category-picker-heading {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 0 0 8px;
+      color: #71807a;
+      font-size: 12px;
+      font-weight: 650;
+    }
+
+    .category-options {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 2px 1px 6px;
+      scrollbar-width: none;
+    }
+
+    .category-options::-webkit-scrollbar {
+      display: none;
+    }
+
+    .category-option {
+      min-height: 42px;
+      flex: 0 0 auto;
+      padding: 0 14px;
+      border: 1px solid rgb(104 139 126 / 18%);
+      border-radius: 999px;
+      background: rgb(255 255 255 / 54%);
+      color: #62736c;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .category-option[aria-pressed="true"] {
+      border-color: transparent;
+      background: #5b9b8e;
+      color: #fff;
+    }
+
+    .category-custom-input {
+      width: 100%;
+      margin: 4px 0 8px;
+    }
+
+    .category-hint {
+      margin: 7px 0 0;
+      color: #7b8985;
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    body:has(#themeToggle:checked) .savings-goal-card {
+      border-color: rgb(219 230 246 / 10%);
+      background: rgb(25 30 45 / 55%);
+      box-shadow: 0 5px 18px rgb(0 0 0 / 10%);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    body:has(#themeToggle:checked) .savings-goal-title,
+    body:has(#themeToggle:checked) .savings-goal-values strong,
+    body:has(#themeToggle:checked) .savings-goal-footer strong {
+      color: #edf1f7;
+    }
+
+    body:has(#themeToggle:checked) .savings-goal-values,
+    body:has(#themeToggle:checked) .savings-goal-footer,
+    body:has(#themeToggle:checked) .savings-goal-form label,
+    body:has(#themeToggle:checked) .category-picker-heading,
+    body:has(#themeToggle:checked) .category-hint {
+      color: #b0bdca;
+    }
+
+    body:has(#themeToggle:checked) .category-option {
+      border-color: rgb(219 230 246 / 12%);
+      background: rgb(25 30 45 / 55%);
+      color: #c1ccd9;
+    }
+
+    body:has(#themeToggle:checked) .category-option[aria-pressed="true"] {
+      background: #5b9b8e;
+      color: #fff;
+    }
+
+    body:has(#themeToggle:checked) .savings-goal-form {
+      border-top-color: rgb(219 230 246 / 10%);
+    }
+
+    body:has(#themeToggle:checked) .savings-goal-form input {
+      border-color: rgb(219 230 246 / 15%);
+      background: rgb(20 26 39 / 62%);
+      color: #edf1f7;
+    }
+
+    body:has(#themeToggle:checked) {
+      background:
+        radial-gradient(ellipse at 12% 0%, rgb(49 72 83 / 22%), transparent 40%),
+        linear-gradient(160deg, #171c29 0%, #1b2230 58%, #191f2c 100%);
+      background-attachment: fixed;
+    }
+
+    @media (max-width: 420px) {
+      .savings-goal-card {
+        padding: 15px;
+        border-radius: 18px;
+      }
+
+      .savings-goal-values {
+        font-size: 11px;
+      }
+
+      .savings-goal-values strong {
+        font-size: 13px;
+      }
+
+      .category-option {
+        min-height: 44px;
+        padding: 0 13px;
+      }
+    }
+
     .primary-add-button {
       display: flex;
       width: 100%;
@@ -1995,6 +2286,64 @@
         </article>
       </section>
 
+      <!-- 存钱目标只保存目标值；已存金额由本地收入和支出汇总计算。 -->
+      <section class="card" aria-labelledby="savingsGoalsTitle">
+        <div class="section-heading">
+          <h2 id="savingsGoalsTitle">存钱目标</h2>
+          <span class="section-hint">一步一步攒下小目标</span>
+        </div>
+        <div class="savings-goals">
+          <article class="savings-goal-card">
+            <div class="savings-goal-heading">
+              <h3 class="savings-goal-title">年度存款目标</h3>
+              <span id="annualGoalStatus" class="savings-goal-status">未设置</span>
+            </div>
+            <div class="savings-goal-values">
+              <span>已存 <strong id="annualGoalSaved">¥0.00</strong></span>
+              <span>目标 <strong id="annualGoalTarget">¥0.00</strong></span>
+            </div>
+            <div id="annualGoalProgress" class="savings-progress" role="progressbar"
+              aria-label="年度存款目标进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <div id="annualGoalProgressFill" class="savings-progress-fill"></div>
+            </div>
+            <div class="savings-goal-footer">
+              <span id="annualGoalRemaining">还差 ¥0.00</span>
+              <strong id="annualGoalPercent">0%</strong>
+            </div>
+          </article>
+          <article class="savings-goal-card">
+            <div class="savings-goal-heading">
+              <h3 class="savings-goal-title">累计存款目标</h3>
+              <span id="totalGoalStatus" class="savings-goal-status">未设置</span>
+            </div>
+            <div class="savings-goal-values">
+              <span>已存 <strong id="totalGoalSaved">¥0.00</strong></span>
+              <span>目标 <strong id="totalGoalTarget">¥0.00</strong></span>
+            </div>
+            <div id="totalGoalProgress" class="savings-progress" role="progressbar"
+              aria-label="累计存款目标进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <div id="totalGoalProgressFill" class="savings-progress-fill"></div>
+            </div>
+            <div class="savings-goal-footer">
+              <span id="totalGoalRemaining">还差 ¥0.00</span>
+              <strong id="totalGoalPercent">0%</strong>
+            </div>
+          </article>
+        </div>
+        <form id="savingsGoalsForm" class="savings-goal-form">
+          <label for="annualGoalInput">年度目标（元）
+            <input id="annualGoalInput" type="number" min="0" step="0.01"
+              inputmode="decimal" placeholder="设置年度目标">
+          </label>
+          <label for="totalGoalInput">累计目标（元）
+            <input id="totalGoalInput" type="number" min="0" step="0.01"
+              inputmode="decimal" placeholder="设置累计目标">
+          </label>
+          <button type="submit">保存存款目标</button>
+        </form>
+        <p id="savingsGoalsMessage" class="chart-empty-message" role="status" aria-live="polite"></p>
+      </section>
+
       <button id="openRecordButton" class="primary-add-button" type="button">
         <span aria-hidden="true">＋</span> 添加一条新记账
       </button>
@@ -2017,6 +2366,17 @@
           <button type="button" data-record-type="expense" aria-pressed="true">支出</button>
           <button type="button" data-record-type="income" aria-pressed="false">收入</button>
         </div>
+        <section id="categoryPicker" class="category-picker" aria-label="账单分类">
+          <h3 class="category-picker-heading"><span>选择大类</span><span>可横向滑动</span></h3>
+          <div id="majorCategoryOptions" class="category-options" role="group" aria-label="一级大类"></div>
+          <input id="customMajorCategory" class="category-custom-input" type="text"
+            maxlength="24" placeholder="输入自定义大类名称" aria-label="自定义大类" hidden>
+          <h3 class="category-picker-heading"><span>选择明细</span></h3>
+          <div id="detailCategoryOptions" class="category-options" role="group" aria-label="二级明细"></div>
+          <input id="customDetailCategory" class="category-custom-input" type="text"
+            maxlength="24" placeholder="输入自定义明细名称" aria-label="自定义明细" hidden>
+          <p id="categorySelectionHint" class="category-hint">计入看板大类「美好生活」·明细「餐饮」</p>
+        </section>
         <section id="formCard" aria-labelledby="formTitle">
           <div class="section-heading">
             <h2 id="formTitle">记一笔支出</h2>
@@ -2030,7 +2390,7 @@
             </div>
             <div class="field">
               <label for="category">消费分类</label>
-              <select id="category" name="category" required>
+              <select id="category" name="category" class="canonical-category-select" required aria-label="账单统计分类">
                 <option value="食堂">食堂</option>
                 <option value="外卖">外卖</option>
                 <option value="网购">网购</option>
@@ -3474,10 +3834,285 @@
       window.setTimeout(() => {
         updateHomeDashboard();
         renderCalendar();
+        renderSavingsGoals();
         if (!document.querySelector("#statsPage").hidden) renderStats();
         if (!document.querySelector("#assetsPage").hidden) renderAssetsPage();
       }, 0);
     });
+
+    // 一级大类和二级明细只负责界面选择，最终仍映射到旧账单分类字段。
+        const SAVINGS_GOALS_STORAGE_KEY = "campus-life-savings-goals";
+        const savingsGoalsForm = document.querySelector("#savingsGoalsForm");
+        const savingsGoalsMessage = document.querySelector("#savingsGoalsMessage");
+        const annualGoalInput = document.querySelector("#annualGoalInput");
+        const totalGoalInput = document.querySelector("#totalGoalInput");
+        const majorCategoryOptions = document.querySelector("#majorCategoryOptions");
+        const detailCategoryOptions = document.querySelector("#detailCategoryOptions");
+        const customMajorCategoryInput = document.querySelector("#customMajorCategory");
+        const customDetailCategoryInput = document.querySelector("#customDetailCategory");
+        const categorySelectionHint = document.querySelector("#categorySelectionHint");
+        const categoryPicker = document.querySelector("#categoryPicker");
+        const categoryGroups = [
+          { name: "住房升级", details: ["家居用品", "家电数码", "房屋维护", "日用"] },
+          { name: "车相关", details: ["加油充电", "交通出行", "车辆保养", "停车过路"] },
+          {
+            name: "美好生活",
+            details: ["生活开销", "餐饮", "外卖", "日用", "医疗", "教育等人情往来", "美容", "宠物"]
+          },
+          { name: "放松计划", details: ["旅行", "娱乐休闲", "运动健身", "兴趣爱好"] }
+        ];
+        let selectedMajorCategory = "美好生活";
+        let selectedDetailCategory = "餐饮";
+        let customMajorSelected = false;
+        let customDetailSelected = false;
+        let savingsGoalTargets = { annual: 0, total: 0 };
+
+        try {
+          const savedGoals = localStorage.getItem(SAVINGS_GOALS_STORAGE_KEY);
+          if (savedGoals) {
+            const parsedGoals = JSON.parse(savedGoals);
+            if (!parsedGoals || typeof parsedGoals !== "object" || Array.isArray(parsedGoals)) {
+              throw new Error("存款目标数据格式不正确");
+            }
+            savingsGoalTargets = {
+              annual: Number.isFinite(parsedGoals.annual) && parsedGoals.annual >= 0
+                ? parsedGoals.annual
+                : 0,
+              total: Number.isFinite(parsedGoals.total) && parsedGoals.total >= 0
+                ? parsedGoals.total
+                : 0
+            };
+          }
+        } catch (error) {
+          console.error("读取存款目标失败：", error);
+          savingsGoalsMessage.textContent = "存款目标读取失败，请检查浏览器本地存储设置。";
+        }
+
+        annualGoalInput.value = savingsGoalTargets.annual > 0
+          ? savingsGoalTargets.annual.toFixed(2)
+          : "";
+        totalGoalInput.value = savingsGoalTargets.total > 0
+          ? savingsGoalTargets.total.toFixed(2)
+          : "";
+
+        function savingsForRecords(records) {
+          return sumKind(records, "income") - sumKind(records, "expense");
+        }
+
+        function renderSavingsGoal(prefix, savedAmount, targetAmount) {
+          const safeSaved = Math.max(0, savedAmount);
+          const progress = targetAmount > 0
+            ? Math.min(100, Math.max(0, safeSaved / targetAmount * 100))
+            : 0;
+          const remaining = targetAmount > 0 ? Math.max(0, targetAmount - savedAmount) : 0;
+          const status = targetAmount <= 0
+            ? "未设置"
+            : safeSaved >= targetAmount
+              ? "已完成"
+              : progress >= 80
+                ? "快要达成"
+                : "进行中";
+
+          document.querySelector(`#${prefix}Saved`).textContent =
+            `${savedAmount < 0 ? "−" : ""}${money(Math.abs(savedAmount))}`;
+          document.querySelector(`#${prefix}Target`).textContent =
+            targetAmount > 0 ? money(targetAmount) : "未设置";
+          document.querySelector(`#${prefix}Remaining`).textContent = targetAmount > 0
+            ? `还差 ${money(remaining)}`
+            : "请设置目标金额";
+          document.querySelector(`#${prefix}Percent`).textContent = `${Math.round(progress)}%`;
+          const progressBar = document.querySelector(`#${prefix}Progress`);
+          progressBar.setAttribute("aria-valuenow", String(Math.round(progress)));
+          document.querySelector(`#${prefix}ProgressFill`).style.width = `${progress}%`;
+          const statusElement = document.querySelector(`#${prefix}Status`);
+          statusElement.textContent = status;
+          statusElement.classList.toggle("complete", status === "已完成");
+          statusElement.classList.toggle("near", status === "快要达成");
+        }
+
+        function renderSavingsGoals() {
+          const records = allRecords();
+          const currentYear = new Date().getFullYear();
+          const annualRecords = records.filter((record) => record.date.getFullYear() === currentYear);
+          renderSavingsGoal(
+            "annualGoal",
+            savingsForRecords(annualRecords),
+            savingsGoalTargets.annual
+          );
+          renderSavingsGoal(
+            "totalGoal",
+            savingsForRecords(records),
+            savingsGoalTargets.total
+          );
+        }
+
+        savingsGoalsForm.addEventListener("submit", (event) => {
+          event.preventDefault();
+          savingsGoalsMessage.textContent = "";
+          const annual = Number(annualGoalInput.value);
+          const total = Number(totalGoalInput.value);
+          if (
+            annualGoalInput.value.trim() === "" ||
+            totalGoalInput.value.trim() === "" ||
+            !Number.isFinite(annual) ||
+            !Number.isFinite(total) ||
+            annual < 0 ||
+            total < 0
+          ) {
+            savingsGoalsMessage.textContent = "请为年度和累计目标填写有效的非负金额。";
+            return;
+          }
+          const nextTargets = {
+            annual: Math.round(annual * 100) / 100,
+            total: Math.round(total * 100) / 100
+          };
+          try {
+            localStorage.setItem(SAVINGS_GOALS_STORAGE_KEY, JSON.stringify(nextTargets));
+          } catch (error) {
+            console.error("保存存款目标失败：", error);
+            savingsGoalsMessage.textContent = "目标保存失败，请检查浏览器本地存储空间后重试。";
+            return;
+          }
+          savingsGoalTargets = nextTargets;
+          savingsGoalsMessage.textContent = "存钱目标已保存。";
+          renderSavingsGoals();
+        });
+
+        function canonicalCategoryForDetail(detail) {
+          if (detail === "餐饮") return "食堂";
+          if (detail === "外卖") return "外卖";
+          if (["家居用品", "家电数码", "日用", "美容", "宠物"].includes(detail)) return "网购";
+          return "其他";
+        }
+
+        function renderCategoryOptions() {
+          majorCategoryOptions.replaceChildren();
+          for (const group of categoryGroups) {
+            const button = document.createElement("button");
+            button.type = "button";
+            button.className = "category-option";
+            button.textContent = group.name;
+            button.setAttribute(
+              "aria-pressed",
+              String(!customMajorSelected && selectedMajorCategory === group.name)
+            );
+            button.addEventListener("click", () => {
+              selectedMajorCategory = group.name;
+              selectedDetailCategory = group.details[0];
+              customMajorSelected = false;
+              customDetailSelected = false;
+              customMajorCategoryInput.hidden = true;
+              customDetailCategoryInput.hidden = true;
+              customMajorCategoryInput.value = "";
+              customDetailCategoryInput.value = "";
+              renderCategoryOptions();
+            });
+            majorCategoryOptions.append(button);
+          }
+
+          const customMajorButton = document.createElement("button");
+          customMajorButton.type = "button";
+          customMajorButton.className = "category-option";
+          customMajorButton.textContent = "+自定义";
+          customMajorButton.setAttribute("aria-pressed", String(customMajorSelected));
+          customMajorButton.addEventListener("click", () => {
+            customMajorSelected = true;
+            selectedDetailCategory = "生活开销";
+            customDetailSelected = false;
+            customDetailCategoryInput.hidden = true;
+            customDetailCategoryInput.value = "";
+            customMajorCategoryInput.hidden = false;
+            customMajorCategoryInput.focus();
+            renderCategoryOptions();
+          });
+          majorCategoryOptions.append(customMajorButton);
+
+          detailCategoryOptions.replaceChildren();
+          const selectedGroup = customMajorSelected
+            ? null
+            : categoryGroups.find((group) => group.name === selectedMajorCategory);
+          const details = selectedGroup?.details || ["生活开销", "餐饮", "日用", "医疗", "教育等人情往来", "美容", "宠物"];
+          for (const detail of details) {
+            const button = document.createElement("button");
+            button.type = "button";
+            button.className = "category-option";
+            button.textContent = detail;
+            button.setAttribute(
+              "aria-pressed",
+              String(!customDetailSelected && selectedDetailCategory === detail)
+            );
+            button.addEventListener("click", () => {
+              selectedDetailCategory = detail;
+              customDetailSelected = false;
+              customDetailCategoryInput.hidden = true;
+              customDetailCategoryInput.value = "";
+              renderCategoryOptions();
+            });
+            detailCategoryOptions.append(button);
+          }
+
+          const customDetailButton = document.createElement("button");
+          customDetailButton.type = "button";
+          customDetailButton.className = "category-option";
+          customDetailButton.textContent = "+自定义";
+          customDetailButton.setAttribute("aria-pressed", String(customDetailSelected));
+          customDetailButton.addEventListener("click", () => {
+            customDetailSelected = true;
+            customDetailCategoryInput.hidden = false;
+            customDetailCategoryInput.focus();
+            renderCategoryOptions();
+          });
+          detailCategoryOptions.append(customDetailButton);
+
+          syncCategorySelection();
+        }
+
+        function syncCategorySelection() {
+          const major = customMajorSelected
+            ? customMajorCategoryInput.value.trim() || "自定义"
+            : selectedMajorCategory;
+          const detail = customDetailSelected
+            ? customDetailCategoryInput.value.trim() || "自定义"
+            : selectedDetailCategory;
+          categorySelectionHint.textContent = `计入看板大类「${major}」·明细「${detail}」`;
+          const mappedCategory = customDetailSelected
+            ? "其他"
+            : canonicalCategoryForDetail(selectedDetailCategory);
+          categoryInput.value = mappedCategory;
+        }
+
+        customMajorCategoryInput.addEventListener("input", syncCategorySelection);
+        customDetailCategoryInput.addEventListener("input", syncCategorySelection);
+        renderCategoryOptions();
+        renderSavingsGoals();
+
+        // 新的分类标签仅映射到旧分类字段，不改变支出账单的存储结构。
+        form.addEventListener("submit", () => {
+          syncCategorySelection();
+        });
+        incomeForm.addEventListener("submit", () => {
+          window.setTimeout(renderSavingsGoals, 0);
+        });
+
+        for (const button of document.querySelectorAll("[data-record-type]")) {
+          button.addEventListener("click", () => {
+            categoryPicker.hidden = button.dataset.recordType === "income";
+          });
+        }
+
+        for (const button of document.querySelectorAll("[data-page]")) {
+          button.addEventListener("click", () => {
+            if (button.dataset.action === "add") {
+              categoryPicker.hidden = false;
+              renderCategoryOptions();
+            }
+          });
+        }
+
+        document.querySelector("#openRecordButton").addEventListener("click", () => {
+          categoryPicker.hidden = false;
+          renderCategoryOptions();
+        });
 
     incomeForm.addEventListener("submit", (event) => {
       event.preventDefault();
