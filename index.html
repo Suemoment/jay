@@ -375,96 +375,1880 @@
         gap: 13px 10px;
       }
     }
+
+    /* 浅色液态毛玻璃主题。 */
+    body {
+      padding: 34px 22px 56px;
+      color: #263248;
+      background:
+        radial-gradient(ellipse at 10% 5%, rgb(255 215 231 / 70%), transparent 37%),
+        radial-gradient(ellipse at 92% 18%, rgb(196 221 255 / 75%), transparent 38%),
+        linear-gradient(145deg, #f8f2f8 0%, #edf4ff 52%, #f5f7ff 100%);
+      background-attachment: fixed;
+    }
+
+    body:has(#themeToggle:checked) {
+      color-scheme: dark;
+      color: #e8edf8;
+      background:
+        radial-gradient(ellipse at 12% 4%, rgb(64 62 112 / 46%), transparent 38%),
+        radial-gradient(ellipse at 92% 17%, rgb(28 78 111 / 44%), transparent 40%),
+        linear-gradient(145deg, #101827 0%, #101c2c 52%, #121827 100%);
+    }
+
+    button,
+    a,
+    input,
+    select {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .app {
+      width: min(100%, 1120px);
+    }
+
+    .header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .eyebrow {
+      margin-bottom: 7px;
+      color: #78859b;
+      font-size: 12px;
+      font-weight: 650;
+      letter-spacing: 0.12em;
+    }
+
+    h1 {
+      font-size: clamp(25px, 4vw, 34px);
+    }
+
+    .subtitle {
+      color: #748198;
+    }
+
+    .header-actions {
+      display: flex;
+      flex: 0 0 auto;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .theme-control {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      min-height: 42px;
+      padding: 0 13px;
+      border: 1px solid rgb(255 255 255 / 72%);
+      border-radius: 999px;
+      background: rgb(255 255 255 / 52%);
+      box-shadow: 0 5px 16px rgb(52 69 102 / 7%);
+      color: #46536a;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    #themeToggle,
+    .view-switch input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    #themeToggle:focus-visible + .theme-control {
+      outline: 3px solid #8199ed;
+      outline-offset: 3px;
+    }
+
+    .theme-icon {
+      font-size: 16px;
+      line-height: 1;
+    }
+
+    .install-button {
+      min-height: 40px;
+      padding: 0 14px;
+      border: 1px solid rgb(255 255 255 / 72%);
+      border-radius: 999px;
+      background: rgb(255 255 255 / 56%);
+      color: #4568c5;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 650;
+      cursor: pointer;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .install-button:focus-visible {
+      outline: 3px solid #aebff5;
+      outline-offset: 3px;
+    }
+
+    .pwa-message {
+      color: #77849a;
+    }
+
+    /* 四个入口在宽屏并列，在手机上自然换行。 */
+    .feature-nav {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 13px;
+      margin: 0 0 18px;
+    }
+
+    .feature-link {
+      display: flex;
+      min-height: 76px;
+      align-items: center;
+      gap: 12px;
+      margin: 0;
+      padding: 14px 16px;
+      border: 1px solid rgb(255 255 255 / 68%);
+      border-radius: 20px;
+      background: rgb(255 255 255 / 48%);
+      box-shadow: 0 8px 24px rgb(48 67 102 / 6%);
+      color: inherit;
+      text-decoration: none;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .feature-link:focus-visible {
+      outline: 3px solid #8199ed;
+      outline-offset: 3px;
+    }
+
+    .feature-icon {
+      display: grid;
+      flex: 0 0 40px;
+      width: 40px;
+      height: 40px;
+      place-items: center;
+      border-radius: 14px;
+      background: rgb(110 137 221 / 13%);
+      color: #4968c1;
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    .feature-name {
+      font-size: 14px;
+      font-weight: 650;
+    }
+
+    .card {
+      min-width: 0;
+      padding: 24px;
+      border: 1px solid rgb(255 255 255 / 68%);
+      border-radius: 24px;
+      background: rgb(255 255 255 / 60%);
+      box-shadow: 0 12px 34px rgb(43 58 91 / 7%);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .summary {
+      min-height: 132px;
+    }
+
+    .summary-label {
+      color: #78849a;
+    }
+
+    .summary-amount {
+      color: #496bd1;
+      font-size: 34px;
+    }
+
+    .summary-icon {
+      background: rgb(102 133 224 / 13%);
+      color: #496bd1;
+    }
+
+    h2 {
+      font-size: 19px;
+      letter-spacing: -0.02em;
+    }
+
+    .section-hint,
+    .bill-count {
+      color: #8994a8;
+    }
+
+    label {
+      color: #536078;
+    }
+
+    input,
+    select {
+      border: 1px solid rgb(118 134 165 / 22%);
+      border-radius: 13px;
+      background: rgb(255 255 255 / 68%);
+      color: #263248;
+    }
+
+    input::placeholder {
+      color: #a4adbd;
+    }
+
+    .submit-button,
+    .chart-button {
+      border-radius: 14px;
+      background: linear-gradient(115deg, #5578dc, #6e80d8);
+    }
+
+    .submit-button:hover,
+    .chart-button:hover {
+      background: linear-gradient(115deg, #4568cf, #5f70cb);
+    }
+
+    .submit-button:focus-visible,
+    .chart-button:focus-visible {
+      outline: 3px solid #aebff5;
+      outline-offset: 3px;
+    }
+
+    .form-message {
+      color: #bc414d;
+    }
+
+    .bill-item {
+      border-top-color: rgb(109 126 158 / 13%);
+    }
+
+    .bill-title {
+      color: #303b50;
+    }
+
+    .bill-meta,
+    .empty-state {
+      color: #8994a8;
+    }
+
+    .category-tag {
+      color: #5372c9;
+    }
+
+    .bill-amount {
+      color: #334058;
+    }
+
+    .chart-message {
+      color: #77849a;
+      line-height: 1.6;
+    }
+
+    .chart-container {
+      width: min(100%, 420px);
+      margin-top: 20px;
+    }
+
+    .analysis-summary {
+      color: #536078;
+    }
+
+    .analysis-subheading {
+      color: #303b50;
+    }
+
+    .analysis-list {
+      color: #68758c;
+    }
+
+    /* CSS 单选控件负责列表/日历面板切换，保持现有记账脚本不变。 */
+    .view-switch {
+      display: inline-flex;
+      gap: 4px;
+      margin: 0 0 18px;
+      padding: 4px;
+      border: 1px solid rgb(117 133 163 / 16%);
+      border-radius: 13px;
+      background: rgb(128 145 177 / 9%);
+    }
+
+    .view-switch label {
+      margin: 0;
+      padding: 8px 13px;
+      border-radius: 10px;
+      color: #6e7a91;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    #viewList:checked + label,
+    #viewCalendar:checked + label {
+      background: rgb(255 255 255 / 86%);
+      box-shadow: 0 2px 6px rgb(39 54 86 / 9%);
+      color: #405baf;
+    }
+
+    .view-switch input:focus-visible + label {
+      outline: 2px solid #8199ed;
+      outline-offset: 2px;
+    }
+
+    .calendar-panel {
+      display: none;
+    }
+
+    .ledger-card:has(#viewCalendar:checked) .calendar-panel {
+      display: block;
+    }
+
+    .ledger-card:has(#viewCalendar:checked) .list-panel {
+      display: none;
+    }
+
+    .ledger-card:has(#billList:target) .calendar-panel {
+      display: none;
+    }
+
+    .ledger-card:has(#billList:target) .list-panel {
+      display: block;
+    }
+
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 7px;
+    }
+
+    .calendar-day {
+      display: grid;
+      min-height: 42px;
+      place-items: center;
+      border: 1px solid rgb(112 130 163 / 15%);
+      border-radius: 12px;
+      background: rgb(255 255 255 / 38%);
+      color: #526078;
+      font-size: 13px;
+      text-decoration: none;
+    }
+
+    .calendar-day:focus-visible {
+      outline: 2px solid #8199ed;
+      outline-offset: 2px;
+    }
+
+    .calendar-note {
+      margin: 16px 0 0;
+      color: #7d899e;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    /* 深色模式下统一调整玻璃卡片、表单及账单文字的对比度。 */
+    body:has(#themeToggle:checked) .card,
+    body:has(#themeToggle:checked) .feature-link,
+    body:has(#themeToggle:checked) .theme-control,
+    body:has(#themeToggle:checked) .install-button {
+      border-color: rgb(197 211 240 / 12%);
+      background-color: rgb(26 39 58 / 68%);
+      box-shadow: 0 12px 34px rgb(0 0 0 / 19%);
+    }
+
+    body:has(#themeToggle:checked) .feature-icon,
+    body:has(#themeToggle:checked) .summary-icon {
+      background: rgb(129 153 237 / 17%);
+      color: #aabaff;
+    }
+
+    body:has(#themeToggle:checked) .eyebrow,
+    body:has(#themeToggle:checked) .subtitle,
+    body:has(#themeToggle:checked) .summary-label,
+    body:has(#themeToggle:checked) .section-hint,
+    body:has(#themeToggle:checked) .bill-count,
+    body:has(#themeToggle:checked) .bill-meta,
+    body:has(#themeToggle:checked) .empty-state,
+    body:has(#themeToggle:checked) .chart-message,
+    body:has(#themeToggle:checked) .pwa-message,
+    body:has(#themeToggle:checked) .calendar-note {
+      color: #a5b1c7;
+    }
+
+    body:has(#themeToggle:checked) .theme-control,
+    body:has(#themeToggle:checked) .feature-name,
+    body:has(#themeToggle:checked) .bill-title,
+    body:has(#themeToggle:checked) .bill-amount,
+    body:has(#themeToggle:checked) .summary-amount,
+    body:has(#themeToggle:checked) .install-button,
+    body:has(#themeToggle:checked) .analysis-subheading,
+    body:has(#themeToggle:checked) .analysis-summary,
+    body:has(#themeToggle:checked) label {
+      color: #e0e7f4;
+    }
+
+    body:has(#themeToggle:checked) .analysis-list {
+      color: #b6c1d5;
+    }
+
+    body:has(#themeToggle:checked) input,
+    body:has(#themeToggle:checked) select,
+    body:has(#themeToggle:checked) .calendar-day {
+      border-color: rgb(197 211 240 / 17%);
+      background: rgb(14 24 39 / 64%);
+      color: #e5ebf6;
+    }
+
+    body:has(#themeToggle:checked) input::placeholder {
+      color: #8794ab;
+    }
+
+    body:has(#themeToggle:checked) .view-switch {
+      border-color: rgb(197 211 240 / 12%);
+      background: rgb(9 17 30 / 48%);
+    }
+
+    body:has(#themeToggle:checked) .view-switch label {
+      color: #adb9cf;
+    }
+
+    body:has(#themeToggle:checked) #viewList:checked + label,
+    body:has(#themeToggle:checked) #viewCalendar:checked + label {
+      background: rgb(91 111 157 / 48%);
+      color: #edf1ff;
+    }
+
+    body:has(#themeToggle:checked) .category-tag {
+      color: #aabaff;
+    }
+
+    @media (max-width: 560px) {
+      body {
+        padding: 22px 14px 40px;
+      }
+
+      .header {
+        align-items: center;
+        gap: 10px;
+      }
+
+      .header .subtitle {
+        max-width: 32ch;
+      }
+
+      .header-actions {
+        gap: 0;
+      }
+
+      .theme-control {
+        gap: 6px;
+        padding: 0 10px;
+      }
+
+      .theme-label {
+        display: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .feature-nav {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 9px;
+      }
+
+      .feature-link {
+        min-height: 68px;
+        gap: 9px;
+        padding: 12px 10px;
+        border-radius: 17px;
+      }
+
+      .feature-icon {
+        flex-basis: 35px;
+        width: 35px;
+        height: 35px;
+        border-radius: 12px;
+      }
+
+      .feature-name {
+        font-size: 13px;
+      }
+
+      .calendar-grid {
+        gap: 5px;
+      }
+
+      .calendar-day {
+        min-height: 38px;
+        border-radius: 10px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* 清淡浅色底色，减少渐变层次，让玻璃卡片保持轻盈。 */
+    body {
+      color: #293747;
+      background:
+        radial-gradient(ellipse at 12% 0%, rgb(226 242 237 / 55%), transparent 38%),
+        linear-gradient(160deg, #f5f8f7 0%, #f2f6fa 58%, #f7f8fb 100%);
+      background-attachment: fixed;
+    }
+
+    /* 统一卡片的半透明度、模糊和轻柔阴影。 */
+    .card,
+    .feature-link,
+    .theme-control,
+    .install-button {
+      border: 1px solid rgb(255 255 255 / 76%);
+      background: rgb(255 255 255 / 62%);
+      box-shadow: 0 5px 18px rgb(49 69 83 / 5%);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .card {
+      border-radius: 24px;
+    }
+
+    .feature-link {
+      border-radius: 20px;
+    }
+
+    .summary-amount {
+      color: #438d83;
+    }
+
+    .summary-icon,
+    .feature-icon {
+      background: rgb(105 173 157 / 13%);
+      color: #478d80;
+    }
+
+    .submit-button,
+    .chart-button {
+      background: #5b9b8e;
+      color: #fff;
+    }
+
+    .submit-button:hover,
+    .chart-button:hover {
+      background: #4b897d;
+    }
+
+    /* 每笔账单分开呈现为小型玻璃块，方便快速浏览。 */
+    .bill-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .bill-item,
+    .bill-item:first-child {
+      min-height: 68px;
+      padding: 14px 15px;
+      border: 1px solid rgb(255 255 255 / 76%);
+      border-radius: 17px;
+      background: rgb(255 255 255 / 48%);
+      box-shadow: 0 3px 12px rgb(49 69 83 / 4%);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .bill-title,
+    .bill-amount {
+      color: #2f3e4d;
+    }
+
+    .bill-meta,
+    .section-hint,
+    .bill-count,
+    .empty-state {
+      color: #778591;
+    }
+
+    .category-tag {
+      color: #4b9285;
+    }
+
+    input,
+    select {
+      min-height: 46px;
+      border-color: rgb(111 135 145 / 21%);
+      border-radius: 13px;
+      background: rgb(255 255 255 / 74%);
+      color: #293747;
+    }
+
+    .submit-button,
+    .chart-button,
+    .install-button {
+      min-height: 46px;
+    }
+
+    .view-switch {
+      border-color: rgb(111 135 145 / 15%);
+      background: rgb(115 148 140 / 8%);
+    }
+
+    #viewList:checked + label,
+    #viewCalendar:checked + label {
+      background: rgb(255 255 255 / 86%);
+      color: #427f75;
+    }
+
+    .calendar-day {
+      min-height: 44px;
+      border-color: rgb(111 135 145 / 16%);
+      background: rgb(255 255 255 / 50%);
+      color: #4c5d68;
+    }
+
+    /* 深色模式使用低饱和蓝黑玻璃，并提高账单文字对比度。 */
+    body:has(#themeToggle:checked) {
+      color: #edf1f7;
+      background:
+        radial-gradient(ellipse at 12% 0%, rgb(49 72 83 / 22%), transparent 40%),
+        linear-gradient(160deg, #171c29 0%, #1b2230 58%, #191f2c 100%);
+      background-attachment: fixed;
+    }
+
+    body:has(#themeToggle:checked) .card,
+    body:has(#themeToggle:checked) .feature-link,
+    body:has(#themeToggle:checked) .theme-control,
+    body:has(#themeToggle:checked) .install-button {
+      border-color: rgb(219 230 246 / 10%);
+      background: rgb(25 30 45 / 55%);
+      box-shadow: 0 5px 18px rgb(0 0 0 / 10%);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    body:has(#themeToggle:checked) .bill-item,
+    body:has(#themeToggle:checked) .bill-item:first-child {
+      border-color: rgb(219 230 246 / 9%);
+      background: rgb(31 39 56 / 52%);
+      box-shadow: 0 3px 12px rgb(0 0 0 / 9%);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    body:has(#themeToggle:checked) .bill-title,
+    body:has(#themeToggle:checked) .bill-amount,
+    body:has(#themeToggle:checked) .feature-name,
+    body:has(#themeToggle:checked) .theme-control,
+    body:has(#themeToggle:checked) .summary-amount,
+    body:has(#themeToggle:checked) .analysis-subheading,
+    body:has(#themeToggle:checked) .analysis-summary,
+    body:has(#themeToggle:checked) label {
+      color: #edf1f7;
+    }
+
+    body:has(#themeToggle:checked) .bill-meta,
+    body:has(#themeToggle:checked) .section-hint,
+    body:has(#themeToggle:checked) .bill-count,
+    body:has(#themeToggle:checked) .empty-state,
+    body:has(#themeToggle:checked) .subtitle,
+    body:has(#themeToggle:checked) .eyebrow,
+    body:has(#themeToggle:checked) .chart-message,
+    body:has(#themeToggle:checked) .calendar-note {
+      color: #b0bdca;
+    }
+
+    body:has(#themeToggle:checked) .summary-icon,
+    body:has(#themeToggle:checked) .feature-icon {
+      background: rgb(114 178 161 / 17%);
+      color: #9bd1c0;
+    }
+
+    body:has(#themeToggle:checked) .category-tag {
+      color: #9bd1c0;
+    }
+
+    body:has(#themeToggle:checked) input,
+    body:has(#themeToggle:checked) select,
+    body:has(#themeToggle:checked) .calendar-day {
+      border-color: rgb(219 230 246 / 15%);
+      background: rgb(20 26 39 / 62%);
+      color: #edf1f7;
+    }
+
+    body:has(#themeToggle:checked) input::placeholder {
+      color: #97a4b4;
+    }
+
+    body:has(#themeToggle:checked) .view-switch {
+      border-color: rgb(219 230 246 / 11%);
+      background: rgb(16 22 35 / 52%);
+    }
+
+    body:has(#themeToggle:checked) .view-switch label {
+      color: #c1ccd9;
+    }
+
+    body:has(#themeToggle:checked) #viewList:checked + label,
+    body:has(#themeToggle:checked) #viewCalendar:checked + label {
+      background: rgb(80 111 111 / 48%);
+      color: #f0f7f4;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 22px 14px 36px;
+      }
+
+      .card {
+        padding: 19px;
+        border-radius: 22px;
+      }
+
+      .bill-item,
+      .bill-item:first-child {
+        min-height: 64px;
+        padding: 13px 12px;
+        border-radius: 15px;
+      }
+
+      .feature-link {
+        min-height: 64px;
+      }
+
+      .submit-button,
+      .chart-button,
+      .install-button,
+      .theme-control {
+        min-height: 46px;
+      }
+    }
+
+    /* 新增页面采用手机优先布局，固定底栏为每个主要视图提供入口。 */
+    body {
+      padding-bottom: 104px;
+    }
+
+    .app {
+      width: min(100%, 760px);
+    }
+
+    .page-view[hidden],
+    [hidden] {
+      display: none !important;
+    }
+
+    .feature-nav {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .feature-link {
+      min-width: 0;
+      min-height: 72px;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      padding: 8px 4px;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .feature-icon {
+      flex: 0 0 30px;
+      width: 30px;
+      height: 30px;
+      border-radius: 11px;
+      font-size: 15px;
+    }
+
+    .feature-name {
+      font-size: 11px;
+      white-space: nowrap;
+    }
+
+    .dashboard-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin: 0 0 16px;
+    }
+
+    .metric-card {
+      min-width: 0;
+      min-height: 91px;
+      padding: 14px;
+      border: 1px solid rgb(255 255 255 / 76%);
+      border-radius: 20px;
+      background: rgb(255 255 255 / 62%);
+      box-shadow: 0 5px 18px rgb(49 69 83 / 5%);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .metric-label {
+      display: block;
+      color: #788591;
+      font-size: 12px;
+    }
+
+    .metric-value {
+      display: block;
+      margin-top: 9px;
+      overflow: hidden;
+      color: #354352;
+      font-size: clamp(18px, 5vw, 23px);
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .metric-value.expense {
+      color: #d66f70;
+    }
+
+    .metric-value.income {
+      color: #4a9a7c;
+    }
+
+    .metric-value.balance-negative {
+      color: #d66f70;
+    }
+
+    .metric-value.balance-positive {
+      color: #4a9a7c;
+    }
+
+    .primary-add-button {
+      display: flex;
+      width: 100%;
+      min-height: 56px;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      margin: 0 0 22px;
+      border: 0;
+      border-radius: 18px;
+      background: #5b9b8e;
+      box-shadow: 0 7px 18px rgb(73 142 127 / 16%);
+      color: white;
+      font: inherit;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .primary-add-button:active {
+      background: #4b897d;
+    }
+
+    .primary-add-button:focus-visible,
+    .bottom-nav button:focus-visible,
+    .period-tabs button:focus-visible,
+    .month-chip:focus-visible,
+    .calendar-controls button:focus-visible {
+      outline: 3px solid #78b9a8;
+      outline-offset: 3px;
+    }
+
+    .day-groups {
+      display: grid;
+      gap: 17px;
+    }
+
+    .bill-day-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 0 0 9px;
+      color: #44535f;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .bill-day-total {
+      color: #81908e;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .day-bill-list {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .day-bill-item {
+      display: flex;
+      min-height: 65px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 13px 15px;
+      border: 1px solid rgb(255 255 255 / 78%);
+      border-radius: 17px;
+      background: rgb(255 255 255 / 52%);
+      box-shadow: 0 3px 12px rgb(49 69 83 / 4%);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .day-bill-main {
+      min-width: 0;
+    }
+
+    .day-bill-title {
+      overflow: hidden;
+      color: #354352;
+      font-size: 14px;
+      font-weight: 650;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .day-bill-meta {
+      margin-top: 5px;
+      color: #82908f;
+      font-size: 12px;
+    }
+
+    .day-bill-amount {
+      flex: 0 0 auto;
+      color: #cf7273;
+      font-size: 15px;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .day-bill-amount.income {
+      color: #4a9a7c;
+    }
+
+    .record-switch,
+    .period-tabs {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      margin: 0 0 16px;
+      padding: 4px;
+      border: 1px solid rgb(111 135 145 / 14%);
+      border-radius: 15px;
+      background: rgb(115 148 140 / 7%);
+      scrollbar-width: none;
+    }
+
+    .record-switch::-webkit-scrollbar,
+    .period-tabs::-webkit-scrollbar,
+    .period-scroller::-webkit-scrollbar,
+    .bottom-nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .record-switch button,
+    .period-tabs button {
+      min-height: 40px;
+      flex: 1 0 auto;
+      padding: 0 15px;
+      border: 0;
+      border-radius: 11px;
+      background: transparent;
+      color: #6f7e82;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .record-switch button[aria-pressed="true"],
+    .period-tabs button[aria-pressed="true"] {
+      background: rgb(255 255 255 / 88%);
+      box-shadow: 0 2px 7px rgb(49 69 83 / 8%);
+      color: #438d83;
+    }
+
+    .period-tabs {
+      margin-bottom: 12px;
+    }
+
+    .period-tabs button {
+      padding: 0 12px;
+    }
+
+    .period-select-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 15px;
+    }
+
+    .year-select {
+      width: auto;
+      min-width: 94px;
+      min-height: 40px;
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .period-scroller {
+      display: flex;
+      min-width: 0;
+      flex: 1;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 2px 1px 5px;
+      scrollbar-width: none;
+    }
+
+    .month-chip {
+      min-height: 38px;
+      flex: 0 0 auto;
+      padding: 0 13px;
+      border: 1px solid rgb(111 135 145 / 15%);
+      border-radius: 999px;
+      background: rgb(255 255 255 / 55%);
+      color: #667780;
+      font: inherit;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .month-chip[aria-pressed="true"] {
+      border-color: transparent;
+      background: #5b9b8e;
+      color: #fff;
+    }
+
+    .stats-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin: 0 0 14px;
+    }
+
+    .stats-metric {
+      min-width: 0;
+      padding: 13px 10px;
+      border: 1px solid rgb(255 255 255 / 76%);
+      border-radius: 17px;
+      background: rgb(255 255 255 / 54%);
+      box-shadow: 0 3px 12px rgb(49 69 83 / 4%);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .stats-metric .metric-label {
+      font-size: 11px;
+    }
+
+    .stats-metric .metric-value {
+      margin-top: 7px;
+      font-size: clamp(14px, 4vw, 19px);
+    }
+
+    .stats-metric .metric-value.expense {
+      color: #d66f70;
+    }
+
+    .stats-metric .metric-value.income {
+      color: #4a9a7c;
+    }
+
+    .chart-frame {
+      position: relative;
+      width: 100%;
+      min-height: 230px;
+    }
+
+    .chart-frame canvas {
+      max-width: 100%;
+    }
+
+    .chart-empty-message {
+      margin: 8px 0 0;
+      color: #81908e;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .asset-details {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .asset-details > summary {
+      display: flex;
+      min-height: 64px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 20px;
+      color: #374750;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .asset-details > summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .asset-details > summary::after {
+      content: "＋";
+      color: #6e9e91;
+      font-size: 18px;
+    }
+
+    .asset-details[open] > summary::after {
+      content: "−";
+    }
+
+    .asset-details-content {
+      padding: 0 20px 20px;
+    }
+
+    .comparison-layout {
+      display: grid;
+      gap: 15px;
+    }
+
+    .category-legend {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 9px 14px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #71808a;
+      font-size: 12px;
+    }
+
+    .legend-dot {
+      width: 9px;
+      height: 9px;
+      flex: 0 0 9px;
+      border-radius: 50%;
+      background: var(--legend-color);
+    }
+
+    .custom-range {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 0 0 15px;
+    }
+
+    .calendar-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 0 0 15px;
+    }
+
+    .calendar-controls button {
+      min-width: 44px;
+      min-height: 44px;
+      border: 1px solid rgb(111 135 145 / 15%);
+      border-radius: 13px;
+      background: rgb(255 255 255 / 58%);
+      color: #4b8177;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .calendar-controls strong {
+      color: #43535d;
+      font-size: 15px;
+    }
+
+    .calendar-day.has-bills::after {
+      width: 5px;
+      height: 5px;
+      align-self: end;
+      margin-top: -7px;
+      border-radius: 50%;
+      background: #5b9b8e;
+      content: "";
+    }
+
+    .calendar-day.selected {
+      border-color: transparent;
+      background: #5b9b8e;
+      color: white;
+    }
+
+    .calendar-day.selected::after {
+      background: #fff;
+    }
+
+    .calendar-day.outside-month {
+      opacity: 0.4;
+    }
+
+    .calendar-day {
+      display: flex;
+      min-height: 44px;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2px;
+    }
+
+    .calendar-weekdays {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      margin-bottom: 6px;
+      color: #82908e;
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .calendar-placeholder {
+      min-height: 44px;
+    }
+
+    .calendar-day {
+      width: 100%;
+      padding: 0;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .calendar-detail-item strong {
+      color: #cf7273;
+      font-size: 13px;
+    }
+
+    .calendar-detail-item strong.income {
+      color: #4a9a7c;
+    }
+
+    #closeRecordButton {
+      min-height: 40px;
+      padding: 0 12px;
+      border: 1px solid rgb(111 135 145 / 16%);
+      border-radius: 12px;
+      background: rgb(255 255 255 / 54%);
+      color: #687780;
+      font: inherit;
+      font-size: 13px;
+    }
+
+    body:has(#themeToggle:checked) .calendar-weekdays {
+      color: #b0bdca;
+    }
+
+    body:has(#themeToggle:checked) .calendar-detail-item strong {
+      color: #e29a9b;
+    }
+
+    body:has(#themeToggle:checked) .calendar-detail-item strong.income {
+      color: #8bd1ae;
+    }
+
+    body:has(#themeToggle:checked) #closeRecordButton {
+      border-color: rgb(219 230 246 / 10%);
+      background: rgb(25 30 45 / 55%);
+      color: #d3dbe7;
+    }
+
+    .calendar-details {
+      display: grid;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .calendar-detail-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 12px;
+      border: 1px solid rgb(255 255 255 / 75%);
+      border-radius: 14px;
+      background: rgb(255 255 255 / 48%);
+      font-size: 13px;
+    }
+
+    .budget-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 10px;
+      align-items: end;
+    }
+
+    .budget-row .submit-button {
+      min-width: 100px;
+      padding: 0 14px;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      z-index: 20;
+      right: 12px;
+      bottom: max(10px, env(safe-area-inset-bottom));
+      left: 12px;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      max-width: 680px;
+      min-height: 68px;
+      margin: 0 auto;
+      padding: 7px;
+      border: 1px solid rgb(255 255 255 / 80%);
+      border-radius: 22px;
+      background: rgb(255 255 255 / 78%);
+      box-shadow: 0 5px 24px rgb(43 58 70 / 11%);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .bottom-nav button {
+      display: grid;
+      min-width: 0;
+      min-height: 52px;
+      align-content: center;
+      justify-items: center;
+      gap: 3px;
+      border: 0;
+      border-radius: 15px;
+      background: transparent;
+      color: #82908e;
+      font: inherit;
+      font-size: 10px;
+      cursor: pointer;
+    }
+
+    .bottom-nav button[aria-current="page"] {
+      background: rgb(91 155 142 / 11%);
+      color: #438d83;
+      font-weight: 700;
+    }
+
+    .bottom-nav-icon {
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    /* 深色主题与浅色保持相同的卡片层级和控件可读性。 */
+    body:has(#themeToggle:checked) .metric-card,
+    body:has(#themeToggle:checked) .stats-metric,
+    body:has(#themeToggle:checked) .day-bill-item,
+    body:has(#themeToggle:checked) .calendar-detail-item,
+    body:has(#themeToggle:checked) .month-chip,
+    body:has(#themeToggle:checked) .calendar-controls button {
+      border-color: rgb(219 230 246 / 10%);
+      background: rgb(25 30 45 / 55%);
+      box-shadow: 0 3px 12px rgb(0 0 0 / 9%);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    body:has(#themeToggle:checked) .bottom-nav {
+      border-color: rgb(219 230 246 / 10%);
+      background: rgb(25 30 45 / 78%);
+      box-shadow: 0 5px 24px rgb(0 0 0 / 24%);
+    }
+
+    body:has(#themeToggle:checked) .metric-label,
+    body:has(#themeToggle:checked) .day-bill-meta,
+    body:has(#themeToggle:checked) .bill-day-total,
+    body:has(#themeToggle:checked) .legend-item,
+    body:has(#themeToggle:checked) .chart-empty-message {
+      color: #b0bdca;
+    }
+
+    body:has(#themeToggle:checked) .metric-value,
+    body:has(#themeToggle:checked) .bill-day-heading,
+    body:has(#themeToggle:checked) .day-bill-title,
+    body:has(#themeToggle:checked) .asset-details > summary,
+    body:has(#themeToggle:checked) .calendar-controls strong {
+      color: #edf1f7;
+    }
+
+    body:has(#themeToggle:checked) .record-switch,
+    body:has(#themeToggle:checked) .period-tabs {
+      border-color: rgb(219 230 246 / 10%);
+      background: rgb(16 22 35 / 52%);
+    }
+
+    body:has(#themeToggle:checked) .record-switch button,
+    body:has(#themeToggle:checked) .period-tabs button {
+      color: #c1ccd9;
+    }
+
+    body:has(#themeToggle:checked) .record-switch button[aria-pressed="true"],
+    body:has(#themeToggle:checked) .period-tabs button[aria-pressed="true"] {
+      background: rgb(80 111 111 / 48%);
+      color: #f0f7f4;
+    }
+
+    body:has(#themeToggle:checked) .month-chip {
+      color: #c1ccd9;
+    }
+
+    body:has(#themeToggle:checked) .month-chip[aria-pressed="true"] {
+      background: #5b9b8e;
+      color: white;
+    }
+
+    body:has(#themeToggle:checked) .bottom-nav button {
+      color: #aab6c5;
+    }
+
+    body:has(#themeToggle:checked) .bottom-nav button[aria-current="page"] {
+      background: rgb(91 155 142 / 18%);
+      color: #a1d6c6;
+    }
+
+    body:has(#themeToggle:checked) .calendar-day.selected {
+      background: #5b9b8e;
+      color: white;
+    }
+
+    @media (min-width: 640px) {
+      body {
+        padding-top: 32px;
+        padding-bottom: 120px;
+      }
+
+      .app {
+        width: min(100%, 760px);
+      }
+
+      .dashboard-metrics {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .metric-card {
+        min-height: 104px;
+        padding: 16px;
+      }
+
+      .comparison-layout {
+        grid-template-columns: minmax(0, 1fr) 205px;
+        align-items: center;
+      }
+
+      .category-legend {
+        grid-template-columns: 1fr;
+      }
+
+      .chart-frame {
+        min-height: 275px;
+      }
+
+      .bottom-nav {
+        bottom: max(18px, env(safe-area-inset-bottom));
+      }
+    }
+
+    @media (max-width: 639px) {
+      .feature-nav {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .page-view,
+      .bottom-nav,
+      .metric-card,
+      .day-bill-item {
+        scroll-behavior: auto;
+        transition: none;
+      }
+    }
   </style>
 </head>
 <body>
   <main class="app">
     <header class="header">
-      <p class="eyebrow">CAMPUS LIFE · DAILY NOTES</p>
-      <h1>校园生活记账</h1>
-      <p class="subtitle">记下每一笔日常，让生活费花得更明白。</p>
-      <button id="installAppButton" class="install-button" type="button" hidden>安装到桌面</button>
-      <p id="pwaMessage" class="pwa-message" role="status" aria-live="polite" hidden></p>
+      <div>
+        <p class="eyebrow">CAMPUS LIFE · DAILY NOTES</p>
+        <h1>校园生活费记账工具</h1>
+        <p class="subtitle">记下每一笔日常，让生活费花得更明白。</p>
+        <button id="installAppButton" class="install-button" type="button" hidden>安装到桌面</button>
+        <p id="pwaMessage" class="pwa-message" role="status" aria-live="polite" hidden></p>
+      </div>
+      <div class="header-actions">
+        <input id="themeToggle" type="checkbox" aria-label="切换深色模式">
+        <label class="theme-control" for="themeToggle">
+          <span class="theme-icon" aria-hidden="true">◐</span>
+          <span class="theme-label">深色模式</span>
+        </label>
+      </div>
     </header>
 
-    <section class="card summary" aria-label="消费总额">
-      <div>
-        <div class="summary-label">累计消费</div>
-        <div class="summary-amount">¥<span id="totalAmount">0.00</span></div>
-      </div>
-      <div class="summary-icon" aria-hidden="true">￥</div>
-    </section>
+    <section id="homePage" class="page-view" data-page-panel="home">
+      <!-- 首页四个快捷功能入口。 -->
+      <nav class="feature-nav" aria-label="快捷功能">
+        <button class="feature-link" type="button" data-page="home" data-action="add">
+          <span class="feature-icon" aria-hidden="true">＋</span>
+          <span class="feature-name">快捷记账</span>
+        </button>
+        <button class="feature-link" type="button" data-page="calendar">
+          <span class="feature-icon" aria-hidden="true">历</span>
+          <span class="feature-name">账单日历</span>
+        </button>
+        <button class="feature-link" type="button" data-page="stats">
+          <span class="feature-icon" aria-hidden="true">图</span>
+          <span class="feature-name">消费统计</span>
+        </button>
+        <button class="feature-link" type="button" data-page="profile">
+          <span class="feature-icon" aria-hidden="true">⚙</span>
+          <span class="feature-name">设置</span>
+        </button>
+      </nav>
 
-    <section class="card" aria-labelledby="chartTitle">
-      <div class="section-heading">
-        <h2 id="chartTitle">分类消费占比</h2>
-        <span class="section-hint">按消费分类汇总</span>
-      </div>
-      <button id="generateChartButton" class="chart-button" type="button">生成消费饼图</button>
-      <p id="chartMessage" class="chart-message" role="status" aria-live="polite">
-        点击按钮，根据已保存的账单生成分类占比。
-      </p>
-      <div id="chartContainer" class="chart-container" hidden>
-        <canvas id="expenseChart" role="img" aria-label="各消费分类支出占比饼图"></canvas>
-      </div>
-    </section>
+      <section class="dashboard-metrics" aria-label="本月汇总">
+        <article class="metric-card">
+          <span class="metric-label">本月收入</span>
+          <strong id="homeMonthlyIncome" class="metric-value income">¥0.00</strong>
+        </article>
+        <article class="metric-card">
+          <span class="metric-label">本月结余</span>
+          <strong id="homeMonthlyBalance" class="metric-value balance-negative">¥0.00</strong>
+        </article>
+        <article class="metric-card">
+          <span class="metric-label">剩余预算</span>
+          <strong id="homeBudgetRemaining" class="metric-value">未设置</strong>
+        </article>
+        <article class="metric-card">
+          <span class="metric-label">本月支出</span>
+          <strong id="homeMonthlyExpense" class="metric-value expense">¥0.00</strong>
+        </article>
+      </section>
 
-    <section class="card" aria-labelledby="analysisTitle">
-      <div class="section-heading">
-        <h2 id="analysisTitle">AI账单分析</h2>
-        <span class="section-hint">本地分析，不上传数据</span>
-      </div>
-      <button id="analyzeBillsButton" class="chart-button" type="button">开始分析账单</button>
-      <p id="analysisMessage" class="chart-message" role="status" aria-live="polite">
-        分析全部已保存账单，获取消费概况和省钱建议。
-      </p>
-      <div id="analysisResults" class="analysis-results" hidden>
-        <p id="analysisSummary" class="analysis-summary"></p>
-        <h3 class="analysis-subheading">分类支出</h3>
-        <ul id="analysisBreakdown" class="analysis-list"></ul>
-        <h3 class="analysis-subheading">省钱建议</h3>
-        <ul id="analysisTips" class="analysis-list"></ul>
-      </div>
-    </section>
+      <button id="openRecordButton" class="primary-add-button" type="button">
+        <span aria-hidden="true">＋</span> 添加一条新记账
+      </button>
 
-    <section class="card" aria-labelledby="formTitle">
-      <div class="section-heading">
-        <h2 id="formTitle">记一笔</h2>
-        <span class="section-hint">花销随手记</span>
-      </div>
-      <form id="billForm" class="form-grid">
-        <div class="field">
-          <label for="amount">金额（元）</label>
-          <input id="amount" name="amount" type="number" min="0.01" step="0.01"
-            inputmode="decimal" placeholder="例如 12.50" required>
+      <section class="card" aria-labelledby="homeBillsTitle">
+        <div class="section-heading">
+          <h2 id="homeBillsTitle">最近账单</h2>
+          <span id="homeBillCount" class="bill-count">0 笔</span>
         </div>
-        <div class="field">
-          <label for="category">消费分类</label>
-          <select id="category" name="category" required>
-            <option value="食堂">食堂</option>
-            <option value="外卖">外卖</option>
-            <option value="网购">网购</option>
-            <option value="其他">其他</option>
-          </select>
+        <div id="homeEmptyState" class="empty-state">还没有账单，添加第一笔记录吧。</div>
+        <div id="billGroups" class="day-groups"></div>
+      </section>
+
+      <section id="recordPanel" class="card" hidden>
+        <div class="section-heading">
+          <h2>添加一条记录</h2>
+          <button id="closeRecordButton" type="button" aria-label="关闭记账面板">关闭</button>
         </div>
-        <div class="field field-full">
-          <label for="note">备注</label>
-          <input id="note" name="note" type="text" maxlength="80"
-            placeholder="吃了什么、买了什么（选填）">
+        <div class="record-switch" role="group" aria-label="记录类型">
+          <button type="button" data-record-type="expense" aria-pressed="true">支出</button>
+          <button type="button" data-record-type="income" aria-pressed="false">收入</button>
         </div>
-        <p id="formMessage" class="form-message" role="status" aria-live="polite"></p>
-        <button class="submit-button" type="submit">添加账单</button>
-      </form>
+        <section id="formCard" aria-labelledby="formTitle">
+          <div class="section-heading">
+            <h2 id="formTitle">记一笔支出</h2>
+            <span class="section-hint">沿用原账单与保存逻辑</span>
+          </div>
+          <form id="billForm" class="form-grid">
+            <div class="field">
+              <label for="amount">金额（元）</label>
+              <input id="amount" name="amount" type="number" min="0.01" step="0.01"
+                inputmode="decimal" placeholder="例如 12.50" required>
+            </div>
+            <div class="field">
+              <label for="category">消费分类</label>
+              <select id="category" name="category" required>
+                <option value="食堂">食堂</option>
+                <option value="外卖">外卖</option>
+                <option value="网购">网购</option>
+                <option value="其他">其他</option>
+              </select>
+            </div>
+            <div class="field field-full">
+              <label for="note">备注</label>
+              <input id="note" name="note" type="text" maxlength="80"
+                placeholder="吃了什么、买了什么（选填）">
+            </div>
+            <p id="formMessage" class="form-message" role="status" aria-live="polite"></p>
+            <button class="submit-button" type="submit">添加支出账单</button>
+          </form>
+        </section>
+        <section id="incomeCard" aria-labelledby="incomeTitle" hidden>
+          <div class="section-heading">
+            <h2 id="incomeTitle">记一笔收入</h2>
+            <span class="section-hint">单独保存，不改动旧支出记录</span>
+          </div>
+          <form id="incomeForm" class="form-grid">
+            <div class="field field-full">
+              <label for="incomeAmount">金额（元）</label>
+              <input id="incomeAmount" name="amount" type="number" min="0.01" step="0.01"
+                inputmode="decimal" placeholder="例如 500.00" required>
+            </div>
+            <div class="field field-full">
+              <label for="incomeNote">备注</label>
+              <input id="incomeNote" name="note" type="text" maxlength="80"
+                placeholder="例如 生活费、兼职收入（选填）">
+            </div>
+            <p id="incomeMessage" class="form-message" role="status" aria-live="polite"></p>
+            <button class="submit-button" type="submit">保存收入</button>
+          </form>
+        </section>
+      </section>
+
+      <!-- 保留原累计支出元素和 ID，旧记账脚本继续更新此数值。 -->
+      <section class="card summary" aria-label="累计消费">
+        <div>
+          <div class="summary-label">累计支出</div>
+          <div class="summary-amount">¥<span id="totalAmount">0.00</span></div>
+        </div>
+        <div class="summary-icon" aria-hidden="true">￥</div>
+      </section>
     </section>
 
-    <section class="card" aria-labelledby="listTitle">
-      <div class="section-heading">
-        <h2 id="listTitle">账单明细</h2>
-        <span id="billCount" class="bill-count">0 笔</span>
-      </div>
+    <section id="calendarPage" class="page-view" data-page-panel="calendar" hidden>
+      <section class="card ledger-card" aria-labelledby="listTitle">
+        <div class="section-heading">
+          <h2 id="listTitle">账单日历</h2>
+          <span id="billCount" class="bill-count">0 笔</span>
+        </div>
+        <div class="calendar-controls">
+          <button id="calendarPrevious" type="button" aria-label="上个月">‹</button>
+          <strong id="calendarMonthLabel"></strong>
+          <button id="calendarNext" type="button" aria-label="下个月">›</button>
+        </div>
+        <div class="view-switch" role="radiogroup" aria-label="账单显示方式">
+          <input id="viewList" type="radio" name="billView" checked>
+          <label for="viewList">列表</label>
+          <input id="viewCalendar" type="radio" name="billView">
+          <label for="viewCalendar">日历</label>
+        </div>
+        <div class="calendar-panel">
+          <div class="calendar-weekdays" aria-hidden="true">
+            <span>日</span><span>一</span><span>二</span><span>三</span>
+            <span>四</span><span>五</span><span>六</span>
+          </div>
+          <div class="calendar-grid" aria-label="日历日期">
+            <a class="calendar-day" href="#billList">1</a>
+            <a class="calendar-day" href="#billList">2</a>
+            <a class="calendar-day" href="#billList">3</a>
+            <a class="calendar-day" href="#billList">4</a>
+            <a class="calendar-day" href="#billList">5</a>
+            <a class="calendar-day" href="#billList">6</a>
+            <a class="calendar-day" href="#billList">7</a>
+            <a class="calendar-day" href="#billList">8</a>
+            <a class="calendar-day" href="#billList">9</a>
+            <a class="calendar-day" href="#billList">10</a>
+            <a class="calendar-day" href="#billList">11</a>
+            <a class="calendar-day" href="#billList">12</a>
+            <a class="calendar-day" href="#billList">13</a>
+            <a class="calendar-day" href="#billList">14</a>
+            <a class="calendar-day" href="#billList">15</a>
+            <a class="calendar-day" href="#billList">16</a>
+            <a class="calendar-day" href="#billList">17</a>
+            <a class="calendar-day" href="#billList">18</a>
+            <a class="calendar-day" href="#billList">19</a>
+            <a class="calendar-day" href="#billList">20</a>
+            <a class="calendar-day" href="#billList">21</a>
+            <a class="calendar-day" href="#billList">22</a>
+            <a class="calendar-day" href="#billList">23</a>
+            <a class="calendar-day" href="#billList">24</a>
+            <a class="calendar-day" href="#billList">25</a>
+            <a class="calendar-day" href="#billList">26</a>
+            <a class="calendar-day" href="#billList">27</a>
+            <a class="calendar-day" href="#billList">28</a>
+            <a class="calendar-day" href="#billList">29</a>
+            <a class="calendar-day" href="#billList">30</a>
+            <a class="calendar-day" href="#billList">31</a>
+          </div>
+          <div id="calendarDetails" class="calendar-details" aria-live="polite"></div>
+          <p class="calendar-note">带绿色圆点的日期有本地账单记录，点选日期查看明细。</p>
+        </div>
+        <div class="list-panel">
+          <div id="calendarListDetails" class="day-groups"></div>
+        </div>
+      </section>
+    </section>
+
+    <section id="statsPage" class="page-view" data-page-panel="stats" hidden>
+      <section class="card" aria-labelledby="statsTitle">
+        <div class="section-heading">
+          <h2 id="statsTitle">收支统计</h2>
+          <span class="section-hint">数据来自本地记录</span>
+        </div>
+        <div class="period-tabs" role="tablist" aria-label="统计周期">
+          <button type="button" data-period="day" aria-pressed="false">日常</button>
+          <button type="button" data-period="month" aria-pressed="true">月统计</button>
+          <button type="button" data-period="year" aria-pressed="false">年统计</button>
+          <button type="button" data-period="custom" aria-pressed="false">自定义</button>
+        </div>
+        <div class="period-select-row">
+          <select id="statsYear" class="year-select" aria-label="选择年份"></select>
+          <div id="periodScroller" class="period-scroller" aria-label="选择月份"></div>
+        </div>
+        <div id="customRange" class="custom-range" hidden>
+          <label>开始日期<input id="customStartDate" type="date"></label>
+          <label>结束日期<input id="customEndDate" type="date"></label>
+        </div>
+        <div class="stats-metrics" aria-label="统计汇总">
+          <article class="stats-metric">
+            <span class="metric-label" id="statsExpenseLabel">月支出</span>
+            <strong id="statsExpense" class="metric-value expense">¥0.00</strong>
+          </article>
+          <article class="stats-metric">
+            <span class="metric-label" id="statsIncomeLabel">月收入</span>
+            <strong id="statsIncome" class="metric-value income">¥0.00</strong>
+          </article>
+          <article class="stats-metric">
+            <span class="metric-label" id="statsBalanceLabel">月结余</span>
+            <strong id="statsBalance" class="metric-value balance-negative">¥0.00</strong>
+          </article>
+        </div>
+        <div class="section-heading">
+          <h2 id="dailyChartTitle">每日收支</h2>
+          <span id="statsRangeLabel" class="section-hint"></span>
+        </div>
+        <div class="chart-frame">
+          <canvas id="dailyBarChart" role="img" aria-label="每日支出和收入柱状统计"></canvas>
+        </div>
+        <p id="statsChartMessage" class="chart-empty-message" role="status"></p>
+      </section>
+
+      <details id="statsAssetDetails" class="card asset-details">
+        <summary>资产走势</summary>
+        <div class="asset-details-content">
+          <p class="section-hint">根据已记录收入与支出计算累计结余，不包含未记录资产。</p>
+          <div class="chart-frame">
+            <canvas id="statsAssetChart" role="img" aria-label="统计周期内资产结余走势"></canvas>
+          </div>
+        </div>
+      </details>
+
+      <section class="card" aria-labelledby="comparisonTitle">
+        <div class="section-heading">
+          <h2 id="comparisonTitle">收支对比</h2>
+          <span class="section-hint">按消费分类汇总</span>
+        </div>
+        <div class="comparison-layout">
+          <div class="chart-frame">
+            <canvas id="categoryAreaChart" role="img" aria-label="各分类支出面积图"></canvas>
+          </div>
+          <ul id="categoryLegend" class="category-legend" aria-label="分类图例">
+            <li class="legend-item"><span class="legend-dot" style="--legend-color:#75b9a7"></span>食品餐饮</li>
+            <li class="legend-item"><span class="legend-dot" style="--legend-color:#88aeda"></span>健康医疗</li>
+            <li class="legend-item"><span class="legend-dot" style="--legend-color:#b7a5d5"></span>居家生活</li>
+            <li class="legend-item"><span class="legend-dot" style="--legend-color:#e4b889"></span>其他</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 保留原分类饼图及按钮、提示和 Canvas ID，原图表逻辑继续运行。 -->
+      <section id="chartSection" class="card" aria-labelledby="chartTitle">
+        <div class="section-heading">
+          <h2 id="chartTitle">分类消费占比</h2>
+          <span class="section-hint">按消费分类汇总</span>
+        </div>
+        <button id="generateChartButton" class="chart-button" type="button">生成消费饼图</button>
+        <p id="chartMessage" class="chart-message" role="status" aria-live="polite">
+          点击按钮，根据已保存的账单生成分类占比。
+        </p>
+        <div id="chartContainer" class="chart-container" hidden>
+          <canvas id="expenseChart" role="img" aria-label="各消费分类支出占比饼图"></canvas>
+        </div>
+      </section>
+    </section>
+
+    <section id="assetsPage" class="page-view" data-page-panel="assets" hidden>
+      <section class="card" aria-labelledby="assetsTitle">
+        <div class="section-heading">
+          <h2 id="assetsTitle">资产走势</h2>
+          <span class="section-hint">累计收入减累计支出</span>
+        </div>
+        <div class="dashboard-metrics">
+          <article class="metric-card">
+            <span class="metric-label">累计收入</span>
+            <strong id="assetsIncome" class="metric-value income">¥0.00</strong>
+          </article>
+          <article class="metric-card">
+            <span class="metric-label">累计支出</span>
+            <strong id="assetsExpense" class="metric-value expense">¥0.00</strong>
+          </article>
+        </div>
+        <div class="chart-frame">
+          <canvas id="assetsTrendChart" role="img" aria-label="累计收支结余走势"></canvas>
+        </div>
+        <p class="chart-empty-message">走势只反映当前记录的收入与支出，不代表银行或现金账户余额。</p>
+      </section>
+    </section>
+
+    <section id="profilePage" class="page-view" data-page-panel="profile" hidden>
+      <section class="card" aria-labelledby="budgetTitle">
+        <div class="section-heading">
+          <h2 id="budgetTitle">月预算</h2>
+          <span class="section-hint">仅保存在当前设备</span>
+        </div>
+        <form id="budgetForm" class="form-grid">
+          <div class="field field-full">
+            <label for="monthlyBudget">每月预算（元）</label>
+            <input id="monthlyBudget" type="number" min="0" step="0.01"
+              inputmode="decimal" placeholder="输入月预算">
+          </div>
+          <p id="budgetMessage" class="form-message" role="status" aria-live="polite"></p>
+          <button class="submit-button" type="submit">保存本月预算</button>
+        </form>
+      </section>
+
+      <section id="settingsCard" class="card" aria-labelledby="analysisTitle">
+        <div class="section-heading">
+          <h2 id="analysisTitle">AI账单分析</h2>
+          <span class="section-hint">本地分析，不上传数据</span>
+        </div>
+        <button id="analyzeBillsButton" class="chart-button" type="button">开始分析账单</button>
+        <p id="analysisMessage" class="chart-message" role="status" aria-live="polite">
+          分析全部已保存账单，获取消费概况和省钱建议。
+        </p>
+        <div id="analysisResults" class="analysis-results" hidden>
+          <p id="analysisSummary" class="analysis-summary"></p>
+          <h3 class="analysis-subheading">分类支出</h3>
+          <ul id="analysisBreakdown" class="analysis-list"></ul>
+          <h3 class="analysis-subheading">省钱建议</h3>
+          <ul id="analysisTips" class="analysis-list"></ul>
+        </div>
+      </section>
+    </section>
+
+    <!-- 旧账单列表留在日历页作为兼容输出，首页由同一份本地数据分组呈现。 -->
+    <div class="legacy-ledger" hidden>
       <ul id="billList" class="bill-list"></ul>
       <div id="emptyState" class="empty-state">还没有账单，记下今天的第一笔吧。</div>
-    </section>
+    </div>
+
+    <nav class="bottom-nav" aria-label="主导航">
+      <button type="button" data-page="home" aria-current="page">
+        <span class="bottom-nav-icon" aria-hidden="true">⌂</span><span>首页</span>
+      </button>
+      <button type="button" data-page="calendar">
+        <span class="bottom-nav-icon" aria-hidden="true">▦</span><span>日历</span>
+      </button>
+      <button type="button" data-page="assets">
+        <span class="bottom-nav-icon" aria-hidden="true">↗</span><span>资产</span>
+      </button>
+      <button type="button" data-page="stats">
+        <span class="bottom-nav-icon" aria-hidden="true">▥</span><span>统计</span>
+      </button>
+      <button type="button" data-page="profile">
+        <span class="bottom-nav-icon" aria-hidden="true">◎</span><span>我的</span>
+      </button>
+    </nav>
   </main>
 
   <!-- 使用项目内的 Chart.js，避免外部 CDN 不可用导致图表无法加载。 -->
@@ -863,6 +2647,860 @@
       pwaMessage.textContent = "当前浏览器不支持离线功能，请使用现代浏览器并通过 HTTPS 或 localhost 打开。";
       pwaMessage.hidden = false;
     }
+
+    // 新增收入与预算使用独立存储键，旧支出记录和饼图数据格式保持不变。
+    const INCOME_STORAGE_KEY = "campus-life-incomes";
+    const BUDGET_STORAGE_KEY = "campus-life-monthly-budgets";
+    const THEME_STORAGE_KEY = "campus-life-theme";
+    const incomeForm = document.querySelector("#incomeForm");
+    const incomeAmountInput = document.querySelector("#incomeAmount");
+    const incomeNoteInput = document.querySelector("#incomeNote");
+    const incomeMessage = document.querySelector("#incomeMessage");
+    const budgetForm = document.querySelector("#budgetForm");
+    const budgetInput = document.querySelector("#monthlyBudget");
+    const budgetMessage = document.querySelector("#budgetMessage");
+    const themeToggle = document.querySelector("#themeToggle");
+    let incomes = [];
+    let monthlyBudgets = {};
+    let statsPeriod = "month";
+    let statsMonth = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
+    let statsDay = new Date();
+    let calendarMonth = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
+    let calendarSelectedDate = new Date();
+    let dailyBarChart = null;
+    let statsAssetChart = null;
+    let categoryAreaChart = null;
+    let assetsTrendChart = null;
+
+    function showStorageError(messageElement, message, error) {
+      console.error(message, error);
+      if (messageElement) messageElement.textContent = message;
+    }
+
+    function readLocalArray(key, messageElement, description) {
+      try {
+        const stored = localStorage.getItem(key);
+        if (!stored) return [];
+        const parsed = JSON.parse(stored);
+        if (!Array.isArray(parsed)) throw new Error("本地数据格式不正确");
+        return parsed.filter((record) =>
+          record &&
+          Number.isFinite(record.amount) &&
+          record.amount > 0 &&
+          typeof record.createdAt === "string" &&
+          typeof record.note === "string"
+        );
+      } catch (error) {
+        showStorageError(messageElement, `${description}读取失败，请检查浏览器本地存储设置。`, error);
+        return [];
+      }
+    }
+
+    incomes = readLocalArray(INCOME_STORAGE_KEY, incomeMessage, "收入记录");
+    try {
+      const savedBudgets = localStorage.getItem(BUDGET_STORAGE_KEY);
+      if (savedBudgets) {
+        const parsedBudgets = JSON.parse(savedBudgets);
+        if (!parsedBudgets || typeof parsedBudgets !== "object" || Array.isArray(parsedBudgets)) {
+          throw new Error("预算数据格式不正确");
+        }
+        monthlyBudgets = Object.fromEntries(
+          Object.entries(parsedBudgets).filter(([, amount]) =>
+            Number.isFinite(amount) && amount >= 0
+          )
+        );
+      }
+    } catch (error) {
+      showStorageError(budgetMessage, "预算读取失败，请检查浏览器本地存储设置。", error);
+    }
+
+    function localDateKey(date) {
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, "0");
+      const day = String(date.getDate()).padStart(2, "0");
+      return `${year}-${month}-${day}`;
+    }
+
+    function monthKey(date) {
+      return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}`;
+    }
+
+    function parsedDate(value) {
+      const date = new Date(value);
+      return Number.isNaN(date.getTime()) ? null : date;
+    }
+
+    function money(value) {
+      return `¥${value.toFixed(2)}`;
+    }
+
+    function allRecords() {
+      const expenseRecords = bills.map((bill) => ({ ...bill, kind: "expense" }));
+      const incomeRecords = incomes.map((income) => ({ ...income, kind: "income" }));
+      return [...expenseRecords, ...incomeRecords]
+        .map((record) => ({ ...record, date: parsedDate(record.createdAt) }))
+        .filter((record) => record.date)
+        .sort((a, b) => b.date - a.date);
+    }
+
+    function recordsForMonth(date) {
+      const key = monthKey(date);
+      return allRecords().filter((record) => monthKey(record.date) === key);
+    }
+
+    function sumKind(records, kind) {
+      return records.reduce(
+        (total, record) => total + (record.kind === kind ? record.amount : 0),
+        0
+      );
+    }
+
+    function renderGroupedRecords(container, records) {
+      container.replaceChildren();
+      const today = new Date();
+      const todayKey = localDateKey(today);
+      const yesterday = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 1);
+      const yesterdayKey = localDateKey(yesterday);
+      const groups = new Map();
+
+      for (const record of records) {
+        const key = localDateKey(record.date);
+        if (!groups.has(key)) groups.set(key, []);
+        groups.get(key).push(record);
+      }
+
+      for (const [key, entries] of groups) {
+        const group = document.createElement("section");
+        group.className = "bill-day-group";
+        const heading = document.createElement("h3");
+        heading.className = "bill-day-heading";
+        const headingText = document.createElement("span");
+        headingText.textContent = key === todayKey
+          ? "今天"
+          : key === yesterdayKey
+            ? "昨天"
+            : new Date(`${key}T00:00:00`).toLocaleDateString("zh-CN", {
+              month: "long",
+              day: "numeric",
+              weekday: "short"
+            });
+        const dayExpense = sumKind(entries, "expense");
+        const dayIncome = sumKind(entries, "income");
+        const total = document.createElement("span");
+        total.className = "bill-day-total";
+        total.textContent = `支出 ${money(dayExpense)} · 收入 ${money(dayIncome)}`;
+        heading.append(headingText, total);
+
+        const list = document.createElement("ul");
+        list.className = "day-bill-list";
+        for (const record of entries) {
+          const item = document.createElement("li");
+          item.className = "day-bill-item";
+          const main = document.createElement("div");
+          main.className = "day-bill-main";
+          const title = document.createElement("div");
+          title.className = "day-bill-title";
+          title.textContent = record.note || (record.kind === "income" ? "收入" : record.category);
+          const metadata = document.createElement("div");
+          metadata.className = "day-bill-meta";
+          metadata.textContent = `${record.kind === "income" ? "收入" : record.category || "支出"} · ${
+            record.date.toLocaleTimeString("zh-CN", { hour: "2-digit", minute: "2-digit" })
+          }`;
+          const amount = document.createElement("strong");
+          amount.className = `day-bill-amount${record.kind === "income" ? " income" : ""}`;
+          amount.textContent = `${record.kind === "income" ? "+" : "−"}${money(record.amount)}`;
+          main.append(title, metadata);
+          item.append(main, amount);
+          list.append(item);
+        }
+        group.append(heading, list);
+        container.append(group);
+      }
+    }
+
+    function updateHomeDashboard() {
+      const now = new Date();
+      const records = recordsForMonth(now);
+      const expenses = sumKind(records, "expense");
+      const income = sumKind(records, "income");
+      const balance = income - expenses;
+      const budget = monthlyBudgets[monthKey(now)];
+      document.querySelector("#homeMonthlyIncome").textContent = money(income);
+      document.querySelector("#homeMonthlyExpense").textContent = money(expenses);
+      const balanceElement = document.querySelector("#homeMonthlyBalance");
+      balanceElement.textContent = `${balance < 0 ? "−" : ""}${money(Math.abs(balance))}`;
+      balanceElement.classList.toggle("balance-negative", balance < 0);
+      balanceElement.classList.toggle("balance-positive", balance >= 0);
+      const budgetElement = document.querySelector("#homeBudgetRemaining");
+      if (Number.isFinite(budget)) {
+        const remaining = budget - expenses;
+        budgetElement.textContent = `${remaining < 0 ? "−" : ""}${money(Math.abs(remaining))}`;
+        budgetElement.classList.toggle("balance-negative", remaining < 0);
+        budgetElement.classList.toggle("balance-positive", remaining >= 0);
+      } else {
+        budgetElement.textContent = "未设置";
+        budgetElement.classList.remove("balance-negative", "balance-positive");
+      }
+
+      const recordsAll = allRecords();
+      document.querySelector("#homeBillCount").textContent = `${recordsAll.length} 笔`;
+      document.querySelector("#billCount").textContent = `${recordsAll.length} 笔`;
+      document.querySelector("#homeEmptyState").hidden = recordsAll.length > 0;
+      renderGroupedRecords(document.querySelector("#billGroups"), recordsAll);
+      const calendarList = document.querySelector("#calendarListDetails");
+      renderGroupedRecords(calendarList, recordsAll);
+      if (recordsAll.length === 0) {
+        const empty = document.createElement("p");
+        empty.className = "empty-state";
+        empty.textContent = "还没有本地账单记录。";
+        calendarList.append(empty);
+      }
+      document.querySelector("#assetsIncome").textContent =
+        money(sumKind(recordsAll, "income"));
+      document.querySelector("#assetsExpense").textContent =
+        money(sumKind(recordsAll, "expense"));
+      const budgetForCurrentMonth = monthlyBudgets[monthKey(now)];
+      budgetInput.value = Number.isFinite(budgetForCurrentMonth)
+        ? budgetForCurrentMonth.toFixed(2)
+        : "";
+    }
+
+    function renderCalendar() {
+      const grid = document.querySelector(".calendar-grid");
+      const label = document.querySelector("#calendarMonthLabel");
+      const details = document.querySelector("#calendarDetails");
+      const year = calendarMonth.getFullYear();
+      const month = calendarMonth.getMonth();
+      label.textContent = `${year}年${month + 1}月`;
+      grid.replaceChildren();
+      const firstWeekday = new Date(year, month, 1).getDay();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      for (let blank = 0; blank < firstWeekday; blank += 1) {
+        const placeholder = document.createElement("span");
+        placeholder.className = "calendar-placeholder";
+        grid.append(placeholder);
+      }
+
+      const recordDates = new Set(allRecords().map((record) => localDateKey(record.date)));
+      for (let day = 1; day <= daysInMonth; day += 1) {
+        const date = new Date(year, month, day);
+        const key = localDateKey(date);
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "calendar-day";
+        button.textContent = String(day);
+        button.dataset.date = key;
+        button.setAttribute("aria-label", `${year}年${month + 1}月${day}日`);
+        if (recordDates.has(key)) button.classList.add("has-bills");
+        if (key === localDateKey(calendarSelectedDate)) button.classList.add("selected");
+        button.addEventListener("click", () => {
+          calendarSelectedDate = date;
+          renderCalendar();
+        });
+        grid.append(button);
+      }
+
+      details.replaceChildren();
+      const selectedKey = localDateKey(calendarSelectedDate);
+      const selectedRecords = allRecords().filter(
+        (record) => localDateKey(record.date) === selectedKey
+      );
+      const heading = document.createElement("div");
+      heading.className = "calendar-note";
+      heading.textContent = `${calendarSelectedDate.toLocaleDateString("zh-CN", {
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+      })} · ${selectedRecords.length} 笔`;
+      details.append(heading);
+      if (selectedRecords.length === 0) {
+        const empty = document.createElement("p");
+        empty.className = "calendar-note";
+        empty.textContent = "这一天没有本地账单记录。";
+        details.append(empty);
+        return;
+      }
+      for (const record of selectedRecords) {
+        const item = document.createElement("div");
+        item.className = "calendar-detail-item";
+        const title = document.createElement("span");
+        title.textContent = record.note || (record.kind === "income" ? "收入" : record.category);
+        const amount = document.createElement("strong");
+        amount.classList.toggle("income", record.kind === "income");
+        amount.textContent = `${record.kind === "income" ? "+" : "−"}${money(record.amount)}`;
+        item.append(title, amount);
+        details.append(item);
+      }
+    }
+
+    function populateYearSelector() {
+      const selector = document.querySelector("#statsYear");
+      const years = new Set([new Date().getFullYear(), statsMonth.getFullYear()]);
+      for (const record of allRecords()) years.add(record.date.getFullYear());
+      const sortedYears = [...years].sort((a, b) => b - a);
+      selector.replaceChildren();
+      for (const year of sortedYears) {
+        const option = document.createElement("option");
+        option.value = String(year);
+        option.textContent = `${year}年`;
+        selector.append(option);
+      }
+      selector.value = String(statsMonth.getFullYear());
+      renderMonthChips();
+    }
+
+    function renderMonthChips() {
+      const scroller = document.querySelector("#periodScroller");
+      const selectedYear = Number(document.querySelector("#statsYear").value);
+      scroller.replaceChildren();
+      for (let month = 0; month < 12; month += 1) {
+        const date = new Date(selectedYear, month, 1);
+        const chip = document.createElement("button");
+        chip.type = "button";
+        chip.className = "month-chip";
+        const now = new Date();
+        const lastMonth = new Date(now.getFullYear(), now.getMonth() - 1, 1);
+        chip.textContent = monthKey(date) === monthKey(now)
+          ? "本月"
+          : monthKey(date) === monthKey(lastMonth)
+            ? "上月"
+            : `${month + 1}月`;
+        chip.setAttribute("aria-pressed", String(
+          date.getFullYear() === statsMonth.getFullYear() &&
+          date.getMonth() === statsMonth.getMonth()
+        ));
+        chip.addEventListener("click", () => {
+          statsMonth = date;
+          const maxDay = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+          statsDay = new Date(date.getFullYear(), date.getMonth(), Math.min(statsDay.getDate(), maxDay));
+          document.querySelector("#statsYear").value = String(date.getFullYear());
+          renderMonthChips();
+          renderStats();
+        });
+        scroller.append(chip);
+      }
+      const activeChip = scroller.querySelector('[aria-pressed="true"]');
+      activeChip?.scrollIntoView({ block: "nearest", inline: "center" });
+    }
+
+    function recordsWithin(start, endExclusive) {
+      return allRecords().filter(
+        (record) => record.date >= start && record.date < endExclusive
+      );
+    }
+
+    function selectedStatsRecords() {
+      const year = Number(document.querySelector("#statsYear").value) || statsMonth.getFullYear();
+      if (statsPeriod === "day") {
+        const start = new Date(statsDay.getFullYear(), statsDay.getMonth(), statsDay.getDate());
+        return recordsWithin(start, new Date(start.getFullYear(), start.getMonth(), start.getDate() + 1));
+      }
+      if (statsPeriod === "year") {
+        return recordsWithin(new Date(year, 0, 1), new Date(year + 1, 0, 1));
+      }
+      if (statsPeriod === "custom") {
+        const startInput = document.querySelector("#customStartDate").value;
+        const endInput = document.querySelector("#customEndDate").value;
+        const start = startInput ? new Date(`${startInput}T00:00:00`) : new Date(year, statsMonth.getMonth(), 1);
+        const end = endInput ? new Date(`${endInput}T00:00:00`) : new Date(year, statsMonth.getMonth() + 1, 0);
+        if (start > end) {
+          document.querySelector("#statsChartMessage").textContent = "开始日期不能晚于结束日期。";
+          return [];
+        }
+        return recordsWithin(start, new Date(end.getFullYear(), end.getMonth(), end.getDate() + 1));
+      }
+      return recordsForMonth(statsMonth);
+    }
+
+    function chartLabelsAndRecords(records) {
+      if (statsPeriod === "day") {
+        const labels = Array.from({ length: 24 }, (_, hour) => `${String(hour).padStart(2, "0")}:00`);
+        const expenses = Array(24).fill(0);
+        const incomesByHour = Array(24).fill(0);
+        for (const record of records) {
+          const target = record.kind === "income" ? incomesByHour : expenses;
+          target[record.date.getHours()] += record.amount;
+        }
+        return { labels, expenses, incomes: incomesByHour };
+      }
+
+      if (statsPeriod === "year") {
+        const labels = Array.from({ length: 12 }, (_, index) => `${index + 1}月`);
+        const expenses = Array(12).fill(0);
+        const incomesByMonth = Array(12).fill(0);
+        for (const record of records) {
+          const target = record.kind === "income" ? incomesByMonth : expenses;
+          target[record.date.getMonth()] += record.amount;
+        }
+        return { labels, expenses, incomes: incomesByMonth };
+      }
+
+      let start;
+      let count;
+      if (statsPeriod === "custom") {
+        const startInput = document.querySelector("#customStartDate").value;
+        const endInput = document.querySelector("#customEndDate").value;
+        start = startInput ? new Date(`${startInput}T00:00:00`) : new Date(statsMonth.getFullYear(), statsMonth.getMonth(), 1);
+        const end = endInput ? new Date(`${endInput}T00:00:00`) : new Date(statsMonth.getFullYear(), statsMonth.getMonth() + 1, 0);
+        count = Math.max(1, Math.floor((end - start) / 86400000) + 1);
+      } else {
+        start = new Date(statsMonth.getFullYear(), statsMonth.getMonth(), 1);
+        count = 31;
+      }
+      const labels = Array.from({ length: count }, (_, index) => {
+        const dayDate = new Date(start.getFullYear(), start.getMonth(), start.getDate() + index);
+        return statsPeriod === "custom"
+          ? `${dayDate.getMonth() + 1}/${dayDate.getDate()}`
+          : String(index + 1);
+      });
+      const expenses = Array(count).fill(0);
+      const incomesByDay = Array(count).fill(0);
+      for (const record of records) {
+        const index = Math.floor(
+          (new Date(record.date.getFullYear(), record.date.getMonth(), record.date.getDate()) -
+            new Date(start.getFullYear(), start.getMonth(), start.getDate())) / 86400000
+        );
+        if (index >= 0 && index < count) {
+          const target = record.kind === "income" ? incomesByDay : expenses;
+          target[index] += record.amount;
+        }
+      }
+      return { labels, expenses, incomes: incomesByDay };
+    }
+
+    function chartTheme() {
+      const dark = themeToggle.checked;
+      return {
+        text: dark ? "#c1ccd9" : "#71808a",
+        grid: dark ? "rgba(220,230,245,.10)" : "rgba(100,120,130,.12)"
+      };
+    }
+
+    function replaceOrUpdateChart(chart, canvas, config) {
+      if (chart) {
+        chart.data = config.data;
+        chart.options = config.options;
+        chart.update();
+        return chart;
+      }
+      if (typeof Chart === "undefined") throw new Error("本地 Chart.js 未能加载");
+      return new Chart(canvas, config);
+    }
+
+    function renderStats() {
+      const customStartValue = document.querySelector("#customStartDate").value;
+      const customEndValue = document.querySelector("#customEndDate").value;
+      const customStartDate = customStartValue
+        ? new Date(`${customStartValue}T00:00:00`)
+        : new Date(statsMonth.getFullYear(), statsMonth.getMonth(), 1);
+      const customEndDate = customEndValue
+        ? new Date(`${customEndValue}T00:00:00`)
+        : new Date(statsMonth.getFullYear(), statsMonth.getMonth() + 1, 0);
+      const invalidCustomRange = statsPeriod === "custom" && customStartDate > customEndDate;
+      const records = invalidCustomRange ? [] : selectedStatsRecords();
+      const expenses = sumKind(records, "expense");
+      const income = sumKind(records, "income");
+      const balance = income - expenses;
+      const periodName = {
+        day: "日",
+        month: "月",
+        year: "年",
+        custom: "期间"
+      }[statsPeriod];
+      document.querySelector("#statsExpenseLabel").textContent = `${periodName}支出`;
+      document.querySelector("#statsIncomeLabel").textContent = `${periodName}收入`;
+      document.querySelector("#statsBalanceLabel").textContent = `${periodName}结余`;
+      document.querySelector("#statsExpense").textContent = money(expenses);
+      document.querySelector("#statsIncome").textContent = money(income);
+      const balanceElement = document.querySelector("#statsBalance");
+      balanceElement.textContent = `${balance < 0 ? "−" : ""}${money(Math.abs(balance))}`;
+      balanceElement.classList.toggle("balance-negative", balance < 0);
+      balanceElement.classList.toggle("balance-positive", balance >= 0);
+      document.querySelector("#customRange").hidden = statsPeriod !== "custom";
+      document.querySelector("#periodScroller").hidden = statsPeriod === "year";
+      for (const button of document.querySelectorAll("[data-period]")) {
+        button.setAttribute("aria-pressed", String(button.dataset.period === statsPeriod));
+      }
+      document.querySelector("#dailyChartTitle").textContent =
+        statsPeriod === "day" ? "当日收支" : "收支统计";
+      const rangeLabel = statsPeriod === "day"
+        ? statsDay.toLocaleDateString("zh-CN", { year: "numeric", month: "long", day: "numeric" })
+        : statsPeriod === "year"
+          ? `${document.querySelector("#statsYear").value}年`
+          : statsPeriod === "custom"
+            ? `${document.querySelector("#customStartDate").value || "开始"} 至 ${document.querySelector("#customEndDate").value || "结束"}`
+            : `${statsMonth.getFullYear()}年${statsMonth.getMonth() + 1}月`;
+      document.querySelector("#statsRangeLabel").textContent = rangeLabel;
+
+      const { labels, expenses: expenseValues, incomes: incomeValues } = chartLabelsAndRecords(records);
+      const colors = chartTheme();
+      const message = document.querySelector("#statsChartMessage");
+      message.textContent = invalidCustomRange
+        ? "开始日期不能晚于结束日期。"
+        : records.length === 0
+          ? "该统计周期暂无本地账单记录，图表保持空白。"
+          : "";
+      try {
+        dailyBarChart = replaceOrUpdateChart(dailyBarChart, document.querySelector("#dailyBarChart"), {
+          type: "bar",
+          data: {
+            labels,
+            datasets: [
+              {
+                label: "支出",
+                data: expenseValues,
+                backgroundColor: "rgba(215, 117, 119, .78)",
+                borderRadius: 5,
+                maxBarThickness: 18
+              },
+              {
+                label: "收入",
+                data: incomeValues,
+                backgroundColor: "rgba(91, 166, 133, .78)",
+                borderRadius: 5,
+                maxBarThickness: 18
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: { mode: "index", intersect: false },
+            plugins: {
+              legend: { labels: { color: colors.text, usePointStyle: true, boxWidth: 8 } }
+            },
+            scales: {
+              x: {
+                grid: { display: false },
+                ticks: { color: colors.text, maxTicksLimit: statsPeriod === "custom" ? 14 : 31 }
+              },
+              y: {
+                beginAtZero: true,
+                grid: { color: colors.grid },
+                ticks: { color: colors.text }
+              }
+            }
+          }
+        });
+        renderCategoryArea(records, labels, colors);
+        if (document.querySelector("#statsAssetDetails").open) {
+          statsAssetChart = renderBalanceChart(statsAssetChart, document.querySelector("#statsAssetChart"), colors);
+        }
+      } catch (error) {
+        showStorageError(message, `统计图表无法显示：${error.message}`, error);
+      }
+    }
+
+    function renderCategoryArea(records, labels, colors) {
+      const groups = [
+        { label: "食品餐饮", categories: ["食堂", "外卖"], color: "#75b9a7" },
+        { label: "健康医疗", categories: [], color: "#88aeda" },
+        { label: "居家生活", categories: ["网购"], color: "#b7a5d5" },
+        { label: "其他", categories: ["其他"], color: "#e4b889" }
+      ];
+      const dataSets = groups.map((group) => {
+        const values = Array(labels.length).fill(0);
+        for (const record of records) {
+          if (record.kind !== "expense" || !group.categories.includes(record.category)) continue;
+          let index;
+          if (statsPeriod === "day") {
+            index = record.date.getHours();
+          } else if (statsPeriod === "year") {
+            index = record.date.getMonth();
+          } else {
+            const startValue = document.querySelector("#customStartDate").value;
+            const start = statsPeriod === "custom" && startValue
+              ? new Date(`${startValue}T00:00:00`)
+              : new Date(statsMonth.getFullYear(), statsMonth.getMonth(), 1);
+            index = Math.floor(
+              (new Date(record.date.getFullYear(), record.date.getMonth(), record.date.getDate()) -
+                new Date(start.getFullYear(), start.getMonth(), start.getDate())) / 86400000
+            );
+          }
+          if (Number.isInteger(index) && index >= 0 && index < values.length) {
+            values[index] += record.amount;
+          }
+        }
+        return {
+          label: group.label,
+          data: values,
+          borderColor: group.color,
+          backgroundColor: `${group.color}40`,
+          fill: true,
+          tension: 0.35,
+          pointRadius: 2
+        };
+      });
+      categoryAreaChart = replaceOrUpdateChart(
+        categoryAreaChart,
+        document.querySelector("#categoryAreaChart"),
+        {
+          type: "line",
+          data: { labels, datasets: dataSets },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: { mode: "index", intersect: false },
+            plugins: {
+              legend: { display: false },
+              tooltip: { mode: "index", intersect: false }
+            },
+            scales: {
+              x: { grid: { display: false }, ticks: { color: colors.text, maxTicksLimit: 12 } },
+              y: { beginAtZero: true, grid: { color: colors.grid }, ticks: { color: colors.text } }
+            }
+          }
+        }
+      );
+    }
+
+    function renderBalanceChart(existingChart, canvas, colors) {
+      const now = new Date();
+      const firstMonth = new Date(now.getFullYear(), now.getMonth() - 11, 1);
+      const records = allRecords().sort((a, b) => a.date - b.date);
+      let balance = records
+        .filter((record) => record.date < firstMonth)
+        .reduce((sum, record) => sum + (record.kind === "income" ? record.amount : -record.amount), 0);
+      const labels = [];
+      const values = [];
+      for (let offset = 0; offset < 12; offset += 1) {
+        const month = new Date(firstMonth.getFullYear(), firstMonth.getMonth() + offset, 1);
+        const nextMonth = new Date(month.getFullYear(), month.getMonth() + 1, 1);
+        for (const record of records) {
+          if (record.date >= month && record.date < nextMonth) {
+            balance += record.kind === "income" ? record.amount : -record.amount;
+          }
+        }
+        labels.push(`${month.getMonth() + 1}月`);
+        values.push(balance);
+      }
+      return replaceOrUpdateChart(existingChart, canvas, {
+        type: "line",
+        data: {
+          labels,
+          datasets: [{
+            label: "累计结余",
+            data: values,
+            borderColor: "#69aa96",
+            backgroundColor: "rgba(105, 170, 150, .18)",
+            fill: true,
+            tension: 0.3,
+            pointRadius: 2
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: {
+            x: { grid: { display: false }, ticks: { color: colors.text } },
+            y: { grid: { color: colors.grid }, ticks: { color: colors.text } }
+          }
+        }
+      });
+    }
+
+    function renderAssetsPage() {
+      const records = allRecords();
+      const colors = chartTheme();
+      try {
+        assetsTrendChart = renderBalanceChart(
+          assetsTrendChart,
+          document.querySelector("#assetsTrendChart"),
+          colors
+        );
+      } catch (error) {
+        console.error("资产走势无法显示：", error);
+      }
+    }
+
+    function showPage(pageName) {
+      for (const panel of document.querySelectorAll("[data-page-panel]")) {
+        panel.hidden = panel.dataset.pagePanel !== pageName;
+      }
+      for (const button of document.querySelectorAll(".bottom-nav [data-page]")) {
+        if (button.dataset.page === pageName) button.setAttribute("aria-current", "page");
+        else button.removeAttribute("aria-current");
+      }
+      if (pageName === "calendar") {
+        document.querySelector("#viewCalendar").checked = true;
+        renderCalendar();
+      }
+      if (pageName === "stats") {
+        requestAnimationFrame(() => {
+          renderMonthChips();
+          renderStats();
+        });
+      }
+      if (pageName === "assets") requestAnimationFrame(renderAssetsPage);
+    }
+
+    for (const button of document.querySelectorAll("[data-page]")) {
+      button.addEventListener("click", () => {
+        showPage(button.dataset.page);
+        if (button.dataset.action === "add") {
+          const recordPanel = document.querySelector("#recordPanel");
+          recordPanel.hidden = false;
+          document.querySelector("#formCard").hidden = false;
+          document.querySelector("#incomeCard").hidden = true;
+          recordPanel.scrollIntoView({ behavior: "smooth", block: "center" });
+          amountInput.focus({ preventScroll: true });
+        }
+      });
+    }
+
+    document.querySelector("#openRecordButton").addEventListener("click", () => {
+      const panel = document.querySelector("#recordPanel");
+      panel.hidden = false;
+      document.querySelector("#formCard").hidden = false;
+      document.querySelector("#incomeCard").hidden = true;
+      panel.scrollIntoView({ behavior: "smooth", block: "center" });
+      amountInput.focus({ preventScroll: true });
+    });
+
+    document.querySelector("#closeRecordButton").addEventListener("click", () => {
+      document.querySelector("#recordPanel").hidden = true;
+    });
+
+    for (const button of document.querySelectorAll("[data-record-type]")) {
+      button.addEventListener("click", () => {
+        const isIncome = button.dataset.recordType === "income";
+        document.querySelector("#formCard").hidden = isIncome;
+        document.querySelector("#incomeCard").hidden = !isIncome;
+        for (const switchButton of document.querySelectorAll("[data-record-type]")) {
+          switchButton.setAttribute(
+            "aria-pressed",
+            String(switchButton.dataset.recordType === button.dataset.recordType)
+          );
+        }
+        if (isIncome) incomeAmountInput.focus();
+        else amountInput.focus();
+      });
+    }
+
+    // 原支出表单仍由旧处理器保存；此监听只刷新新首页和统计视图。
+    form.addEventListener("submit", () => {
+      window.setTimeout(() => {
+        updateHomeDashboard();
+        renderCalendar();
+        if (!document.querySelector("#statsPage").hidden) renderStats();
+        if (!document.querySelector("#assetsPage").hidden) renderAssetsPage();
+      }, 0);
+    });
+
+    incomeForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      incomeMessage.textContent = "";
+      const amount = Number(incomeAmountInput.value);
+      if (!Number.isFinite(amount) || amount <= 0) {
+        incomeMessage.textContent = "请输入大于 0 的有效收入金额。";
+        incomeAmountInput.focus();
+        return;
+      }
+      const record = {
+        amount: Math.round(amount * 100) / 100,
+        note: incomeNoteInput.value.trim(),
+        createdAt: new Date().toISOString()
+      };
+      const nextIncomes = [...incomes, record];
+      try {
+        localStorage.setItem(INCOME_STORAGE_KEY, JSON.stringify(nextIncomes));
+      } catch (error) {
+        showStorageError(incomeMessage, "收入保存失败，请检查浏览器本地存储空间后重试。", error);
+        return;
+      }
+      incomes = nextIncomes;
+      incomeForm.reset();
+      incomeMessage.textContent = "收入已保存。";
+      updateHomeDashboard();
+      renderCalendar();
+      if (!document.querySelector("#statsPage").hidden) renderStats();
+      if (!document.querySelector("#assetsPage").hidden) renderAssetsPage();
+    });
+
+    budgetForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      budgetMessage.textContent = "";
+      const amount = Number(budgetInput.value);
+      if (!Number.isFinite(amount) || amount < 0 || budgetInput.value.trim() === "") {
+        budgetMessage.textContent = "请输入大于或等于 0 的有效预算。";
+        budgetInput.focus();
+        return;
+      }
+      const nextBudgets = { ...monthlyBudgets, [monthKey(new Date())]: Math.round(amount * 100) / 100 };
+      try {
+        localStorage.setItem(BUDGET_STORAGE_KEY, JSON.stringify(nextBudgets));
+      } catch (error) {
+        showStorageError(budgetMessage, "预算保存失败，请检查浏览器本地存储空间后重试。", error);
+        return;
+      }
+      monthlyBudgets = nextBudgets;
+      budgetMessage.textContent = "本月预算已保存。";
+      updateHomeDashboard();
+    });
+
+    document.querySelector("#calendarPrevious").addEventListener("click", () => {
+      calendarMonth = new Date(calendarMonth.getFullYear(), calendarMonth.getMonth() - 1, 1);
+      calendarSelectedDate = new Date(calendarMonth);
+      renderCalendar();
+    });
+    document.querySelector("#calendarNext").addEventListener("click", () => {
+      calendarMonth = new Date(calendarMonth.getFullYear(), calendarMonth.getMonth() + 1, 1);
+      calendarSelectedDate = new Date(calendarMonth);
+      renderCalendar();
+    });
+
+    for (const button of document.querySelectorAll("[data-period]")) {
+      button.addEventListener("click", () => {
+        statsPeriod = button.dataset.period;
+        renderStats();
+      });
+    }
+
+    document.querySelector("#statsYear").addEventListener("change", (event) => {
+      statsMonth = new Date(Number(event.target.value), statsMonth.getMonth(), 1);
+      statsDay = new Date(statsMonth.getFullYear(), statsMonth.getMonth(), 1);
+      renderMonthChips();
+      renderStats();
+    });
+
+    for (const input of document.querySelectorAll("#customStartDate, #customEndDate")) {
+      input.addEventListener("change", renderStats);
+    }
+
+    document.querySelector("#statsAssetDetails").addEventListener("toggle", (event) => {
+      if (event.currentTarget.open && !document.querySelector("#statsPage").hidden) {
+        statsAssetChart = renderBalanceChart(
+          statsAssetChart,
+          document.querySelector("#statsAssetChart"),
+          chartTheme()
+        );
+      }
+    });
+
+    // 主题沿用原 CSS 开关，并补上本地记忆，刷新后仍使用上次选择。
+    try {
+      themeToggle.checked = localStorage.getItem(THEME_STORAGE_KEY) === "dark";
+    } catch (error) {
+      console.error("读取主题偏好失败：", error);
+    }
+    themeToggle.addEventListener("change", () => {
+      try {
+        localStorage.setItem(THEME_STORAGE_KEY, themeToggle.checked ? "dark" : "light");
+      } catch (error) {
+        console.error("保存主题偏好失败：", error);
+      }
+      if (!document.querySelector("#statsPage").hidden) renderStats();
+      if (!document.querySelector("#assetsPage").hidden) renderAssetsPage();
+    });
+
+    const todayForCustomRange = new Date();
+    document.querySelector("#customStartDate").value =
+      `${todayForCustomRange.getFullYear()}-${String(todayForCustomRange.getMonth() + 1).padStart(2, "0")}-01`;
+    document.querySelector("#customEndDate").value = localDateKey(todayForCustomRange);
+    populateYearSelector();
+    updateHomeDashboard();
+    renderCalendar();
   </script>
 </body>
 </html>
